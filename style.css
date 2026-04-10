@@ -174,7 +174,7 @@ a:hover { color: var(--green-accent); }
 }
 .type-filter-pill,
 .top-bar .type-filter-pill {
-    font-family: var(--font-base); font-size: 1.15rem; font-weight: 900;
+    font-family: var(--font-base); font-size: 1.05rem; font-weight: 900;
     text-transform: uppercase; letter-spacing: 0.5px;
     color: #aaa; cursor: pointer; transition: color 0.2s ease;
     background: transparent; white-space: nowrap; text-decoration: none;
