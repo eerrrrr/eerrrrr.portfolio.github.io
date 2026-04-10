@@ -71,77 +71,58 @@ function handleHomeScroll() {
    3. 篩選專案並更新 Masonry 排版
    ========================================= */
 
-function filterProjects(category) {
+function applyFilter(testFn, activeType, activeValue) {
     const projects = document.querySelectorAll('.project-card');
-    let firstVisibleProject = null;
 
-    projects.forEach(project => {
-        const projectCategory = project.getAttribute('data-category');
-        if (category === 'all' || projectCategory === category) {
-            project.classList.remove('hidden');
-            project.style.display = 'block'; 
-            if (!firstVisibleProject) firstVisibleProject = project;
-        } else {
-            project.classList.add('hidden');
-            project.style.display = 'none'; 
-        }
-    });
+    // Phase 1: fade everything out
+    projects.forEach(p => { p.style.opacity = '0'; });
 
-    if (msnry) {
-        msnry.layout();
-    }
-    
-    if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
+    setTimeout(() => {
+        // Phase 2: show/hide items, then relayout
+        let firstVisible = null;
+        projects.forEach(p => {
+            if (testFn(p)) {
+                p.classList.remove('hidden');
+                p.style.display = 'block';
+                if (!firstVisible) firstVisible = p;
+            } else {
+                p.classList.add('hidden');
+                p.style.display = 'none';
+            }
+        });
 
-    scrollToElement(firstVisibleProject);
-    updateActiveButton('category', category);
+        if (msnry) msnry.layout();
+
+        // Phase 3: fade visible items back in
+        setTimeout(() => {
+            projects.forEach(p => {
+                if (!p.classList.contains('hidden')) p.style.opacity = '1';
+            });
+        }, 40);
+
+        updateActiveButton(activeType, activeValue);
+    }, 220);
+}
+
+function filterProjects(category) {
+    applyFilter(
+        p => category === 'all' || p.getAttribute('data-category') === category,
+        'category', category
+    );
 }
 
 function filterByType(type) {
-    const projects = document.querySelectorAll('.project-card');
-    let firstVisibleProject = null;
-
-    projects.forEach(project => {
-        const projectType = project.getAttribute('data-type');
-        if (type === 'all' || projectType === type) {
-            project.classList.remove('hidden');
-            project.style.display = 'block';
-            if (!firstVisibleProject) firstVisibleProject = project;
-        } else {
-            project.classList.add('hidden');
-            project.style.display = 'none';
-        }
-    });
-
-    if (msnry) { msnry.layout(); }
-    if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
-    updateActiveButton('type', type);
+    applyFilter(
+        p => type === 'all' || p.getAttribute('data-type') === type,
+        'type', type
+    );
 }
 
 function filterByTag(tag) {
-    const projects = document.querySelectorAll('.project-card');
-    let firstVisibleProject = null;
-
-    projects.forEach(project => {
-        const projectTags = project.getAttribute('data-tags');
-        if (projectTags && projectTags.includes(tag)) {
-            project.classList.remove('hidden');
-            project.style.display = 'block';
-            if (!firstVisibleProject) firstVisibleProject = project;
-        } else {
-            project.classList.add('hidden');
-            project.style.display = 'none';
-        }
-    });
-
-    if (msnry) {
-        msnry.layout();
-    }
-
-    if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
-
-    scrollToElement(firstVisibleProject);
-    updateActiveButton('tag', tag);
+    applyFilter(
+        p => { const t = p.getAttribute('data-tags'); return t && t.includes(tag); },
+        'tag', tag
+    );
 }
 
 /* =========================================

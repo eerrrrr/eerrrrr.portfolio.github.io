@@ -186,7 +186,7 @@ a:hover { color: var(--green-accent); }
 .top-bar .type-filter-pill.active { color: #000; }
 #masonry-container { width: 100%; flex-grow: 1; display: block; }
 .gallery-gutter { width: 3%; } 
-.project-card { width: 29%; margin-bottom: 60px; display: block; cursor: pointer; }
+.project-card { width: 29%; margin-bottom: 60px; display: block; cursor: pointer; transition: opacity 0.35s ease; }
 .project-card.hidden { display: none; } 
 .image-box { width: 100%; height: auto; background: transparent; overflow: hidden; display: block; border-radius: 4px; margin-bottom: 15px; aspect-ratio: auto; }
 .image-box img { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
