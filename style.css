@@ -95,7 +95,7 @@ a:hover { color: var(--green-accent); }
 .top-bar.hidden-nav { transform: translateY(-100%); opacity: 0; }
 .nav-align-left { display: flex; align-items: center; }
 .nav-logo { font-weight: 900; font-size: 1.2rem; color: #000; text-transform: uppercase; margin-right: 0; }
-.nav-align-right { display: flex; align-items: center; gap: 28px; }
+.nav-align-right { display: flex; align-items: center; flex: 1; justify-content: space-evenly; padding-left: 60px; }
 .top-bar a.filter-btn { 
     color: #888; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
     letter-spacing: 1px; cursor: pointer; margin-left: 30px; 
@@ -172,14 +172,18 @@ a:hover { color: var(--green-accent); }
     padding-left: 9%; padding-right: 1%;
     position: relative;
 }
-.type-filter-pill {
+.type-filter-pill,
+.top-bar .type-filter-pill {
     font-family: var(--font-base); font-size: 1.2rem; font-weight: 900;
     text-transform: uppercase; letter-spacing: 0;
     color: #aaa; cursor: pointer; transition: color 0.2s ease;
     background: transparent; white-space: nowrap; text-decoration: none;
+    line-height: 1;
 }
-.type-filter-pill:hover { color: #000; }
-.type-filter-pill.active { color: #000; }
+.type-filter-pill:hover,
+.top-bar .type-filter-pill:hover { color: #000; }
+.type-filter-pill.active,
+.top-bar .type-filter-pill.active { color: #000; }
 #masonry-container { width: 100%; flex-grow: 1; display: block; }
 .gallery-gutter { width: 3%; } 
 .project-card { width: 29%; margin-bottom: 60px; display: block; cursor: pointer; }
