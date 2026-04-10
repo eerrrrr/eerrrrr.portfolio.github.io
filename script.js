@@ -112,7 +112,19 @@ function applyFilter(testFn, activeType, activeValue) {
             }
         });
 
-        if (msnry) msnry.layout();
+        // Special order: swap Single-family and Tea Room for architecture filter only
+        const container = document.getElementById('masonry-container');
+        const singleFamily = container.querySelector('a[href="Single-family-home.html"]');
+        const teaRoom = container.querySelector('a[href="tearoom.html"]');
+        if (singleFamily && teaRoom) {
+            if (activeValue === 'architecture') {
+                container.insertBefore(singleFamily, teaRoom);
+            } else {
+                container.insertBefore(teaRoom, singleFamily);
+            }
+        }
+
+        if (msnry) { msnry.reloadItems(); msnry.layout(); }
 
         // Phase 3: fade visible items back in
         setTimeout(() => {
