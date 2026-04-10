@@ -31,6 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     once: true
                 });
             }
+
+            // Strip AOS from project cards after initial animations finish
+            // so filtering never re-triggers the fly-in effect
+            setTimeout(() => {
+                document.querySelectorAll('#masonry-container .project-card').forEach(card => {
+                    card.removeAttribute('data-aos');
+                    card.removeAttribute('data-aos-duration');
+                    card.removeAttribute('data-aos-delay');
+                    card.style.transform = '';
+                    card.style.opacity = '1';
+                });
+            }, 1400);
         });
     } else {
         if (typeof AOS !== 'undefined') {
