@@ -13,6 +13,14 @@
         <div class="nav-align-left">
             <span class="nav-logo">ERIN.</span>
         </div>
+        <div class="nav-align-right">
+            <a href="#" onclick="filterByType('all'); return false;" class="type-filter-pill active">All</a>
+            <a href="#" onclick="filterByType('architecture'); return false;" class="type-filter-pill">Architecture</a>
+            <a href="#" onclick="filterByType('furniture'); return false;" class="type-filter-pill">Furniture</a>
+            <a href="#" onclick="filterByType('3dprinting'); return false;" class="type-filter-pill">3D Printing</a>
+            <a href="#" onclick="filterByType('vr'); return false;" class="type-filter-pill">VR</a>
+            <a href="#" onclick="filterByType('aigc'); return false;" class="type-filter-pill">AIGC</a>
+        </div>
     </nav>
 
     <header class="hero-poster">
@@ -77,34 +85,34 @@
     <div class="split-container" id="works">
 
         <main class="gallery-content">
-            
+
             <div id="masonry-container">
-            
-                <a href="commune.html" class="project-card" data-category="master" data-tags="wood" data-aos="fade-up">
+
+                <a href="commune.html" class="project-card" data-category="master" data-type="architecture" data-tags="wood" data-aos="fade-up">
                     <div class="image-box"><img src="commune/commune_icon.jpg" alt="Commune Project"></div>
                     <div class="text-box"><h3>Commune</h3><p>Helsinki / Master 2023</p></div>
                     <div class="tags">#Helsinki #CLT #Extension</div>
                 </a>
 
-                <a href="stool.html" class="project-card" data-category="master" data-tags="wood furniture" data-aos="fade-up">
+                <a href="stool.html" class="project-card" data-category="master" data-type="furniture" data-tags="wood furniture" data-aos="fade-up">
                     <div class="image-box"><img src="stool/stool_icon.jpg" alt="Stool"></div>
                     <div class="text-box"><h3>Stool</h3><p>Helsinki / Master 2025</p></div>
                     <div class="tags">#Furniture #Wood</div>
                 </a>
 
-                <a href="cultural-center.html" class="project-card" data-category="bachelor" data-tags="wood landscape" data-aos="fade-up">
+                <a href="cultural-center.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="wood landscape" data-aos="fade-up">
                     <div class="image-box"><img src="cultural-center/cultural_icon.jpg" alt="Cultural Center"></div>
                     <div class="text-box"><h3>Cultural Center</h3><p>Nanjing / Bachelor 2022</p></div>
                     <div class="tags">#Landscape #Wood Frame</div>
                 </a>
-                
-                <a href="bamboo.html" class="project-card" data-category="master" data-tags="3dprinting" data-aos="fade-up">
+
+                <a href="bamboo.html" class="project-card" data-category="master" data-type="3dprinting" data-tags="3dprinting" data-aos="fade-up">
                     <div class="image-box"><img src="bamboo/bamboo_icon.jpg" alt="3D-Printed Bamboo Components System"></div>
                     <div class="text-box"><h3>3D-Printed Bamboo Components System</h3><p>Helsinki / Master 2025</p></div>
                     <div class="tags">#3Dprinting</div>
                 </a>
 
-                 <a href="tri-stool.html" class="project-card" data-category="master" data-tags="unity vr" data-aos="fade-up">
+                 <a href="tri-stool.html" class="project-card" data-category="master" data-type="vr" data-tags="unity vr" data-aos="fade-up">
                      <div class="image-box">
                            <img src="ruach/RUACH_icon.jpg" alt="RUACH - Interactive VR Experience">
                      </div>
@@ -113,61 +121,61 @@
                      <p>Munich / Master 2025</p>
                      </div>
                      <div class="tags">#Unity #VR #Interaction</div>
-                </a> 
+                </a>
 
-                <a href="vault-house.html" class="project-card" data-category="master" data-tags="3dprinting concrete" data-aos="fade-up">
+                <a href="vault-house.html" class="project-card" data-category="master" data-type="3dprinting" data-tags="3dprinting concrete" data-aos="fade-up">
                     <div class="image-box"><img src="vault-house/vault_icon.jpg" alt="Vault House"></div>
                     <div class="text-box"><h3>How to Print a House - Vault House</h3><p>Heidelberg / Master 2024</p></div>
                     <div class="tags">#3DPrinting </div>
                 </a>
 
-                
 
-                <a href="tearoom.html" class="project-card" data-category="bachelor" data-tags="concrete landscape" data-aos="fade-up">
+
+                <a href="tearoom.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="concrete landscape" data-aos="fade-up">
                     <div class="image-box"><img src="tearoom/tearoom_icon.jpg" alt="The Tea Room"></div>
                     <div class="text-box"><h3>The Tea Room</h3><p>Nanjing / Bachelor 2022</p></div>
                     <div class="tags">#Concrete #Public</div>
                 </a>
 
-                 <a href="Single-family-home.html" class="project-card" data-category="master" data-tags="concrete" data-aos="fade-up">
+                 <a href="Single-family-home.html" class="project-card" data-category="master" data-type="architecture" data-tags="concrete" data-aos="fade-up">
                     <div class="image-box"><img src="Single-family-home/Single-family_icon.jpg" alt="Single-family-home"></div>
                     <div class="text-box"><h3>Single-family home</h3><p>Helsinki / Master 2025</p></div>
                     <div class="tags">#Concrete #Helsinki</div>
                 </a>
 
-                <a href="furniture-park.html" class="project-card" data-category="internship" data-tags="wood furniture" data-aos="fade-up">
+                <a href="furniture-park.html" class="project-card" data-category="internship" data-type="furniture" data-tags="wood furniture" data-aos="fade-up">
                     <div class="image-box"><img src="furniture-park/furniture_icon.jpg" alt="Furniture in Park"></div>
                     <div class="text-box"><h3>Furniture in Park</h3><p>Hong Kong / Internship 2024</p></div>
                     <div class="tags">#Landscape #Wood</div>
                 </a>
 
-                <a href="studio-renovation.html" class="project-card" data-category="internship" data-tags="steel " data-aos="fade-up">
+                <a href="studio-renovation.html" class="project-card" data-category="internship" data-type="architecture" data-tags="steel " data-aos="fade-up">
                     <div class="image-box"><img src="studio-renovation/Studio-Renovation_icon.png" alt="Studio Renovation"></div>
                     <div class="text-box"><h3>Studio Renovation - Corridor bridge</h3><p>Yunnan / Internship 2021</p></div>
                     <div class="tags">#Landscape #Steel</div>
                 </a>
 
-                <a href="nyamata.html" class="project-card" data-category="master" data-tags="landscape" data-aos="fade-up">
+                <a href="nyamata.html" class="project-card" data-category="master" data-type="architecture" data-tags="landscape" data-aos="fade-up">
                     <div class="image-box"><img src="nyamata/nyamata_icon.jpg" alt="Nyamata Hospital"></div>
                     <div class="text-box"><h3>Nyamata Hospital</h3><p>Rwanda / Master 2024</p></div>
                     <div class="tags">#Hospital #Design</div>
                 </a>
 
-                 <a href="Study-group-Works.html" class="project-card" data-category="bachelor" data-tags="model " data-aos="fade-up">
+                 <a href="Study-group-Works.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="model " data-aos="fade-up">
                     <div class="image-box"><img src="study-group/Study-group-Works_icon.jpg" alt="Study-group-Works"></div>
                     <div class="text-box"><h3>Study-group Works</h3><p>Nanjing / Bachelor 2021</p></div>
                     <div class="tags">#Model</div>
                 </a>
 
-               
 
-                <!-- <a href="tri-stool.html" class="project-card" data-category="master" data-tags="wood furniture" data-aos="fade-up">
+
+                <!-- <a href="tri-stool.html" class="project-card" data-category="master" data-type="furniture" data-tags="wood furniture" data-aos="fade-up">
                     <div class="image-box"><img src="tri-stool/tri_stool_icon.jpg" alt="Tri-Stool"></div>
                     <div class="text-box"><h3>Tri-Stool</h3><p>Helsinki / Master 2025</p></div>
                     <div class="tags">#Furniture #Wood</div>
                 </a> -->
 
-                <a href="spirulina.html" class="project-card" data-category="master" data-tags="bioart" data-aos="fade-up">
+                <a href="spirulina.html" class="project-card" data-category="master" data-type="other" data-tags="bioart" data-aos="fade-up">
                     <div class="image-box"><img src="spirulina/spirulina_icon.jpg" alt="Spirulina Biolamp"></div>
                     <div class="text-box"><h3>Spirulina Biolamp</h3><p>Helsinki / Master 2025</p></div>
                     <div class="tags">#BioArt #Spirulina</div>

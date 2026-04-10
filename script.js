@@ -97,6 +97,27 @@ function filterProjects(category) {
     updateActiveButton('category', category);
 }
 
+function filterByType(type) {
+    const projects = document.querySelectorAll('.project-card');
+    let firstVisibleProject = null;
+
+    projects.forEach(project => {
+        const projectType = project.getAttribute('data-type');
+        if (type === 'all' || projectType === type) {
+            project.classList.remove('hidden');
+            project.style.display = 'block';
+            if (!firstVisibleProject) firstVisibleProject = project;
+        } else {
+            project.classList.add('hidden');
+            project.style.display = 'none';
+        }
+    });
+
+    if (msnry) { msnry.layout(); }
+    if (typeof AOS !== 'undefined') setTimeout(() => AOS.refresh(), 100);
+    updateActiveButton('type', type);
+}
+
 function filterByTag(tag) {
     const projects = document.querySelectorAll('.project-card');
     let firstVisibleProject = null;
@@ -136,7 +157,7 @@ function scrollToElement(element) {
 }
 
 function updateActiveButton(type, value) {
-    const allFilters = document.querySelectorAll('.filter-btn, .cat-btn, .tag-btn');
+    const allFilters = document.querySelectorAll('.filter-btn, .cat-btn, .tag-btn, .type-filter-pill');
     allFilters.forEach(btn => btn.classList.remove('active'));
 
     if (type === 'category') {
@@ -144,6 +165,9 @@ function updateActiveButton(type, value) {
         activeBtns.forEach(btn => btn.classList.add('active'));
     } else if (type === 'tag') {
         const activeBtns = document.querySelectorAll(`[onclick*="filterByTag('${value}')"]`);
+        activeBtns.forEach(btn => btn.classList.add('active'));
+    } else if (type === 'type') {
+        const activeBtns = document.querySelectorAll(`[onclick*="filterByType('${value}')"]`);
         activeBtns.forEach(btn => btn.classList.add('active'));
     }
 }
