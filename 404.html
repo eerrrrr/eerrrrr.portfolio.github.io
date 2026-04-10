@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    var filterMap = { '/arch': 'arch', '/furn': 'furn', '/3d': '3d', '/vr': 'vr', '/aigc': 'aigc' };
+    var f = filterMap[window.location.pathname];
+    window.location.replace(f ? '/?f=' + f : '/');
+</script>
+</head>
+</html>
