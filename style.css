@@ -95,7 +95,7 @@ a:hover { color: var(--green-accent); }
 .top-bar.hidden-nav { transform: translateY(-100%); opacity: 0; }
 .nav-align-left { display: flex; align-items: center; }
 .nav-logo { font-weight: 900; font-size: 1.2rem; color: #000; text-transform: uppercase; margin-right: 0; }
-.nav-align-right { display: flex; align-items: center; flex: 1; justify-content: space-evenly; padding-left: 60px; }
+.nav-align-right { display: flex; align-items: center; justify-content: flex-end; gap: 36px; }
 .top-bar a.filter-btn { 
     color: #888; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
     letter-spacing: 1px; cursor: pointer; margin-left: 30px; 
@@ -159,7 +159,7 @@ a:hover { color: var(--green-accent); }
 .skills-content { width: var(--sidebar-width); min-width: var(--sidebar-width); padding-top: 10px; padding-left: 40px; padding-right: 40px; }
 .skills-header { font-size: 0.85rem; font-weight: 700; color: #999; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-pill { font-size: 0.85rem; color: #555; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-mono); transition: 0.2s; white-space: nowrap; }
+.skill-pill { font-size: 0.85rem; color: #222; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-mono); transition: 0.2s; white-space: nowrap; }
 .skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
 
 /* =========================================
