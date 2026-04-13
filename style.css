@@ -480,6 +480,20 @@ a:hover { color: var(--green-accent); }
     }
 
     /* 專案卡片修正 */
-    .project-card { width: 100%; margin-bottom: 40px; } 
+    .project-card { width: 100%; margin-bottom: 40px; }
     .gallery-gutter { width: 0; }
+
+    /* [導航欄修正] 手機版篩選器橫向滑動 */
+    .nav-align-right {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex: 1;
+        justify-content: flex-start;
+        gap: 20px;
+        padding-right: 20px;
+    }
+    .nav-align-right::-webkit-scrollbar {
+        display: none;
+    }
 }
