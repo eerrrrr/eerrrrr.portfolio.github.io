@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Purpose of the Study</h3>
+                    <h3 data-i18n="study.h1">Purpose of the Study</h3>
                     <div>
-                        <p>
+                        <p data-i18n="study.body.h1.1">
                             The aim of the model was not to produce a presentation object, but to read the building through construction. By rebuilding the pavilion at a detailed scale, the team examined how structure, light, and spatial order work together in Ignazio Gardella’s design.
                         </p>
-                        <p>
+                        <p data-i18n="study.body.h1.2">
                             The model allowed close observation of proportional relationships between columns, slabs, and walls, how light enters and moves through the interior, and the transition between indoor and outdoor spaces. It also revealed the clarity of the structural system beneath the architectural form.
                         </p>
                     </div>
@@ -54,12 +61,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Making Process</h3>
+                    <h3 data-i18n="study.h2">Making Process</h3>
                     <div>
-                        <p>
+                        <p data-i18n="study.body.h2.1">
                             The model was constructed by breaking the building down into structural layers: base, vertical supports, horizontal slabs, and enclosure elements. This step-by-step assembly helped clarify how the pavilion is held together and how space is defined by structure rather than surface treatment.
                         </p>
-                        <p>
+                        <p data-i18n="study.body.h2.2">
                             Special attention was given to column spacing and alignment, slab thickness and overhangs, sectional depth, and spatial compression. Working at 1:50 scale made construction tolerances visible and required careful control of joints, spacing, and material thickness.
                         </p>
                     </div>
@@ -81,21 +88,21 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Spatial Reading</h3>
+                    <h3 data-i18n="study.h3">Spatial Reading</h3>
                     <div>
-                        <p>
+                        <p data-i18n="study.body.h3.1">
                             Viewing the model at eye level reveals how the pavilion guides movement and frames views. The low horizontal roof planes and slender vertical elements create a calm, ordered interior, while openings and edges establish a continuous dialogue with the exterior.
                         </p>
-                        <p>
+                        <p data-i18n="study.body.h3.2">
                             By moving through the model visually and physically, the team could understand how Gardella uses restraint and repetition to produce spatial richness without formal complexity.
                         </p>
                     </div>
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="study.h4">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="study.body.h4.1">
                             This project reinforced the value of physical model-making as a design tool. Reconstructing the pavilion made architectural decisions tangible and exposed the logic behind them. The process strengthened skills in reading structure, understanding proportion, and translating drawings into built form—skills directly relevant to architectural and design practice.
                         </p>
                     </div>
@@ -111,19 +118,15 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Study Group Works</h1>
                     <div class="sidebar-description">
-                        <p>
-                            This project is a 1:50 physical model reconstruction of PAC – Padiglione d’Arte Contemporanea, designed by Ignazio Gardella.
-                       
-                            The work focuses on understanding the building through making, using model construction as a tool to study proportion, structure, and spatial sequence.
-                        </p>
+                        <p data-i18n="study.desc.p1">This project is a 1:50 physical model reconstruction of PAC – Padiglione d’Arte Contemporanea, designed by Ignazio Gardella.</p>
+                        <p data-i18n="study.desc.p2">The work focuses on understanding the building through making, using model construction as a tool to study proportion, structure, and spatial sequence.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Project</strong> PAC – Padiglione d’Arte Contemporanea</p>
-                                             
-                            <p><strong>Year</strong> 2021</p>
-                            <p><strong>Type</strong> Study Group Work</p>
-                            <p><strong>Partners</strong> Hu Wenkang, Liu Haoyang</p>
+                            <p><strong data-i18n="meta.project">Project</strong> PAC – Padiglione d’Arte Contemporanea</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2021</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.study-group">Study Group Work</span></p>
+                            <p><strong data-i18n="meta.partners">Partners</strong> Hu Wenkang, Liu Haoyang</p>
                         </div>
                     </div>
                 </div>
@@ -147,8 +150,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="Single-family-home.html" class="next-work-link">↙ Previous Work</a>
-                <a href="spirulina.html" class="next-work-link">Next Work ↘</a>
+                <a href="Single-family-home.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="spirulina.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -163,5 +166,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

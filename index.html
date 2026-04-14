@@ -10,16 +10,23 @@
 <body>
 
     <nav class="top-bar hidden-nav">
+        <div class="nav-lang-switcher">
+            <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+            <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+            <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+        </div>
         <div class="nav-align-left">
             <span class="nav-logo">ERIN.</span>
         </div>
         <div class="nav-align-right">
-            <a href="#" onclick="filterByType('all'); return false;" class="type-filter-pill active">All</a>
-            <a href="#" onclick="filterByType('architecture'); return false;" class="type-filter-pill">Architecture</a>
-            <a href="#" onclick="filterByType('furniture'); return false;" class="type-filter-pill">Furniture</a>
-            <a href="#" onclick="filterByType('3dprinting'); return false;" class="type-filter-pill">3D Printing</a>
-            <a href="#" onclick="filterByType('vr'); return false;" class="type-filter-pill">VR</a>
-            <a href="#" onclick="filterByType('aigc'); return false;" class="type-filter-pill">AIGC</a>
+            <a href="#" onclick="filterByType('all'); return false;" class="type-filter-pill active" data-i18n="nav.all">All</a>
+            <a href="#" onclick="filterByType('architecture'); return false;" class="type-filter-pill" data-i18n="nav.arch">Architecture</a>
+            <a href="#" onclick="filterByType('furniture'); return false;" class="type-filter-pill" data-i18n="nav.furn">Furniture</a>
+            <a href="#" onclick="filterByType('3dprinting'); return false;" class="type-filter-pill" data-i18n="nav.3dp">3D Printing</a>
+            <a href="#" onclick="filterByType('vr'); return false;" class="type-filter-pill" data-i18n="nav.vr">VR</a>
+            <a href="#" onclick="filterByType('aigc'); return false;" class="type-filter-pill" data-i18n="nav.aigc">AIGC</a>
         </div>
     </nav>
 
@@ -32,16 +39,16 @@
         
         <div class="hero-bottom-nav" data-aos="fade-up" data-aos-delay="800">
             <div class="nav-side left">
-                <span class="big-text">ARCHITECTURE</span>
+                <span class="big-text" data-i18n="hero.left">ARCHITECTURE</span>
             </div>
 
             <div class="nav-center">
-                <span class="big-text">DESIGN</span>
-                <span class="scroll-indicator">↓ scroll</span>
+                <span class="big-text" data-i18n="hero.center">DESIGN</span>
+                <span class="scroll-indicator" data-i18n="hero.scroll">↓ scroll</span>
             </div>
 
             <div class="nav-side right">
-                <span class="big-text">CREATIVE</span>
+                <span class="big-text" data-i18n="hero.right">CREATIVE</span>
             </div>
         </div>
     </header>
@@ -50,12 +57,8 @@
     <section class="bio-section" data-aos="fade-up">
         <div class="bio-grid">
             <div class="bio-content">
-                <h2>/ ABOUT /</h2>
-                <p class="bio-text">                    
-                    I’m <span class="highlight"></span>Erin Wong</span>, an architectural designer from Hong Kong and a master’s graduate of Aalto University. My work is driven by a curiosity about how spaces are shaped through materials, making processes, and everyday use.
-                    I’m particularly interested in working with wood and natural materials, exploring how they interact with structure, technology, and human scale. Through both architectural and furniture projects, I approach design as a balance between conceptual thinking and hands-on experimentation.
-                    My approach values clarity, restraint, and careful attention to detail.
-                </p>
+                <h2 data-i18n="about.header">/ ABOUT /</h2>
+                <p class="bio-text" data-i18n="about.text">I’m Erin Wong, an architectural designer from Hong Kong and a master’s graduate of Aalto University. My work is driven by a curiosity about how spaces are shaped through materials, making processes, and everyday use. I’m particularly interested in working with wood and natural materials, exploring how they interact with structure, technology, and human scale. Through both architectural and furniture projects, I approach design as a balance between conceptual thinking and hands-on experimentation. My approach values clarity, restraint, and careful attention to detail.</p>
             </div>
 
             <div class="skills-content">
@@ -92,25 +95,25 @@
 
                 <a href="commune.html" class="project-card" data-category="master" data-type="architecture" data-tags="wood" data-aos="fade-up">
                     <div class="image-box"><img src="commune/commune_icon.jpg" alt="Commune Project"></div>
-                    <div class="text-box"><h3>Commune</h3><p>Helsinki / Master 2023</p></div>
+                    <div class="text-box"><h3>Commune</h3><p data-i18n="card.commune.sub">Helsinki / Master 2023</p></div>
                     <div class="tags">#Helsinki #CLT #Extension</div>
                 </a>
 
                 <a href="stool.html" class="project-card" data-category="master" data-type="furniture" data-tags="wood furniture" data-aos="fade-up">
                     <div class="image-box"><img src="stool/stool_icon.jpg" alt="Stool"></div>
-                    <div class="text-box"><h3>Stool</h3><p>Helsinki / Master 2025</p></div>
+                    <div class="text-box"><h3>Stool</h3><p data-i18n="card.stool.sub">Helsinki / Master 2025</p></div>
                     <div class="tags">#Furniture #Wood</div>
                 </a>
 
                 <a href="cultural-center.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="wood landscape" data-aos="fade-up">
                     <div class="image-box"><img src="cultural-center/cultural_icon.jpg" alt="Cultural Center"></div>
-                    <div class="text-box"><h3>Cultural Center</h3><p>Nanjing / Bachelor 2022</p></div>
+                    <div class="text-box"><h3>Cultural Center</h3><p data-i18n="card.cultural.sub">Nanjing / Bachelor 2022</p></div>
                     <div class="tags">#Landscape #Wood Frame</div>
                 </a>
 
                 <a href="bamboo.html" class="project-card" data-category="master" data-type="3dprinting" data-tags="3dprinting" data-aos="fade-up">
                     <div class="image-box"><img src="bamboo/bamboo_icon.jpg" alt="3D-Printed Bamboo Components System"></div>
-                    <div class="text-box"><h3>3D-Printed Bamboo Components System</h3><p>Helsinki / Master 2025</p></div>
+                    <div class="text-box"><h3>3D-Printed Bamboo Components System</h3><p data-i18n="card.bamboo.sub">Helsinki / Master 2025</p></div>
                     <div class="tags">#3Dprinting</div>
                 </a>
 
@@ -120,14 +123,14 @@
                      </div>
                      <div class="text-box">
                      <h3>RUACH</h3>
-                     <p>Munich / Master 2025</p>
+                     <p data-i18n="card.ruach.sub">Munich / Master 2025</p>
                      </div>
                      <div class="tags">#Unity #VR #Interaction</div>
                 </a>
 
                 <a href="vault-house.html" class="project-card" data-category="master" data-type="3dprinting" data-tags="3dprinting concrete" data-aos="fade-up">
                     <div class="image-box"><img src="vault-house/vault_icon.jpg" alt="Vault House"></div>
-                    <div class="text-box"><h3>How to Print a House - Vault House</h3><p>Heidelberg / Master 2024</p></div>
+                    <div class="text-box"><h3>How to Print a House - Vault House</h3><p data-i18n="card.vault.sub">Heidelberg / Master 2024</p></div>
                     <div class="tags">#3DPrinting </div>
                 </a>
 
@@ -135,37 +138,37 @@
 
                 <a href="tearoom.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="concrete landscape" data-aos="fade-up">
                     <div class="image-box"><img src="tearoom/tearoom_icon.jpg" alt="The Tea Room"></div>
-                    <div class="text-box"><h3>The Tea Room</h3><p>Nanjing / Bachelor 2022</p></div>
+                    <div class="text-box"><h3>The Tea Room</h3><p data-i18n="card.tearoom.sub">Nanjing / Bachelor 2022</p></div>
                     <div class="tags">#Concrete #Public</div>
                 </a>
 
                  <a href="Single-family-home.html" class="project-card" data-category="master" data-type="architecture" data-tags="concrete" data-aos="fade-up">
                     <div class="image-box"><img src="Single-family-home/Single-family_icon.jpg" alt="Single-family-home"></div>
-                    <div class="text-box"><h3>Single-family home</h3><p>Helsinki / Master 2025</p></div>
+                    <div class="text-box"><h3>Single-family home</h3><p data-i18n="card.sfh.sub">Helsinki / Master 2025</p></div>
                     <div class="tags">#Concrete #Helsinki</div>
                 </a>
 
                 <a href="furniture-park.html" class="project-card" data-category="internship" data-type="furniture" data-tags="wood furniture" data-aos="fade-up">
                     <div class="image-box"><img src="furniture-park/furniture_icon.jpg" alt="Furniture in Park"></div>
-                    <div class="text-box"><h3>Furniture in Park</h3><p>Hong Kong / Internship 2024</p></div>
+                    <div class="text-box"><h3>Furniture in Park</h3><p data-i18n="card.park.sub">Hong Kong / Internship 2024</p></div>
                     <div class="tags">#Landscape #Wood</div>
                 </a>
 
                 <a href="studio-renovation.html" class="project-card" data-category="internship" data-type="architecture" data-tags="steel " data-aos="fade-up">
                     <div class="image-box"><img src="studio-renovation/Studio-Renovation_icon.png" alt="Studio Renovation"></div>
-                    <div class="text-box"><h3>Studio Renovation - Corridor bridge</h3><p>Yunnan / Internship 2021</p></div>
+                    <div class="text-box"><h3>Studio Renovation - Corridor bridge</h3><p data-i18n="card.studio.sub">Yunnan / Internship 2021</p></div>
                     <div class="tags">#Landscape #Steel</div>
                 </a>
 
                 <a href="nyamata.html" class="project-card" data-category="master" data-type="architecture" data-tags="landscape" data-aos="fade-up">
                     <div class="image-box"><img src="nyamata/nyamata_icon.jpg" alt="Nyamata Hospital"></div>
-                    <div class="text-box"><h3>Nyamata Hospital</h3><p>Rwanda / Master 2024</p></div>
+                    <div class="text-box"><h3>Nyamata Hospital</h3><p data-i18n="card.nyamata.sub">Rwanda / Master 2024</p></div>
                     <div class="tags">#Hospital #Design</div>
                 </a>
 
                  <a href="Study-group-Works.html" class="project-card" data-category="bachelor" data-type="architecture" data-tags="model " data-aos="fade-up">
                     <div class="image-box"><img src="study-group/Study-group-Works_icon.jpg" alt="Study-group-Works"></div>
-                    <div class="text-box"><h3>Study-group Works</h3><p>Nanjing / Bachelor 2021</p></div>
+                    <div class="text-box"><h3>Study-group Works</h3><p data-i18n="card.study.sub">Nanjing / Bachelor 2021</p></div>
                     <div class="tags">#Model</div>
                 </a>
 
@@ -179,14 +182,14 @@
 
                 <a href="spirulina.html" class="project-card" data-category="master" data-type="other" data-tags="bioart" data-aos="fade-up">
                     <div class="image-box"><img src="spirulina/spirulina_icon.jpg" alt="Spirulina Biolamp"></div>
-                    <div class="text-box"><h3>Spirulina Biolamp</h3><p>Helsinki / Master 2025</p></div>
+                    <div class="text-box"><h3>Spirulina Biolamp</h3><p data-i18n="card.spirulina.sub">Helsinki / Master 2025</p></div>
                     <div class="tags">#BioArt #Spirulina</div>
                 </a>
                 
                 <div class="gallery-gutter"></div>
             
             </div> <footer class="gallery-footer">
-                <p>© 2026 ERIN WONG PORTFOLIO</p>
+                <p data-i18n="footer">© 2026 ERIN WONG PORTFOLIO</p>
             </footer>
 
         </main>
@@ -205,7 +208,7 @@
                             <div class="edu-item"><strong>B. Arch</strong>Southeast University, China</div>
                         </div>
                         <div class="contact-box">
-                            <p class="phone-numbers">Telephone:<br>+49 015222177613<br>+358 417232168</p>
+                            <p class="phone-numbers"><span data-i18n="sidebar.telephone">Telephone:</span><br>+49 015222177613<br>+358 417232168</p>
                             
                             <div class="social-links">
                                 <a href="mailto:erinwong5414@gmail.com" class="arrow-link">↘ Email</a>
@@ -219,15 +222,15 @@
             </div>
             
             <nav class="sidebar-bottom tag-cloud sidebar-bottom-push">
-                <div class="tag-header">FILTER BY TAG</div>
+                <div class="tag-header" data-i18n="sidebar.filter">FILTER BY TAG</div>
                 <ul>
-                    <li><a href="#works" onclick="filterProjects('internship'); return false;" class="tag-btn">#Internship</a></li>
-                    <li><a href="#works" onclick="filterProjects('master'); return false;" class="tag-btn">#Master</a></li>
-                    <li><a href="#works" onclick="filterProjects('bachelor'); return false;" class="tag-btn">#Bachelor</a></li>
-                    <li><a href="#works" onclick="filterProjects('other'); return false;" class="tag-btn">#Other</a></li>
+                    <li><a href="#works" onclick="filterProjects('internship'); return false;" class="tag-btn" data-i18n="sidebar.internship">#Internship</a></li>
+                    <li><a href="#works" onclick="filterProjects('master'); return false;" class="tag-btn" data-i18n="sidebar.master">#Master</a></li>
+                    <li><a href="#works" onclick="filterProjects('bachelor'); return false;" class="tag-btn" data-i18n="sidebar.bachelor">#Bachelor</a></li>
+                    <li><a href="#works" onclick="filterProjects('other'); return false;" class="tag-btn" data-i18n="sidebar.other">#Other</a></li>
                 </ul>
                 <div class="reset-tag">
-                    <a href="#works" onclick="filterProjects('all'); return false;">[ Show All Works ]</a>
+                    <a href="#works" onclick="filterProjects('all'); return false;" data-i18n="sidebar.show-all">[ Show All Works ]</a>
                 </div>
                 <div class="arrow-icon">↘</div>
             </nav>
@@ -239,5 +242,6 @@
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="script.js"></script>
+    <script src="i18n.js"></script>
 </body>
 </html>

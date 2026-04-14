@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,9 +38,9 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Context & Site Strategy</h3>
+                    <h3 data-i18n="vault.h1">Context & Site Strategy</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h1.1">
                             The project sits adjacent to the historic Altes Hallenbad in Heidelberg. The new volume is designed to respect the existing urban fabric while establishing its own contemporary identity through its structural expression.
                         </p>
                     </div>
@@ -44,15 +51,15 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Idea</h3>
+                    <h3 data-i18n="vault.h2">Design Idea</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h2.1">
                             The building is conceived as a modern library that supports studying, relaxation, and informal gathering. Instead of treating structure and climate control as hidden technical layers, the project brings them into the spatial and visual foreground.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h2.2">
                             The core idea is to use a structurally optimised slab system that carries loads through compression rather than bending. This allows concrete to be placed only where it is structurally necessary, reducing overall material use while creating a highly expressive ceiling surface.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h2.3">
                             A transparent façade facing the public square exposes the slab structure, referencing the historic coffered vaults of the existing bath building while presenting a contemporary interpretation enabled by digital fabrication.
                         </p>
                     </div>
@@ -70,12 +77,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Spatial Organisation</h3>
+                    <h3 data-i18n="vault.h3">Spatial Organisation</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h3.1">
                             The building is organised around a central atrium that brings daylight deep into the interior and connects all floors visually. Public functions such as reading areas, informal seating, and circulation are arranged around this void, creating a continuous spatial experience across levels.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h3.2">
                             Ground floor spaces remain open and accessible from the square, reinforcing the building’s role as a public extension of the urban fabric. Upper levels provide quieter study zones while maintaining visual connections through the atrium and façade.
                         </p>
                     </div>
@@ -93,12 +100,12 @@
                 </div>
                
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Structure & Slab Logic</h3>
+                    <h3 data-i18n="vault.h4">Structure & Slab Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h4.1">
                             The structural system is based on the Rippmann slab principle, where loads are directed efficiently toward boundary supports through compression. Compared to conventional flat slabs, this system can reduce embodied carbon by up to two-thirds, primarily by lowering concrete volume.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h4.2">
                             The slab geometry is generated through structural analysis, with thickness and rib patterns responding directly to load paths. Vaulted depressions increase surface area without increasing material, improving both structural efficiency and thermal behaviour.
                         </p>
                     </div>
@@ -107,12 +114,12 @@
   
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Climate & Performance</h3>
+                    <h3 data-i18n="vault.h5">Climate & Performance</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h5.1">
                             The slab system plays an active role in the building’s climatic strategy. Increased surface area improves heat exchange, allowing the slab to function as both a thermal radiator and convector.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h5.2">
                             In winter, the slab supports radiant heating, while in summer it contributes to passive cooling through thermal mass and controlled air movement. Solar angles were studied to optimise daylight penetration and reduce overheating.
                         </p>
                     </div>
@@ -132,12 +139,12 @@
 
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Fabrication & Assembly</h3>
+                    <h3 data-i18n="vault.h6">Fabrication & Assembly</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h6.1">
                             The project is developed with 3D printing constraints in mind from the start. The slab geometry is divided into printable modules that can be fabricated off-site and assembled efficiently on site.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h6.2">
                             The construction sequence is clearly defined: from the basement and primary supports to columns, arched frames, and finally the installation of printed slab modules.
                         </p>
                     </div>
@@ -161,12 +168,12 @@
 
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Role & Reflection</h3>
+                    <h3 data-i18n="vault.h7">Role & Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="vault.body.h7.1">
                             Within the group, my work focused on the development of the slab geometry and structural logic, as well as the visual coordination between structure, spatial layout, and climate strategy. I produced key drawings explaining the load flow and fabrication sequence.
                         </p>
-                        <p>
+                        <p data-i18n="vault.body.h7.2">
                             Vault House demonstrates how digital fabrication can be used to rethink both structure and space at building scale. By allowing structural performance to shape form directly, the project reduces material use while creating a clear architectural identity.
                         </p>
                     </div>
@@ -179,18 +186,14 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Vault House</h1>
                     <div class="sidebar-description">
-                        <p>
-                            It is a proposal for a 3D-printed library extension at the former Altes Hallenbad site in Heidelberg.
-                        </p>
-                        <p>
-                            The project combines a lightweight public building with a structurally optimised concrete slab system, using digital fabrication to reduce material use while improving climatic performance.
-                        </p>
+                        <p data-i18n="vault.desc.p1">It is a proposal for a 3D-printed library extension at the former Altes Hallenbad site in Heidelberg.</p>
+                        <p data-i18n="vault.desc.p2">The project combines a lightweight public building with a structurally optimised concrete slab system, using digital fabrication to reduce material use while improving climatic performance.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2024</p>
-                            <p><strong>Team</strong> Yiran Li, Sebastián Canovas Quintana</p>
-                            <p><strong>Location</strong> Heidelberg, Germany</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2024</p>
+                            <p><strong data-i18n="meta.team">Team</strong> Yiran Li, Sebastián Canovas Quintana</p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.heidelberg">Heidelberg, Germany</span></p>
                         </div>
                     </div>
                 </div>
@@ -215,8 +218,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="commune.html" class="next-work-link">↙ Previous Work</a>
-                <a href="tearoom.html" class="next-work-link">Next Work ↘</a>
+                <a href="commune.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="tearoom.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -231,5 +234,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

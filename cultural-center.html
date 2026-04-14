@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Site & Context</h3>
+                    <h3 data-i18n="cultural.h1">Site & Context</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h1.1">
                             The project is located in Longtan, a suburb of Nanjing, positioned at the critical intersection between the historic town and the wild mountain. The site sits on a former quarry depression characterised by complex, steep contours and a scarred landscape.
                         </p>
-                        <p>
+                        <p data-i18n="cultural.body.h1.2">
                             Rather than flattening the site, the design treats the complex sloping terrain as a generative driver. The building acts as a "mountain pavilion," establishing a primary public route that stitches the residential area below to the mountain nature above. It addresses the regional lack of public amenities by synthesizing cultural, sports, and tourism functions into one cohesive landscape infrastructure.
                         </p>
                     </div>
@@ -65,12 +72,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Strategy</h3>
+                    <h3 data-i18n="cultural.h2">Design Strategy</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h2.1">
                             To avoid imposing a monolithic mass onto the fragile slope, the volume is fragmented into a cluster of units arranged diagonally. This "Topology and Terrace" strategy serves two purposes: it softens the building's scale to match the village context, and it lengthens the internal circulation path, making the climb up the hill more gradual and experiential.
                         </p>
-                        <p>
+                        <p data-i18n="cultural.body.h2.2">
                             Interior spaces are terraced, deepening as they move into the hillside. This allows the architecture to feel embedded in the landscape rather than merely resting on top of it, creating a dialogue between the built form and the quarry's geology.
                         </p>
                     </div>
@@ -92,12 +99,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Programme Arrangement</h3>
+                    <h3 data-i18n="cultural.h3">Programme Arrangement</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h3.1">
                             The vertical zoning follows a logic of accessibility and noise levels. <strong>Sports facilities</strong> are anchored at the lowest level, directly engaging with the street and serving the daily needs of locals. The <strong>Exhibition Hall</strong> sits in the middle, acting as a cultural connector and a transition zone.
                         </p>
-                        <p>
+                        <p data-i18n="cultural.body.h3.2">
                             <strong>Multimedia and Tourism functions</strong> are elevated to the top, offering a quieter atmosphere and commanding panoramic views of the valley. This sequence transforms the user's journey from an active urban experience to a contemplative connection with nature.
                         </p>
                     </div>
@@ -131,12 +138,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reciprocal Structure</h3>
+                    <h3 data-i18n="cultural.h4">Reciprocal Structure</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h4.1">
                             The project employs a distinctive reciprocal timber beam system to resolve the complex spans required by the terraced layout. Inspired by <strong>Villard de Honnecourt’s planar grillage</strong>, the design utilizes four shorter beams connected within the same plane to span distances greater than individual timber lengths allow.
                         </p>
-                        <p>
+                        <p data-i18n="cultural.body.h4.2">
                             This logic transcends mere engineering; it becomes the primary aesthetic driver. The rhythmic array of exposed timber beams reinforces the spatial hierarchy and guides visitors visually through the building, bringing a warmth and tectonic clarity to the interior.
                         </p>
                     </div>
@@ -153,9 +160,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Embedded in the Landscape</h3>
+                    <h3 data-i18n="cultural.h5">Embedded in the Landscape</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h5.1">
                             The sectional design reveals the precise negotiation between the built form and the quarry slope. Primary structural lines align with contour changes to minimize excavation. This stepping profile allows natural light to penetrate deep into the lower levels through strategically placed skylights and sunken courtyards, blurring the boundary between inside and outside.
                         </p>
                     </div>
@@ -181,9 +188,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Visual Experience</h3>
+                    <h3 data-i18n="cultural.h6">Visual Experience</h3>
                     <div>
-                        <p>
+                        <p data-i18n="cultural.body.h6.1">
                             The diagonal placement of the units orchestrates a specific visual experience. As visitors ascend the vertical axis of the staircases, they are constantly presented with contrasting horizontal views that frame the town and the distant valley. This interplay between the vertical climb (body movement) and the horizontal gaze (visual connection) defines the rhythm of the space.
                         </p>
                     </div>
@@ -219,19 +226,15 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Cultural-Tourism Center</h1>
                     <div class="sidebar-description">
-                        <p>
-                            A public building proposal located at the transition between the Longtan town and the mountain.
-
-                            Sitting on a former quarry site, the design uses the slope to organize movement, turning the building into a "mountain pavilion" that connects residents to nature through a reciprocal timber structure.
-                        </p>
+                        <p data-i18n="cultural.desc.p1">A public building proposal located at the transition between the Longtan town and the mountain.</p>
+                        <p data-i18n="cultural.desc.p2">Sitting on a former quarry site, the design uses the slope to organize movement, turning the building into a "mountain pavilion" that connects residents to nature through a reciprocal timber structure.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2022</p>
-                            <p><strong>Type</strong> Individual Work</p>
-                            <p><strong>Role</strong> Architectural Design</p>
-                            <p><strong>Location</strong> Longtan, Nanjing, China</p>
-                           
+                            <p><strong data-i18n="meta.year">Year</strong> 2022</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.individual">Individual Work</span></p>
+                            <p><strong data-i18n="meta.role">Role</strong> <span data-i18n="v.role.arch-design">Architectural Design</span></p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.longtan">Longtan, Nanjing, China</span></p>
                         </div>
                     </div>
                 </div>
@@ -256,8 +259,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="stool.html" class="next-work-link">↙ Previous Work</a>
-                <a href="bamboo.html" class="next-work-link">Next Work ↘</a>
+                <a href="stool.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="bamboo.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -272,5 +275,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

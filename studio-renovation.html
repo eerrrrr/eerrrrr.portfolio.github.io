@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Project Context</h3>
+                    <h3 data-i18n="studio.h1">Project Context</h3>
                     <div>
-                        <p>
+                        <p data-i18n="studio.body.h1.1">
                             The bridge serves as both a circulation element and a spatial device within the renovated studio complex. Positioned between a stone house and the surrounding landscape, the structure is designed to guide movement while framing views toward the mountain and water.
                         </p>
-                        <p>
+                        <p data-i18n="studio.body.h1.2">
                             Rather than acting as a closed corridor, the bridge remains visually open, allowing users to stay connected to the environment while moving through the site.
                         </p>
                     </div>
@@ -54,15 +61,15 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design & Structural Logic</h3>
+                    <h3 data-i18n="studio.h2">Design & Structural Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n="studio.body.h2.1">
                             The bridge is supported by two slender steel lattice columns, each 60 mm wide and 10 mm thick, positioned to align sightlines toward the entrance of the stone house. Vertical openings between the columns frame distant mountain views, directing attention forward while maintaining a sense of depth.
                         </p>
-                        <p>
+                        <p data-i18n="studio.body.h2.2">
                             To reinforce the feeling of lightness, the bridge structure is designed as a cantilever system anchored to concrete foundations. This allows the bridge to span across the water with minimal visible support, creating the impression that it hovers above the surface.
                         </p>
-                        <p>
+                        <p data-i18n="studio.body.h2.3">
                             The walking surface is formed by a metal tensile net, which allows views of the water below and enhances the experience of crossing. This material choice reduces visual weight while introducing a subtle sense of movement and transparency underfoot.
                         </p>
                     </div>
@@ -82,12 +89,12 @@
                
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Role & Contribution</h3>
+                    <h3 data-i18n="studio.h3">Role & Contribution</h3>
                     <div>
-                        <p>
+                        <p data-i18n="studio.body.h3.1">
                             During the internship, work included assisting with design development and construction drawings. Responsibility was also taken for producing handmade physical models and supporting graphic representation for the project.
                         </p>
-                        <p>
+                        <p data-i18n="studio.body.h3.2">
                             Through close involvement with detailing and model-making, the project provided direct exposure to the relationship between design intent, structural logic, and construction execution.
                         </p>
                     </div>
@@ -99,9 +106,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="studio.h4">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="studio.body.h4.1">
                             This project highlights how small-scale structural decisions can strongly influence spatial experience. By combining minimal steel elements with open surfaces, the corridor bridge balances stability and lightness while strengthening the connection between architecture and landscape. The experience reinforced the importance of precision and restraint when working with structural elements in sensitive environments.
                         </p>
                     </div>
@@ -117,19 +124,15 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Studio Renovation</h1>
                     <div class="sidebar-description">
-                        <p>
-                            This project is part of a studio renovation in Dali, China, involving the design and construction of a lightweight corridor bridge connecting existing buildings across a water feature.
-                        </p>
-                        <p>
-                            The intervention focuses on creating a clear spatial sequence while maintaining visual openness toward the surrounding landscape.
-                        </p>
+                        <p data-i18n="studio.desc.p1">This project is part of a studio renovation in Dali, China, involving the design and construction of a lightweight corridor bridge connecting existing buildings across a water feature.</p>
+                        <p data-i18n="studio.desc.p2">The intervention focuses on creating a clear spatial sequence while maintaining visual openness toward the surrounding landscape.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2021</p>
-                            <p><strong>Office</strong> ArCONNECT Architects</p>
-                            <p><strong>Role</strong> Internship</p>
-                            <p><strong>Location</strong> Dali, China</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2021</p>
+                            <p><strong data-i18n="meta.office">Office</strong> ArCONNECT Architects</p>
+                            <p><strong data-i18n="meta.role">Role</strong> <span data-i18n="v.role.internship">Internship</span></p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.dali">Dali, China</span></p>
                         </div>
                     </div>
                 </div>
@@ -153,8 +156,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="furniture-park.html" class="next-work-link">↙ Previous Work</a>
-                <a href="Study-group-Works.html" class="next-work-link">Next Work ↘</a>
+                <a href="furniture-park.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="Study-group-Works.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -169,5 +172,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,15 +38,15 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Concept</h3>
+                    <h3 data-i18n="stool.h1">Design Concept</h3>
                     <div>
-                        <p>
+                        <p data-i18n="stool.body.h1.1">
                             This project was developed in response to a studio brief that asked whether furniture made of wood can contribute to a brighter and more sustainable future. The task encouraged an open exploration of how we sit, how furniture is used in everyday life, and how material choices affect both environmental impact and long-term value.
                         </p>
-                        <p>
+                        <p data-i18n="stool.body.h1.2">
                             I chose to design a stool, focusing on clarity of structure and reduction of unnecessary elements. The form is defined by how its parts meet and support each other, rather than by decorative gestures. By keeping the construction legible, the stool communicates its function directly and allows the material itself to take visual priority.
                         </p>
-                        <p>
+                        <p data-i18n="stool.body.h1.3">
                             Birch was treated as a flexible and expressive material. Its grain, surface quality, and tactile warmth are intentionally left visible, reinforcing the idea of wood as a living material that ages with use.
                         </p>
                     </div>
@@ -62,12 +69,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Form & Details</h3>
+                    <h3 data-i18n="stool.h2">Form & Details</h3>
                     <div>
-                        <p>
+                        <p data-i18n="stool.body.h2.1">
                             The stool consists of a solid round seat supported by four turned legs. The legs are subtly tapered to reduce visual weight while maintaining structural stability. A simple bracing element connects the legs, improving rigidity without interrupting the overall lightness of the form.
                         </p>
-                        <p>
+                        <p data-i18n="stool.body.h2.2">
                             Edge detailing was carefully considered. The seat is softly rounded to enhance sitting comfort and to highlight the natural grain pattern of the birch. All connections are kept minimal and precise, allowing the construction to remain discreet while ensuring durability in everyday use. Through proportion studies and physical testing, the final dimensions were refined to balance comfort, stability, and material efficiency.
                         </p>
                     </div>
@@ -89,15 +96,15 @@
                 </div> -->
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Fabrication Process</h3>
+                    <h3 data-i18n="stool.h3">Fabrication Process</h3>
                     <div>
-                        <p>
+                        <p data-i18n="stool.body.h3.1">
                             The project followed a hybrid workflow that moved between digital design and hands-on making. Initial proportions and construction logic were developed through 3D modeling and scaled studies. These digital models were then translated into physical fabrication decisions.
                         </p>
-                        <p>
+                        <p data-i18n="stool.body.h3.2">
                             The seat was cut from solid birch and refined through machining and sanding to achieve a smooth, continuous surface. The legs were produced using a woodworking lathe, allowing precise control over tapering and joint dimensions. Structural connections were tested at full scale to ensure stability and accurate tolerances.
                         </p>
-                        <p>
+                        <p data-i18n="stool.body.h3.3">
                             A 1:1 prototype was produced as the final outcome. Building the stool at full scale allowed construction details, material behavior, and surface quality to be evaluated directly through use, reinforcing the importance of making as a design tool.
                         </p>
                     </div>
@@ -135,9 +142,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="stool.h4">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="stool.body.h4.1">
                             This project strengthened my interest in material-driven design and hands-on fabrication. By working closely with solid wood, I gained a deeper understanding of how structural logic, production methods, and tactile qualities can inform form. The stool represents a quiet, functional object—one that fits naturally into daily life while reflecting careful design decisions at every scale.
                         </p>
                     </div>
@@ -157,18 +164,14 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Stool</h1>
                     <div class="sidebar-description">
-                        <p>
-                            Stool is a solid birch seating piece developed during the furniture programme course.
-                        </p>
-                        <p>
-                            The project explores how simple construction, material honesty, and careful proportion can result in a durable and timeless object. The final outcome is a lightweight yet stable stool, shaped primarily by structural logic.
-                        </p>
+                        <p data-i18n="stool.desc.p1">Stool is a solid birch seating piece developed during the furniture programme course.</p>
+                        <p data-i18n="stool.desc.p2">The project explores how simple construction, material honesty, and careful proportion can result in a durable and timeless object. The final outcome is a lightweight yet stable stool, shaped primarily by structural logic.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2025</p>
-                            <p><strong>Material</strong> Solid birch</p>
-                            <p><strong>Location</strong> Helsinki, Finland</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2025</p>
+                            <p><strong data-i18n="meta.material">Material</strong> <span data-i18n="v.mat.birch">Solid birch</span></p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.helsinki">Helsinki, Finland</span></p>
                         </div>
                     </div>
                 </div>
@@ -191,8 +194,8 @@
                 </div>
             </div>
             <div class="sidebar-next-project-container">
-                <a href="commune.html" class="next-work-link">↙ Previous Work</a>
-                <a href="cultural-center.html" class="next-work-link">Next Work ↘</a>
+                <a href="commune.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="cultural-center.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -207,5 +210,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

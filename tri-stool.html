@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -33,12 +40,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Concept</h3>
+                    <h3 data-i18n="ruach.h1">Design Concept</h3>
                     <div>
-                        <p>
+                        <p data-i18n="ruach.body.h1.1">
                             RUACH is an interactive VR experience designed to guide the user's subconscious to create a space that corresponds to their feelings in a precise moment.
                         </p>
-                        <p>
+                        <p data-i18n="ruach.body.h1.2">
                             The core concept is to force the user to make unconscious choices based on what attracts them most right now. By picking options related to sound, light, images, and ambiance, the final scene becomes a collage of these parameters—indirectly reflecting their current state of mind.
                         </p>
                     </div>
@@ -62,12 +69,12 @@
                 </div> -->
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>System & Interaction</h3>
+                    <h3 data-i18n="ruach.h2">System & Interaction</h3>
                     <div>
-                        <p>
+                        <p data-i18n="ruach.body.h2.1">
                             The experience is built around a sequence of choices. Users navigate through different environments—City, Ocean, Jungle, Mountains, Desert—by interacting with elements like elevator buttons or directional paths.
                         </p>
-                        <p>
+                        <p data-i18n="ruach.body.h2.2">
                             Technical challenges included managing the "elevator problem" for seamless transitions and controlling daylight to match the user's emotional tone. Music is also used dynamically to create different atmospheres, reinforcing the immersive nature of the generated space.
                         </p>
                     </div>
@@ -79,9 +86,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="ruach.h3">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="ruach.body.h3.1">
                             This project explores the intersection of psychology and spatial design in virtual reality. It questions how our immediate preferences can be translated into architectural and atmospheric elements, creating a personalized "mind palace" in real-time.
                         </p>
                     </div>
@@ -112,19 +119,15 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">RUACH</h1>
                     <div class="sidebar-description">
-                        <p>
-                            RUACH is an interactive VR prototype developed at the Technical University of Munich.
-                        </p>
-                        <p>
-                            It functions as a subconscious guide, allowing users to build a personalized virtual space through a series of intuitive choices regarding environment, sound, and light.
-                        </p>
+                        <p data-i18n="ruach.desc.p1">RUACH is an interactive VR prototype developed at the Technical University of Munich.</p>
+                        <p data-i18n="ruach.desc.p2">It functions as a subconscious guide, allowing users to build a personalized virtual space through a series of intuitive choices regarding environment, sound, and light.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2023</p> 
-                            <p><strong>Type</strong> Group Project</p>
-                            <p><strong>Tools</strong> Unity, VR</p>
-                            <p><strong>Location</strong> Munich, Germany</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2023</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.group">Group Project</span></p>
+                            <p><strong data-i18n="meta.tools">Tools</strong> Unity, VR</p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.munich">Munich, Germany</span></p>
                         </div>
                     </div>
                 </div>
@@ -148,8 +151,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="Study-group-Works.html" class="next-work-link">↙ Previous Work</a>
-                <a href="spirulina.html" class="next-work-link">Next Work ↘</a>
+                <a href="Study-group-Works.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="spirulina.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -164,5 +167,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

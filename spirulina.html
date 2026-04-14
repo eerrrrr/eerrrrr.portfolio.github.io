@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Idea</h3>
+                    <h3 data-i18n="spirulina.h1">Design Idea</h3>
                     <div>
-                        <p>
+                        <p data-i18n="spirulina.body.h1.1">
                             The project is built around the idea that light can function as both illumination and nourishment. Instead of treating light as a purely visual element, the Biolamp uses it to sustain a living system.
                         </p>
-                        <p>
+                        <p data-i18n="spirulina.body.h1.2">
                             As the spirulina grows, it produces subtle gradients of green that change over time. These variations are not designed in advance but emerge from biological processes, making the appearance of the lamp partially unpredictable. The object therefore resists a fixed visual outcome and instead develops through use and care.
                         </p>
                     </div>
@@ -54,12 +61,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>System & Material Logic</h3>
+                    <h3 data-i18n="spirulina.h2">System & Material Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n="spirulina.body.h2.1">
                             Each acrylic cylinder acts as a small, controlled environment for spirulina growth. LED strips are positioned to provide sufficient light for photosynthesis while also highlighting the density and movement of the algae within the liquid medium.
                         </p>
-                        <p>
+                        <p data-i18n="spirulina.body.h2.2">
                             The transparency of the material allows the biological process to remain visible at all times. Rather than hiding the living system, the design treats growth, variation, and imperfection as central qualities of the object.
                         </p>
                     </div>
@@ -72,21 +79,21 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Temporal Experience</h3>
+                    <h3 data-i18n="spirulina.h3">Temporal Experience</h3>
                     <div>
-                        <p>
+                        <p data-i18n="spirulina.body.h3.1">
                             Unlike conventional lighting objects, the Biolamp changes slowly. As the spirulina metabolises and reproduces, the colour intensity and distribution shift, creating a living gradient that evolves over days and weeks.
                         </p>
-                        <p>
+                        <p data-i18n="spirulina.body.h3.2">
                             This gradual transformation introduces time as a design parameter. The lamp requires attention and maintenance, encouraging a relationship of care rather than passive consumption.
                         </p>
                     </div>
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="spirulina.h4">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="spirulina.body.h4.1">
                             Spirulina Biolamp proposes an alternative approach to everyday objects, where design is not static but alive. By combining biological growth with simple technical systems, the project questions the boundary between object and organism. It suggests a future where designed environments may include living components that shape atmosphere, aesthetics, and ecological awareness over time.
                         </p>
                     </div>
@@ -107,18 +114,14 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Spirulina Biolamp</h1>
                     <div class="sidebar-description">
-                        <p>
-                            Spirulina Biolamp is a living light installation that combines biological processes with spatial and product-scale design.
-                        </p>
-                        <p>
-                            The piece consists of transparent acrylic cylinders filled with living spirulina algae, illuminated by integrated LED strips. The light serves two purposes: it reveals the algae’s natural colour variations while also providing the energy required for photosynthesis.
-                        </p>
+                        <p data-i18n="spirulina.desc.p1">Spirulina Biolamp is a living light installation that combines biological processes with spatial and product-scale design.</p>
+                        <p data-i18n="spirulina.desc.p2">The piece consists of transparent acrylic cylinders filled with living spirulina algae, illuminated by integrated LED strips. The light serves two purposes: it reveals the algae’s natural colour variations while also providing the energy required for photosynthesis.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2025</p>
-                            <p><strong>Type</strong> Individual Work</p>
-                            <p><strong>Role</strong> Design and Development</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2025</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.individual">Individual Work</span></p>
+                            <p><strong data-i18n="meta.role">Role</strong> <span data-i18n="v.role.design-dev">Design and Development</span></p>
                         </div>
                     </div>
                 </div>
@@ -143,8 +146,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="tri-stool.html" class="next-work-link">↙ Previous Work</a>
-                <a href="commune.html" class="next-work-link">Next Work ↘</a>
+                <a href="tri-stool.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="commune.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -159,5 +162,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

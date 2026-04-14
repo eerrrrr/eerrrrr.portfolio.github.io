@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Logic</h3>
+                    <h3 data-i18n="bamboo.h1">Design Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n=”bamboo.body.h1.1”>
                             Bamboo scaffolding works because it accepts uncertainty. Poles vary in diameter, surfaces are irregular, and the structure is assembled quickly with tools and judgement rather than precise parts. Yet the system remains stable because the joint is not a single rigid fastener. It is a process: wrapping, tightening, building pressure, and letting friction lock the connection.
                         </p>
-                        <p>
+                        <p data-i18n=”bamboo.body.h1.2”>
                             The project begins by treating that “manual intelligence” as something that can be translated into rules. The first step is to extract what the knot actually does mechanically: tension becomes radial pressure, radial pressure increases contact, and contact becomes frictional lock. The work reformulates this behaviour into parameters that a 3D-printed component can control.
                         </p>
                     </div>
@@ -48,12 +55,12 @@
                 </div>        
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Joint System</h3>
+                    <h3 data-i18n="bamboo.h2">Joint System</h3>
                     <div>
-                        <p>
+                        <p data-i18n="bamboo.body.h2.1">
                             At the centre of the thesis is the node (Box Node), designed as a rigid component that reproduces friction-based locking through geometry rather than straps. The node replaces the manual zipper / lashing action with a mechanical tightening sequence made of two parts: a central hub and a compression cap.
                         </p>
-                        <p>
+                        <p data-i18n="bamboo.body.h2.2">
                             The lock is created by selected zones of pressure, not by uniform clamping everywhere. This matters because bamboo is not perfectly round, and forcing uniform compression would either fail to grip or damage the material.
                         </p>
                     </div>
@@ -75,12 +82,12 @@
                 <p class="caption" style="margin-top: 5px; margin-bottom: 30px;">Geometry Analysis: Close-ups of the ribbed locking mechanism.</p>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Technical Evolution</h3>
+                    <h3 data-i18n="bamboo.h3">Technical Evolution</h3>
                     <div>
-                        <p>
+                        <p data-i18n="bamboo.body.h3.1">
                             Inside the node, ribbed surfaces increase friction and also create tolerance. Instead of assuming a fixed diameter, the node is shaped to accommodate variation and still hold tightly. The rib system increases contact area where grip is needed, while allowing slight adjustment where bamboo diameter changes.
                         </p>
-                        <p>
+                        <p data-i18n="bamboo.body.h3.2">
                             This is the key shift of the project: the joint does not demand perfect material; the geometry is built to accept natural irregularity and still remain readable and repeatable to assemble.
                         </p>
                     </div>
@@ -94,12 +101,12 @@
                 <p class="caption" style="margin-top: 5px; margin-bottom: 30px;">Technical Orthographics: Defining the clamp tolerances.</p>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Method & Construction</h3>
+                    <h3 data-i18n="bamboo.h4">Method & Construction</h3>
                     <div>
-                        <p>
+                        <p data-i18n="bamboo.body.h4.1">
                             This thesis demonstrates a design method that moves cleanly across scales: material behaviour becomes mechanical logic, mechanical logic becomes geometry, geometry becomes a repeatable system, and the system becomes architecture.
                         </p>
-                        <p>
+                        <p data-i18n="bamboo.body.h4.2">
                             Another important decision is that the joint is not hidden. In scaffolding, the tie is visible and the structure is understood through its connections. This project keeps that clarity. The node becomes a spatial element, not only a technical detail.
                         </p>
                     </div>
@@ -117,9 +124,9 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>From Node to Pavilion</h3>
+                    <h3 data-i18n="bamboo.h5">From Node to Pavilion</h3>
                     <div>
-                        <p>
+                        <p data-i18n="bamboo.body.h5.1">
                             The pavilion is used as the proof that the node system is not only a component, but an architectural language. Instead of a single fixed shape, it is generated through a continuous rule chain:
                         </p>
                         <ul style="padding-left: 20px; color: #444; margin: 10px 0; font-size: 0.95rem; line-height: 1.6;">
@@ -149,7 +156,7 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h4>Scenario A: The Urban Concert</h4>
+                    <h4 data-i18n="bamboo.h6">Scenario A: The Urban Concert</h4>
                 </div>
                 <div class="gallery-block full-width" data-aos="fade-up">
                     <img src="bamboo/render-1.png" alt="Concert Overview">
@@ -160,7 +167,7 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h4>Scenario B: The Garden Market</h4>
+                    <h4 data-i18n="bamboo.h7">Scenario B: The Garden Market</h4>
                 </div>
                 <div class="gallery-block full-width" data-aos="fade-up">
                     <img src="bamboo/render-5.png" alt="Market Overview">
@@ -171,7 +178,7 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h4>Scenario C: The Night Exhibition</h4>
+                    <h4 data-i18n="bamboo.h8">Scenario C: The Night Exhibition</h4>
                 </div>
                 <div class="gallery-block full-width" data-aos="fade-up">
                     <img src="bamboo/render-7.png" alt="Night Overview">
@@ -191,16 +198,13 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">3D-Printed Bamboo Components System</h1>
                     <div class="sidebar-description">
-                        <p>
-                            This project developed a constructible structural system that translates the logic of bamboo scaffolding into a digitally manufactured node framework language. The project focuses on the performance elements of bamboo scaffolding with friction-based.
-                        </p>
+                        <p data-i18n="bamboo.desc.p1">This project developed a constructible structural system that translates the logic of bamboo scaffolding into a digitally manufactured node framework language. The project focuses on the performance elements of bamboo scaffolding with friction-based principles.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2025</p>
-                            <p><strong>Type</strong> Master Thesis</p>                            
-                            <p><strong>Location</strong> Helsinki, Finland</p>
-                            <!-- <p><strong>Focus</strong> Joint System </p> -->
+                            <p><strong data-i18n="meta.year">Year</strong> 2025</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.master">Master Thesis</span></p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.helsinki">Helsinki, Finland</span></p>
                         </div>
                     </div>
                 </div>
@@ -224,8 +228,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="cultural-center.html" class="next-work-link">↙ Previous Work</a>
-                <a href="vault-house.html" class="next-work-link">Next Work ↘</a>
+                <a href="cultural-center.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="vault-house.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -240,5 +244,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

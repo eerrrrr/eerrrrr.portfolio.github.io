@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Project Context</h3>
+                    <h3 data-i18n="park.h1">Project Context</h3>
                     <div>
-                        <p>
+                        <p data-i18n="park.body.h1.1">
                             The furniture was designed to support informal use in the park, including resting, gathering, and evening activities. The layout allows both linear seating and angled connections, enabling people to sit alone or in small groups without prescribing a fixed direction or behaviour.
                         </p>
-                        <p>
+                        <p data-i18n="park.body.h1.2">
                             Wood was sourced from Y Park, a local supplier of reclaimed timber. As a result, the design was developed around the available dimensions of the reclaimed material, ensuring efficient use and minimal waste.
                         </p>
                     </div>
@@ -47,12 +54,12 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Logic</h3>
+                    <h3 data-i18n="park.h2">Design Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n="park.body.h2.1">
                             The furniture system is based on solid reclaimed wood logs with a diameter of approximately 300 mm, cut to different lengths and combined with standardised timber beams. Instead of forcing uniform geometry, the design adapts to the limits and irregularity of the reclaimed wood stock.
                             The seating elements are organised as a modular system, where straight segments can be connected at slight angles. This allows the furniture to follow site edges, paths, or lawn boundaries while remaining visually lightweight.
-                                              
+
                             Steel rods are introduced selectively to connect and stabilise the timber elements. These connections ensure structural integrity while allowing the wood to remain the primary visual and tactile element.
                         </p>
                     </div>
@@ -75,15 +82,15 @@
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Structure & Details</h3>
+                    <h3 data-i18n="park.h3">Structure & Details</h3>
                     <div>
-                        <p>
+                        <p data-i18n="park.body.h3.1">
                             A slender steel main frame runs beneath the timber beams, acting as the structural backbone of the system. The reclaimed wood logs sit on this frame and function both as seating surfaces and vertical supports.
                         </p>
-                        <p>
+                        <p data-i18n="park.body.h3.2">
                             Circular timber caps are placed on top of the log elements, protecting end grain from weather exposure and giving each support a clear, finished edge. The consistent diameter of these caps helps visually unify logs of different heights.
                         </p>
-                        <p>
+                        <p data-i18n="park.body.h3.3">
                             Offset channels are integrated into the beam layout to accommodate string lights. This detail supports evening use and extends the furniture’s function beyond daytime activity, creating a warm and inviting atmosphere after dark.
                         </p>
                     </div>
@@ -101,21 +108,21 @@
                
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Making & Constraints</h3>
+                    <h3 data-i18n="park.h4">Making & Constraints</h3>
                     <div>
-                        <p>
+                        <p data-i18n="park.body.h4.1">
                             The project was developed under real material and production constraints. Component sizes, spans, and connection points were directly informed by the recycled wood catalogue, rather than adjusted afterward.
                         </p>
-                        <p>
+                        <p data-i18n="park.body.h4.2">
                             By designing directly from available material sizes, the project reduces waste while maintaining clarity and durability. The system is easy to assemble, disassemble, and repair, making it suitable for long-term public use.
                         </p>
                     </div>
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="park.h5">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="park.body.h5.1">
                             This project demonstrates how outdoor furniture can be shaped through material availability, construction logic, and use rather than fixed formal ideas. Working with reclaimed wood and real site conditions reinforced the importance of adaptability, precision, and restraint in public-space design.
                         </p>
                     </div>
@@ -128,18 +135,14 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Furniture in Park</h1>
                     <div class="sidebar-description">
-                        <p>
-                            Furniture in Park is a set of outdoor seating elements designed for the lawn area of WestK Art Park in Hong Kong.
-                        </p>
-                        <p>
-                            The project focuses on creating durable, low-maintenance furniture that supports everyday park activities while responding directly to material constraints and on-site use.
-                        </p>
+                        <p data-i18n="park.desc.p1">Furniture in Park is a set of outdoor seating elements designed for the lawn area of WestK Art Park in Hong Kong.</p>
+                        <p data-i18n="park.desc.p2">The project focuses on creating durable, low-maintenance furniture that supports everyday park activities while responding directly to material constraints and on-site use.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2024</p>
-                            <p><strong>Type</strong> Internship</p>
-                            <p><strong>Location</strong> WestK Art Park, Hong Kong</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2024</p>
+                            <p><strong data-i18n="meta.type">Type</strong> <span data-i18n="v.type.internship">Internship</span></p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.westk">WestK Art Park, Hong Kong</span></p>
                         </div>
                     </div>
                 </div>
@@ -164,8 +167,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="nyamata.html" class="next-work-link">↙ Previous Work</a>
-                <a href="studio-renovation.html" class="next-work-link">Next Work ↘</a>
+                <a href="nyamata.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="studio-renovation.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -180,5 +183,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

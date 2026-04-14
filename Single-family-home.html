@@ -11,12 +11,19 @@
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
+            <div class="nav-lang-switcher">
+                <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中</button>
+                <button class="lang-btn" data-lang="fi" onclick="setLanguage('fi')">FI</button>
+                <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">DE</button>
+                <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">JP</button>
+            </div>
             <a href="index.html" class="detail-logo">ERIN.</a>
         </div>
         <div class="detail-nav-center">
         </div>
         <div class="detail-nav-right">
-            <a href="index.html#works" class="nav-text-link">All Works</a>
+            <a href="index.html#works" class="nav-text-link" data-i18n="ui.all-works">All Works</a>
         </div>
     </nav>
 
@@ -31,12 +38,12 @@
             <div class="content-wrapper">
                 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Project Overview</h3>
+                    <h3 data-i18n="sfh.h1">Project Overview</h3>
                     <div>
-                        <p>
+                        <p data-i18n="sfh.body.h1.1">
                             This project is a two-storey single-family house designed for a low-density residential area in Katajaharju, Helsinki. The focus of the project is not only spatial design, but the translation of architectural intent into buildable construction drawings, details, and specifications.
                         </p>
-                        <p>
+                        <p data-i18n="sfh.body.h1.2">
                             The house is conceived as a compact, durable concrete structure that fits the scale of the surrounding neighbourhood while responding to local climate, fire regulations, and construction standards in Finland.
                         </p>
                     </div>
@@ -67,12 +74,12 @@
 
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Design Logic</h3>
+                    <h3 data-i18n="sfh.h2">Design Logic</h3>
                     <div>
-                        <p>
+                        <p data-i18n="sfh.body.h2.1">
                             The design starts from a clear structural idea: a reinforced concrete load-bearing system that acts as both structure and primary envelope. Rather than layering finishes and claddings, the building relies on the logic of concrete walls and slabs to define space, thermal mass, and long-term durability.
                         </p>
-                        <p>
+                        <p data-i18n="sfh.body.h2.2">
                             The massing is kept simple and compact to reduce heat loss and construction complexity. Openings are carefully placed to balance daylight, privacy, and views, while maintaining structural clarity. Interior spaces are organised vertically, with shared living areas on the ground floor and private rooms above, following a straightforward and efficient circulation logic.
                         </p>
                     </div>
@@ -80,12 +87,12 @@
 
             
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Construction Strategy</h3>
+                    <h3 data-i18n="sfh.h3">Construction Strategy</h3>
                     <div>
-                        <p>
+                        <p data-i18n="sfh.body.h3.1">
                             The building is designed as a cast-in-place reinforced concrete structure, including foundations, load-bearing walls, slabs, and stairs. This choice supports fire safety requirements (REI60) and provides robust structural performance suited to Nordic conditions.
                         </p>
-                        <p>
+                        <p data-i18n="sfh.body.h3.2">
                             Thermal performance is achieved through a layered wall system where insulation is integrated with the concrete structure. Floor and roof assemblies are designed with clear separation of structure, insulation, waterproofing, and finishes. Special attention is given to junctions—such as wall-floor connections, eaves, and window installations—to ensure buildability and moisture control.
                         </p>
                     </div>
@@ -133,12 +140,12 @@
                 </div> -->
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Documentation & Execution</h3>
+                    <h3 data-i18n="sfh.h4">Documentation & Execution</h3>
                     <div>
-                        <p>
+                        <p data-i18n="sfh.body.h4.1">
                             The project was developed to a working-drawing level, including site plans, floor plans, sections, elevations, and detailed construction drawings. The documentation set reflects an understanding of how architectural decisions translate into on-site execution, coordination with structural and building services, and compliance with local regulations.
                         </p>
-                        <p>
+                        <p data-i18n="sfh.body.h4.2">
                             Rather than treating drawings as representational, they are used as tools to resolve structure, material transitions, and construction logic.
                         </p>
                     </div>
@@ -150,9 +157,9 @@
                 </div> -->
 
                 <div class="text-block-row" data-aos="fade-up">
-                    <h3>Reflection</h3>
+                    <h3 data-i18n="sfh.h5">Reflection</h3>
                     <div>
-                        <p>
+                        <p data-i18n="sfh.body.h5.1">
                             This project demonstrates a design approach grounded in clarity, buildability, and material logic. Working through the full set of construction documents reinforced the importance of precision, coordination, and detail thinking in architectural practice. The house is not designed as a formal statement, but as a realistic, well-resolved building that could be constructed as drawn.
                         </p>
                     </div>
@@ -168,16 +175,13 @@
                 <div class="info-content">
                     <h1 class="sidebar-title">Single-Family Home</h1>
                     <div class="sidebar-description">
-                        <p>
-                            This project is a two-storey single-family house designed for a low-density residential area in Katajaharju, Helsinki.
-                        
-                            The focus is on translating architectural intent into buildable construction drawings. The house is conceived as a compact, durable concrete structure that fits the scale of the neighbourhood while responding to local climate and construction standards.
-                        </p>
+                        <p data-i18n="sfh.desc.p1">This project is a two-storey single-family house designed for a low-density residential area in Katajaharju, Helsinki.</p>
+                        <p data-i18n="sfh.desc.p2">The focus is on translating architectural intent into buildable construction drawings. The house is conceived as a compact, durable concrete structure that fits the scale of the neighbourhood while responding to local climate and construction standards.</p>
                     </div>
                     <div class="meta-block">
                         <div class="meta-data">
-                            <p><strong>Year</strong> 2025</p>
-                            <p><strong>Location</strong> Helsinki, Finland</p>
+                            <p><strong data-i18n="meta.year">Year</strong> 2025</p>
+                            <p><strong data-i18n="meta.location">Location</strong> <span data-i18n="v.loc.helsinki">Helsinki, Finland</span></p>
                         </div>
                     </div>
                 </div>
@@ -202,8 +206,8 @@
             </div>
             
             <div class="sidebar-next-project-container">
-                <a href="studio-renovation.html" class="next-work-link">↙ Previous Work</a>
-                <a href="Study-group-Works.html" class="next-work-link">Next Work ↘</a>
+                <a href="studio-renovation.html" class="next-work-link" data-i18n="ui.prev">↙ Previous Work</a>
+                <a href="Study-group-Works.html" class="next-work-link" data-i18n="ui.next">Next Work ↘</a>
             </div>
         </aside>
 
@@ -218,5 +222,6 @@
             once: true
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>
