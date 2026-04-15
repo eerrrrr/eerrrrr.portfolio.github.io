@@ -307,26 +307,13 @@ a:hover { color: var(--green-accent); }
 
 /* 專案 Contribution Block (What I Did — aligned with text-block-row) */
 .project-contrib-row {
-    margin-top: 24px;
-    margin-bottom: 80px;
     padding-top: 20px;
     border-top: 1px solid rgba(20, 20, 20, 0.08);
-}
-.project-contrib-row .project-contrib-label {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(20, 20, 20, 0.38);
-    margin: 0;
-    padding-top: 3px;
 }
 .project-contrib-list {
     margin: 0;
     padding-left: 0;
     list-style: none;
-    max-width: 62ch;
 }
 .project-contrib-list li {
     position: relative;
