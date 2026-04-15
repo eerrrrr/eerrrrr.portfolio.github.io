@@ -309,14 +309,30 @@ a:hover { color: var(--green-accent); }
 .project-intro {
     padding: 20px var(--content-pad-left) 28px;
 }
-.project-intro p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-color-body);
-    max-width: 66ch;
-    margin: 0;
+.intro-role-row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 56ch);
+    column-gap: 28px;
+    align-items: start;
     border-top: 1px solid #ddd;
     padding-top: 18px;
+}
+.intro-role-label {
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: rgba(20, 20, 20, 0.5);
+    padding-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.intro-role-text {
+    font-size: 17px;
+    line-height: 1.68;
+    font-weight: 400;
+    color: rgba(20, 20, 20, 0.88);
+    text-align: left;
+    margin: 0;
 }
 
 
@@ -560,6 +576,15 @@ a:hover { color: var(--green-accent); }
 
     /* Gallery 在 mobile 縮減 padding */
     .gallery-content { padding-top: 20px; padding-left: 20px; padding-right: 20px; }
+
+    /* Intro role row: stack on mobile */
+    .intro-role-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .project-intro {
+        padding: 16px 20px 24px;
+    }
 }
 
 /* Desktop: hide the sidebar lang switcher */
