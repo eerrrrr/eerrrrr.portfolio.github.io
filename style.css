@@ -289,9 +289,9 @@ a:hover { color: var(--green-accent); }
     justify-content: center; 
     align-items: center; 
     box-sizing: border-box; 
-    padding-top: var(--hero-pad-vertical); 
-    padding-bottom: var(--hero-pad-vertical); 
-    margin-bottom: 30px; 
+    padding-top: var(--hero-pad-vertical);
+    padding-bottom: var(--hero-pad-vertical);
+    margin-bottom: 0;
     padding-left: var(--hero-pad-left); 
     padding-right: var(--hero-pad-right);  
 }
@@ -302,8 +302,22 @@ a:hover { color: var(--green-accent); }
 }
 
 /* 內容區塊 */
-.content-wrapper { box-sizing: border-box; padding-top: 0; padding-bottom: 150px; padding-left: var(--content-pad-left); padding-right: var(--content-pad-right); }
-.gallery-block { margin-bottom: 80px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; }
+.content-wrapper { box-sizing: border-box; padding-top: 0; padding-bottom: 100px; padding-left: var(--content-pad-left); padding-right: var(--content-pad-right); }
+.gallery-block { margin-bottom: 56px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; }
+
+/* 專案 Intro Block (hero 下方的 2 句摘要) */
+.project-intro {
+    padding: 20px var(--content-pad-left) 28px;
+}
+.project-intro p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color-body);
+    max-width: 66ch;
+    margin: 0;
+    border-top: 1px solid #ddd;
+    padding-top: 18px;
+}
 
 
 /* --- [圖片佈局核心設定] --- */
@@ -322,9 +336,9 @@ a:hover { color: var(--green-accent); }
 }
 
 /* 2. 欄位佈局容器 */
-.two-col, .three-col, .four-col { 
-    display: grid; 
-    gap: 40px; 
+.two-col, .three-col, .four-col {
+    display: grid;
+    gap: 24px;
     align-items: start; /* [重要] 讓圖片靠上對齊，不會被拉伸 */
 }
 
@@ -372,9 +386,9 @@ a:hover { color: var(--green-accent); }
 .caption { color: var(--text-color-light); font-size: var(--text-size-caption); margin-top: 0; font-style: italic; text-align: left; }
 
 /* 文字區塊 */
-.text-block-row { 
+.text-block-row {
     display: flex; justify-content: space-between; align-items: flex-start;
-    width: 100%; max-width: 100%; margin: 80px 0 80px 0; 
+    width: 100%; max-width: 100%; margin: 52px 0 52px 0;
 }
 .text-block-row h3 { 
     width: 30%; 
