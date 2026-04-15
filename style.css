@@ -305,38 +305,48 @@ a:hover { color: var(--green-accent); }
 .content-wrapper { box-sizing: border-box; padding-top: 0; padding-bottom: 100px; padding-left: var(--content-pad-left); padding-right: var(--content-pad-right); }
 .gallery-block { margin-bottom: 56px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; }
 
-/* 專案 Contribution Block (hero 下方 What I Did) */
-.project-intro {
-    padding: 20px var(--content-pad-left) 32px;
-}
-.project-contribution {
-    display: grid;
-    grid-template-columns: 140px minmax(0, 520px);
-    column-gap: 28px;
-    align-items: start;
-    border-top: 1px solid rgba(20, 20, 20, 0.08);
+/* 專案 Contribution Block (What I Did — aligned with text-block-row) */
+.project-contrib-row {
+    margin-top: 24px;
+    margin-bottom: 80px;
     padding-top: 20px;
+    border-top: 1px solid rgba(20, 20, 20, 0.08);
 }
-.project-contribution-label {
+.project-contrib-row .project-contrib-label {
     font-size: 12px;
+    font-weight: 400;
     line-height: 1.4;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(20, 20, 20, 0.42);
+    color: rgba(20, 20, 20, 0.38);
+    margin: 0;
     padding-top: 3px;
 }
-.project-contribution-list {
+.project-contrib-list {
     margin: 0;
+    padding-left: 0;
+    list-style: none;
+    max-width: 62ch;
+}
+.project-contrib-list li {
+    position: relative;
     padding-left: 18px;
-    max-width: 52ch;
-}
-.project-contribution-list li {
     font-size: 16px;
-    line-height: 1.65;
-    color: rgba(20, 20, 20, 0.88);
+    line-height: 1.7;
+    color: rgba(20, 20, 20, 0.92);
 }
-.project-contribution-list li + li {
-    margin-top: 10px;
+.project-contrib-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgba(20, 20, 20, 0.75);
+}
+.project-contrib-list li + li {
+    margin-top: 12px;
+}
+.project-contrib-list li strong {
+    font-weight: 600;
 }
 
 
@@ -581,14 +591,7 @@ a:hover { color: var(--green-accent); }
     /* Gallery 在 mobile 縮減 padding */
     .gallery-content { padding-top: 20px; padding-left: 20px; padding-right: 20px; }
 
-    /* Contribution block: stack on mobile */
-    .project-contribution {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    .project-intro {
-        padding: 16px 20px 24px;
-    }
+    /* Contribution block: inherits text-block-row mobile stacking */
 }
 
 /* Desktop: hide the sidebar lang switcher */
