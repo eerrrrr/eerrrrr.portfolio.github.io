@@ -515,11 +515,37 @@ a:hover { color: var(--green-accent); }
     }
     .lang-btn { font-size: 0.65rem; padding: 2px 3px; }
 
-    /* Sidebar lang switcher: visible on mobile only */
+    /* [首頁側邊欄 mobile] 隱藏 bio/education，只顯示 filter 區 */
+    .sidebar-top-content { display: none; }
+
+    /* 去掉側邊欄外框 padding，讓 filter 區自己處理間距 */
+    .sticky-sidebar { padding: 0; }
+
+    /* 重置 desktop 專用的 margin-top:auto 間距器 */
+    .sidebar-bottom-push { margin-top: 0; border-top: none; padding-top: 0; }
+
+    /* 讓 sidebar-bottom 成為 flex column，以便用 order 調整子項目順序 */
+    .sidebar-bottom { display: flex; flex-direction: column; padding-bottom: 20px; }
+
+    /* 語言欄移到最頂，作為獨立橫條 */
     .sidebar-lang-switcher {
-        display: flex; gap: 6px; align-items: center;
-        margin-top: 16px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        order: -1;
+        padding: 12px 20px;
+        margin-top: 0;
+        border-bottom: 1px solid #eee;
     }
+
+    /* Filter 內容加橫向 padding */
+    .tag-header { padding: 14px 20px 8px; }
+    .tag-cloud ul { padding: 0 20px; }
+    .reset-tag { padding: 4px 20px 8px; }
+    .arrow-icon { padding: 4px 20px 20px; }
+
+    /* Gallery 在 mobile 縮減 padding */
+    .gallery-content { padding-top: 20px; padding-left: 20px; padding-right: 20px; }
 }
 
 /* Desktop: hide the sidebar lang switcher */

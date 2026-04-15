@@ -1565,7 +1565,7 @@ ja: {
 
 /* ── i18n Engine (textContent only — no innerHTML) ── */
 
-// Read lang from URL query string (?lang=fi) first, then localStorage
+// Read lang from URL query string (?lang=fi) only — no localStorage persistence
 function _getLangFromURL() {
   try {
     const q = new URLSearchParams(window.location.search).get('lang');
@@ -1574,7 +1574,7 @@ function _getLangFromURL() {
   return null;
 }
 
-let _lang = _getLangFromURL() || localStorage.getItem('erin-lang') || 'en';
+let _lang = _getLangFromURL() || 'en';
 
 function t(key) {
   const val = I18N[_lang] && I18N[_lang][key] !== undefined ? I18N[_lang][key]
@@ -1596,8 +1596,7 @@ function applyI18n() {
 
 function setLanguage(lang) {
   _lang = lang;
-  localStorage.setItem('erin-lang', lang);
-  // Update URL so the link is shareable and carries over on navigation
+  // Update URL so the lang carries over on navigation (no localStorage — refresh resets to EN)
   const params = new URLSearchParams(window.location.search);
   if (lang === 'en') {
     params.delete('lang');
