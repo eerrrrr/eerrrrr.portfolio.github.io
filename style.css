@@ -175,7 +175,8 @@ a:hover { color: var(--green-accent); }
 .nav-side.right { justify-content: flex-end; }
 .nav-center { display: flex; flex-direction: column; align-items: center; justify-content: center; width: auto; }
 .hero-bottom-nav span.big-text { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-.scroll-indicator { color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; opacity: 1; margin-top: 8px; font-weight: 600; }
+.scroll-indicator { color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; opacity: 1; margin-top: 8px; font-weight: 600; background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+.scroll-indicator:hover { opacity: 0.6; }
 
 /* Bio Section */
 .bio-section {
