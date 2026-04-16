@@ -163,6 +163,7 @@ a:hover { color: var(--green-accent); }
 .poster-content h1 {
     font-size: var(--text-size-h1); line-height: 1; margin: 0; font-weight: 800; color: #fff;
     text-align: center; letter-spacing: -3px; text-transform: uppercase; position: relative;
+    text-shadow: 0 0 3px rgba(0,0,0,0.55), 0 0 8px rgba(0,0,0,0.25);
 }
 .hero-bottom-nav {
     position: absolute; bottom: 40px; left: 0; width: 100%; z-index: 30;
