@@ -16,6 +16,7 @@ en: {
   'nav.all':'All','nav.arch':'Architecture','nav.furn':'Furniture',
   'nav.3dp':'3D Printing','nav.vr':'VR','nav.aigc':'AIGC',
   // Hero
+  'hero.top.left':'HUMAN','hero.top.center':'MACHINE','hero.top.right':'IMAGINATION',
   'hero.left':'VISION','hero.center':'SYSTEM','hero.right':'FEELING','hero.scroll':'↓ scroll',
   // About
   'about.header':'/ ABOUT /',
@@ -295,6 +296,7 @@ en: {
 zh: {
   'nav.all':'全部','nav.arch':'建築','nav.furn':'家具',
   'nav.3dp':'3D列印','nav.vr':'VR','nav.aigc':'AIGC',
+  'hero.top.left':'人類','hero.top.center':'機器','hero.top.right':'想像',
   'hero.left':'視野','hero.center':'體系','hero.right':'感知','hero.scroll':'↓ 向下滾動',
   'about.header':'/ 關於 /',
   'about.text':'我是王慧妍，來自香港的建築設計師，阿爾托大學建築碩士畢業生。我的創作由好奇心驅動——探索空間如何透過材料、製作過程與日常使用而成形。我對木材及天然材料尤為感興趣，研究它們如何與結構、技術及人體尺度相互作用。無論是建築還是家具設計，我均將設計視為概念思考與親手實驗之間的平衡。我重視清晰、克制，以及對細節的細心關注。',
@@ -673,6 +675,7 @@ zh: {
 fi: {
   'nav.all':'Kaikki','nav.arch':'Arkkitehtuuri','nav.furn':'Huonekalut',
   'nav.3dp':'3D-tulostus','nav.vr':'VR','nav.aigc':'AIGC',
+  'hero.top.left':'IHMINEN','hero.top.center':'KONE','hero.top.right':'MIELIKUVITUS',
   'hero.left':'VISIO','hero.center':'JÄRJESTELMÄ','hero.right':'TUNNE','hero.scroll':'↓ vieritä',
   'about.header':'/ TIETOA /',
   'about.text':'Olen Erin Wong, arkkitehtuurisuunnittelija Hongkongista ja Aalto-yliopiston arkkitehtuurin maisterin tutkinnon suorittanut. Työtäni ohjaa uteliaisuus siitä, miten tilat muotoutuvat materiaalien, valmistusprosessien ja jokapäiväisen käytön kautta. Olen erityisen kiinnostunut puusta ja luonnonmateriaaleista ja tutkin, miten ne vuorovaikuttavat rakenteen, teknologian ja ihmismittakaavan kanssa. Arkkitehtuuri- ja huonekaluprojekteissani lähestyn suunnittelua käsitteellisen ajattelun ja käytännön kokeilun välisenä tasapainona. Arvostan selkeyttä, pidättyvyyttä ja huolellista huomiota yksityiskohtiin.',
@@ -1057,6 +1060,7 @@ fi: {
 de: {
   'nav.all':'Alle','nav.arch':'Architektur','nav.furn':'Möbel',
   'nav.3dp':'3D-Druck','nav.vr':'VR','nav.aigc':'AIGC',
+  'hero.top.left':'MENSCH','hero.top.center':'MASCHINE','hero.top.right':'VORSTELLUNGSKRAFT',
   'hero.left':'VISION','hero.center':'SYSTEM','hero.right':'GEFÜHL','hero.scroll':'↓ scrollen',
   'about.header':'/ ÜBER MICH /',
   'about.text':'Ich bin Erin Wong, Architekturdesignerin aus Hongkong und Absolventin des Masterstudiengangs Architektur an der Aalto-Universität. Meine Arbeit wird von der Neugier geleitet, wie Räume durch Materialien, Herstellungsprozesse und den alltäglichen Gebrauch geprägt werden. Ich interessiere mich besonders für Holz und natürliche Materialien und erkunde, wie sie mit Struktur, Technologie und dem menschlichen Maßstab interagieren. Durch Architektur- und Möbelprojekte verstehe ich Design als Gleichgewicht zwischen konzeptuellem Denken und praktischer Experimentation. Mein Ansatz schätzt Klarheit, Zurückhaltung und sorgfältige Aufmerksamkeit für Details.',
@@ -1441,6 +1445,7 @@ de: {
 ja: {
   'nav.all':'すべて','nav.arch':'建築','nav.furn':'家具',
   'nav.3dp':'3Dプリント','nav.vr':'VR','nav.aigc':'AIGC',
+  'hero.top.left':'ヒューマン','hero.top.center':'マシン','hero.top.right':'イマジネーション',
   'hero.left':'ビジョン','hero.center':'システム','hero.right':'フィーリング','hero.scroll':'↓ スクロール',
   'about.header':'/ 自己紹介 /',
   'about.text':'私はエリン・ウォン、香港出身の建築デザイナーで、アールト大学建築学修士課程を修了しました。私の作品は、空間が素材・制作プロセス・日常的な使用によってどのように形成されるかという好奇心に根ざしています。木材や自然素材に特に関心を持ち、それらが構造・技術・人間スケールとどのように相互作用するかを探求しています。建築プロジェクトでも家具プロジェクトでも、概念的思考と実践的な実験のバランスとしてデザインに向き合っています。明快さ・節制・細部への丁寧な配慮を大切にしています。',
