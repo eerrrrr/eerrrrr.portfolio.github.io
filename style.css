@@ -165,6 +165,11 @@ a:hover { color: var(--green-accent); }
     text-align: center; letter-spacing: -3px; text-transform: uppercase; position: relative;
     text-shadow: 0 0 3px rgba(0,0,0,0.55), 0 0 8px rgba(0,0,0,0.25);
 }
+.hero-top-nav {
+    position: absolute; top: 40px; left: 0; width: 100%; z-index: 30;
+    display: flex; align-items: flex-start;
+    padding-left: 60px; padding-right: 60px;
+}
 .hero-bottom-nav {
     position: absolute; bottom: 40px; left: 0; width: 100%; z-index: 30;
     display: flex; align-items: flex-start;
@@ -174,6 +179,7 @@ a:hover { color: var(--green-accent); }
 .nav-side.left { justify-content: flex-start; }
 .nav-side.right { justify-content: flex-end; }
 .nav-center { display: flex; flex-direction: column; align-items: center; justify-content: center; width: auto; }
+.hero-top-nav span.big-text,
 .hero-bottom-nav span.big-text { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 .scroll-indicator { color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; opacity: 1; margin-top: 8px; font-weight: 600; background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
 .scroll-indicator:hover { opacity: 0.6; }
@@ -454,7 +460,7 @@ a:hover { color: var(--green-accent); }
 
 @media (max-width: 1024px) {
     .top-bar { padding: 20px 20px; }
-    .hero-bottom-nav { padding-left: 20px; padding-right: 20px; }
+    .hero-top-nav, .hero-bottom-nav { padding-left: 20px; padding-right: 20px; }
     .bio-content { padding-left: 30px; padding-right: 30px; }
     .skills-content { width: 100%; min-width: auto; padding-left: 30px; padding-right: 30px; }
     .gallery-content { padding-left: 5%; padding-right: 5%; }
@@ -492,8 +498,9 @@ a:hover { color: var(--green-accent); }
     /* 字體修正 */
     .poster-content h1 { font-size: 2.5rem; letter-spacing: -1px; }
 
-    /* [首頁修正 1] 隱藏 Architecture/Creative/Design 文字，只留 Scroll */
-    .hero-bottom-nav .big-text {
+    /* [首頁修正 1] 隱藏 Architecture/Creative/Design 及頂部三詞文字，只留 Scroll */
+    .hero-bottom-nav .big-text,
+    .hero-top-nav .big-text {
         display: none;
     }
 
