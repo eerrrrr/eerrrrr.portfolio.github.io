@@ -1,9 +1,9 @@
 {
   "$schema_version": "1.0",
   "generated_at": "2026-05-18",
-  "source": "Extracted from index.html, the 13 project HTML files, and i18n.js (en section) in the primary repo. This file is a reference data layer only; the live website does NOT consume it. See docs/JSON_FIRST_MIGRATION_PLAN.md.",
+  "source": "Extracted from index.html, the project detail pages, and i18n.js (English locale). Reference data layer; the live website does not consume it in default mode. See docs/JSON_FIRST_MIGRATION_PLAN.md.",
   "field_legend": {
-    "id": "Stable identifier matching the i18n key prefix used in i18n.js (NOT always equal to the page filename — see notes for each project).",
+    "id": "Stable identifier matching the i18n key namespace used in i18n.js. Not always equal to the page filename — see notes per project.",
     "title": "Display title as shown on the homepage card.",
     "slug": "URL-safe kebab-case identifier; matches the page filename without the .html extension.",
     "page": "Detail-page HTML filename at the repo root.",
@@ -11,18 +11,18 @@
     "type": "data-type attribute on the homepage card. One of: architecture, furniture, 3dprinting, vr, other.",
     "year": "Year extracted from the card subtitle string.",
     "location": "Location extracted from the card subtitle string.",
-    "role": "Designer's role on the project. Mostly null because there is no single canonical source in the current HTML; see notes per project where a role key (v.role.*) is present in the detail page.",
+    "role": "Designer's role on the project. Null where no v.role.* key is declared on the page.",
     "coverImage": "Icon image used by the homepage card. Path is relative to repo root, preserved exactly as it appears in index.html.",
-    "images": "All files in the project's image folder. Paths preserved as they appear in the file system. Includes images used by the page plus any unused / archived images. Filtering to only used images would require parsing each detail HTML; not done in this pass.",
+    "images": "All files in the project's image folder, including assets used by the page and any unused or archived items. Paths preserved exactly as they appear on disk.",
     "displayedTagsRaw": "The exact contents of the <div class=\"tags\"> element on the homepage card.",
     "dataTags": "The data-tags attribute on the homepage card, split on whitespace.",
     "shortDescription": "Sidebar description paragraph 1, extracted from i18n.js EN section ({prefix}.desc.p1).",
     "longDescription": "Sidebar description paragraph 2, extracted from i18n.js EN section ({prefix}.desc.p2).",
     "i18nPrefix": "The string used as the namespace prefix for all of this project's i18n keys.",
     "i18nKeys": "All unique data-i18n keys referenced by the project's detail page HTML (sorted alphabetically). Includes shared keys (intro.label, meta.*, ui.*, v.*) as well as project-specific keys.",
-    "isFeatured": "Feature-flag candidate for future use. No signal in current HTML — always null.",
+    "isFeatured": "Reserved for future use. Always null in the current dataset.",
     "sourceFiles": "Filesystem references that define this project.",
-    "notes": "Free-form notes covering uncertainties, special cases, and discrepancies between the HTML, the i18n keys, and the folder layout."
+    "notes": "Project-specific notes about file structure, naming, or intentional behavior worth knowing when consuming this data."
   },
   "categories": ["master", "bachelor", "internship"],
   "types": ["architecture", "furniture", "3dprinting", "vr", "other"],
@@ -87,7 +87,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "commune.html", "folder": "commune/"},
-      "notes": "Both ascii-quoted (correct) and curly-quoted (broken) data-i18n attributes existed in this file prior to 2026-05-18; the curly-quote bug at lines 62/65 was fixed in commit d89a63d (primary) / 214c803 (backup). Folder includes both hero.jpg and hero.png — confirm which is referenced by the page if pruning is desired. Role not declared; project description implies architectural design but no v.role.* key is used."
+      "notes": "Folder includes both hero.jpg and hero.png. No designer role explicitly declared on the page."
     },
     {
       "id": "stool",
@@ -140,7 +140,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "stool.html", "folder": "stool/"},
-      "notes": "Material key v.mat.birch is used on this page; one of only a few pages with a meta material declaration. PORTFOLIO_I18N_STATE.md reports 13 caption keys with 'some commented out' — i18n.js still holds the full set."
+      "notes": "Page declares solid birch as the project material. Some captions exist as keys in the i18n dictionary but are commented out on the page."
     },
     {
       "id": "cultural",
@@ -216,7 +216,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "cultural-center.html", "folder": "cultural-center/"},
-      "notes": "Page filename uses 'cultural-center' but i18n prefix is 'cultural'. Role inferred from v.role.arch-design key shown in PORTFOLIO_I18N_STATE.md to be used by this page. Displayed tag '#Wood Frame' contains a space — interpretation is ambiguous; preserved as a raw string."
+      "notes": "Page filename uses 'cultural-center'; the i18n key namespace is 'cultural'. The displayed tag '#Wood Frame' is a single visible tag that contains a space."
     },
     {
       "id": "bamboo",
@@ -293,7 +293,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "bamboo.html", "folder": "bamboo/"},
-      "notes": "Curly-quote i18n bug fixed 2026-05-18 (see commit d89a63d/214c803). Folder includes many auto-generated names and 'Canvas at 14;45;40 1.png' with semicolons — preserved exactly. v.type.master used for project type."
+      "notes": "Folder includes several auto-generated image filenames preserved as-is."
     },
     {
       "id": "ruach",
@@ -335,7 +335,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "tri-stool.html", "folder": "ruach/"},
-      "notes": "Special case: the homepage card titled 'RUACH' links to tri-stool.html (legacy filename) and pulls its icon and assets from the ruach/ folder. The tri-stool/ folder is empty. There is a separate, currently-commented-out card on the homepage for a future genuine tri-stool entry. v.type.group used. Includes hero.mp4 and Media2.mp4 video assets."
+      "notes": "Card titled 'RUACH' links to tri-stool.html and pulls assets from the ruach/ folder for legacy reasons. The tri-stool/ folder is empty. A separate hidden card on the homepage is reserved for a future genuine Tri-Stool entry. Folder contains two video assets (.mp4)."
     },
     {
       "id": "vault",
@@ -388,7 +388,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "vault-house.html", "folder": "vault-house/"},
-      "notes": "Page filename 'vault-house', i18n prefix 'vault'. Folder includes two PDF presentation deliverables. Displayed tag string has a trailing space — preserved exactly. No v.type.* key on this page despite having Type meta label in i18nKeys; verify by reading the sidebar block."
+      "notes": "Page filename uses 'vault-house'; the i18n key namespace is 'vault'. Folder includes two PDF presentation deliverables."
     },
     {
       "id": "tearoom",
@@ -444,7 +444,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "tearoom.html", "folder": "tearoom/"},
-      "notes": "dataTags reconciled with display on 2026-05-18: 'public' was added to dataTags so a future #Public filter will match this project. 'landscape' is kept in dataTags as an additional filter-only category (not surfaced on the card). script.js swaps display order between tearoom and Single-family-home under the architecture filter."
+      "notes": "dataTags carries 'landscape' as a filter-only token not shown on the card. The card display order is swapped with Single-family-home when the architecture filter is active."
     },
     {
       "id": "sfh",
@@ -498,7 +498,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "Single-family-home.html", "folder": "Single-family-home/"},
-      "notes": "Capitalised filename and folder ('Single-family-home') — GitHub Pages is case-sensitive. Page i18n prefix is 'sfh' per PORTFOLIO_I18N_SYSTEM.md mapping. script.js swaps display order between this and tearoom under the architecture filter. No meta.type i18n key listed on this page — sidebar type may be hardcoded in HTML or omitted."
+      "notes": "Filename and folder use mixed casing ('Single-family-home'); important for case-sensitive hosts. The i18n key namespace is 'sfh'. Card display order is swapped with tearoom when the architecture filter is active."
     },
     {
       "id": "park",
@@ -541,7 +541,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "furniture-park.html", "folder": "furniture-park/"},
-      "notes": "Page filename 'furniture-park', i18n prefix 'park'. v.loc.westk = 'WestK Art Park, Hong Kong'. PORTFOLIO_I18N_STATE.md reports 'park.intro.b1..b3' (3 introduction bullets) — fewer than the typical 4 on other pages."
+      "notes": "Page filename uses 'furniture-park'; the i18n key namespace is 'park'."
     },
     {
       "id": "studio",
@@ -582,7 +582,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "studio-renovation.html", "folder": "studio-renovation/"},
-      "notes": "dataTags reconciled with display on 2026-05-18: 'landscape' added so a future #Landscape filter will match this project. The earlier trailing space in data-tags='steel ' was also cleaned up in the same pass. Role inferred from PORTFOLIO_I18N_STATE.md showing v.role.internship for this page. Uses meta.office (rare across pages)."
+      "notes": "dataTags carries 'landscape' as a filter-only token. The page sidebar uses 'meta.office' (rare across the portfolio)."
     },
     {
       "id": "nyamata",
@@ -623,7 +623,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "nyamata.html", "folder": "nyamata/"},
-      "notes": "dataTags reconciled with display on 2026-05-18: was ['landscape'] — fully replaced by ['hospital', 'design'] to match the displayed #Hospital #Design tags. A future #Hospital filter will now match this project (it would not have before). v.type.design-camp used (humanitarian design camp context). v.loc.nyamata = 'Nyamata District Hospital, Rwanda'."
+      "notes": "dataTags match the displayed tags directly ('hospital', 'design'). The page resolves the location key to 'Nyamata District Hospital, Rwanda'."
     },
     {
       "id": "study",
@@ -664,7 +664,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "Study-group-Works.html", "folder": "study-group/"},
-      "notes": "Filename/folder casing differs: page is 'Study-group-Works.html' but folder is 'study-group/'. i18n prefix is 'study'. Uses meta.partners and meta.project (rare keys). v.type.study-group used. data-tags='model ' has a trailing space (preserved as 'model' after split). No meta.location i18n key on this page."
+      "notes": "Page filename is 'Study-group-Works.html' but the image folder is 'study-group/' (lower case). The i18n key namespace is 'study'. The sidebar uses 'meta.partners' and 'meta.project' (rare keys across the portfolio)."
     },
     {
       "id": "spirulina",
@@ -706,7 +706,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "spirulina.html", "folder": "spirulina/"},
-      "notes": "Role inferred from PORTFOLIO_I18N_STATE.md (v.role.design-dev associated with spirulina). Includes process-2.jpeg with .jpeg extension (other images are .jpg). No meta.location key on the page (Helsinki location is inferred from the card subtitle, not the sidebar meta block)."
+      "notes": "Image folder includes 'process-2.jpeg' with a .jpeg extension (other images use .jpg). The page has no sidebar meta.location key; the homepage card subtitle conveys the location."
     }
   ],
   "hidden_or_commented_out": [
