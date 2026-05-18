@@ -1,17 +1,137 @@
 /* =========================================
+   0. [EXPERIMENTAL] Opt-in JSON preview mode
+   =========================================
+   When the URL contains ?json=1, the homepage's hardcoded project
+   cards are replaced at runtime with cards generated from
+   data/projects.json. Default mode (no ?json=1) is untouched and
+   makes no network request. If the fetch or parsing fails for any
+   reason, the original hardcoded cards remain. This is a PREVIEW
+   path; the live website continues to use the hardcoded HTML as the
+   default source of truth. See docs/JSON_FIRST_MIGRATION_PLAN.md.
+   ========================================= */
+function buildCardFromProject(p) {
+    // Use createElement + textContent everywhere to avoid any XSS path
+    // from data/projects.json content. No innerHTML on user-derived
+    // strings.
+    const subtitleKey = 'card.' + p.id + '.sub';
+    const catLabel = p.category
+        ? (p.category.charAt(0).toUpperCase() + p.category.slice(1))
+        : '';
+    const subtitleFallback = (p.location || '') +
+        (catLabel ? ' / ' + catLabel + ' ' + (p.year || '') : '');
+
+    const card = document.createElement('a');
+    card.className = 'project-card';
+    card.href = p.page || '#';
+    card.setAttribute('data-category', p.category || '');
+    card.setAttribute('data-type', p.type || '');
+    card.setAttribute(
+        'data-tags',
+        Array.isArray(p.dataTags) ? p.dataTags.join(' ') : ''
+    );
+
+    const imageBox = document.createElement('div');
+    imageBox.className = 'image-box';
+    const img = document.createElement('img');
+    img.src = p.coverImage || '';
+    img.alt = p.title || '';
+    imageBox.appendChild(img);
+
+    const textBox = document.createElement('div');
+    textBox.className = 'text-box';
+    const h3 = document.createElement('h3');
+    h3.textContent = p.title || '';
+    const subtitle = document.createElement('p');
+    subtitle.setAttribute('data-i18n', subtitleKey);
+    subtitle.textContent = subtitleFallback;
+    textBox.appendChild(h3);
+    textBox.appendChild(subtitle);
+
+    const tagsDiv = document.createElement('div');
+    tagsDiv.className = 'tags';
+    tagsDiv.textContent = p.displayedTagsRaw || '';
+
+    card.appendChild(imageBox);
+    card.appendChild(textBox);
+    card.appendChild(tagsDiv);
+    return card;
+}
+
+async function tryRenderFromJson(grid) {
+    if (!grid) return false;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('json') !== '1') return false;
+
+    try {
+        const response = await fetch('data/projects.json');
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        if (!data || !Array.isArray(data.projects) || !data.projects.length) {
+            throw new Error('projects array missing or empty');
+        }
+
+        // Build all new cards before mutating the grid, so a mid-loop
+        // failure cannot leave the page half-populated.
+        const newCards = data.projects.map(buildCardFromProject);
+
+        // Atomic swap — remove hardcoded cards, insert JSON cards
+        // before the .gallery-gutter spacer (or at the end if absent).
+        const gutter = grid.querySelector('.gallery-gutter');
+        grid.querySelectorAll('.project-card').forEach(function (el) {
+            el.remove();
+        });
+        newCards.forEach(function (card) {
+            if (gutter) grid.insertBefore(card, gutter);
+            else grid.appendChild(card);
+        });
+
+        // Re-apply i18n so subtitles translate to the active language
+        if (typeof applyI18n === 'function') {
+            try { applyI18n(); } catch (e) { /* non-fatal */ }
+        }
+
+        // Visible badge so preview mode is obvious during testing.
+        // textContent only; no innerHTML.
+        const banner = document.createElement('div');
+        banner.id = 'json-preview-banner';
+        banner.textContent = 'JSON preview mode — cards from data/projects.json';
+        banner.style.cssText =
+            'position:fixed;top:10px;right:10px;background:#557055;' +
+            'color:#fff;padding:6px 12px;font-size:0.72rem;' +
+            'font-family:Menlo,monospace;letter-spacing:.5px;' +
+            'z-index:9999;border-radius:3px;opacity:0.9;';
+        document.body.appendChild(banner);
+
+        console.log('[json-preview] Rendered ' + data.projects.length +
+            ' cards from data/projects.json');
+        return true;
+    } catch (e) {
+        // Any failure leaves the hardcoded cards intact.
+        console.warn(
+            '[json-preview] Failed, falling back to hardcoded cards:', e
+        );
+        return false;
+    }
+}
+
+/* =========================================
    1. 初始化 AOS & 頁面判斷邏輯
    ========================================= */
-var msnry; 
+var msnry;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const navbar = document.querySelector('.top-bar');
-    const heroSection = document.querySelector('.hero-poster'); 
+    const heroSection = document.querySelector('.hero-poster');
     // [重要] 對應 HTML 中的 ID
     const grid = document.getElementById('masonry-container');
 
     if (heroSection) {
-        initLiquidChrome(); 
+        initLiquidChrome();
     }
+
+    // [EXPERIMENTAL] Opt-in JSON preview. Returns immediately if
+    // ?json=1 is not present, so default mode is unaffected.
+    await tryRenderFromJson(grid);
 
     if (grid) {
         imagesLoaded(grid, function() {
