@@ -285,9 +285,16 @@ can be reconciled later.
 ## 13. Things Claude must NOT do without asking
 
 - Add a build step, bundler, or framework (Vite, React, Tailwind, …).
+- Convert the portfolio shell to React, Vue, Svelte, Astro, Eleventy,
+  or any other framework. Interactive content goes in isolated
+  `interactives/<demo-id>/` folders only —
+  see [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md).
 - Move or rename `main page/`, `style.css`, `script.js`, `i18n.js`.
 - Refactor `i18n.js` into multiple files or a different format.
 - Delete the "dead" WebGL hero code path in `script.js`.
+- Delete the hardcoded `<a class="project-card">` blocks in
+  `index.html` — they are the runtime fallback when
+  `data/projects.json` fails to load.
 - Force-push, rewrite history, or amend already-pushed commits.
 - Commit large new media files without confirming.
 - Strip out the inline `onclick` filter handlers — they are
@@ -393,6 +400,10 @@ match, not the other way around.
 **For deeper context:** see [README_OTHER_AI.md](README_OTHER_AI.md)
 (quick orientation for any AI assistant),
 [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md) (current issues and
-improvement ideas), and
+improvement ideas),
 [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
-(the JSON-first migration approach and what comes next).
+(the JSON-first migration approach), and
+[docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md)
+(how future interactive demos — React, WebGL, Three.js, Unity WebGL —
+should be added as isolated islands rather than a whole-site
+rewrite).

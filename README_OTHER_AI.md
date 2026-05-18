@@ -161,8 +161,16 @@ There is no test suite. Do a manual visual check:
 ## 9. Things to refuse or ask before doing
 
 - Adding a framework or build system → ask first.
+- Converting the portfolio shell to React / Vue / Astro / Eleventy →
+  refuse by default and point the user to
+  [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md).
+  Interactive demos go in isolated `interactives/<demo-id>/`
+  folders, not a whole-site rewrite.
 - Renaming or moving `main page/`, `style.css`, `script.js`,
   `i18n.js` → ask first.
+- Deleting hardcoded `<a class="project-card">` blocks from
+  `index.html` → refuse; they are the runtime fallback when
+  `data/projects.json` fails.
 - Force-push / history rewrite → ask first.
 - Committing a new media file >10 MB → ask first.
 - Editing only this primary repo without touching the backup →
@@ -172,4 +180,7 @@ There is no test suite. Do a manual visual check:
 
 For full project briefing, layout rules, and known fragile parts, see
 [CLAUDE.md](CLAUDE.md). For the current issues list and improvement
-ideas, see [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md).
+ideas, see [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md). For how
+to add future interactive demos (React / WebGL / Three.js / Unity
+WebGL) without rewriting the whole site, see
+[docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md).

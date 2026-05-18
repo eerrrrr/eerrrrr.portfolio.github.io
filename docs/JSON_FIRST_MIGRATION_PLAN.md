@@ -195,6 +195,15 @@ grows beyond ~500 KB.
 At that point the static HTML is replaced wholesale. This is the
 endpoint of the migration — not the next step.
 
+**This is explicitly NOT recommended by default** for this portfolio.
+See [INTERACTIVE_CONTENT_ARCHITECTURE.md](INTERACTIVE_CONTENT_ARCHITECTURE.md)
+for the preferred alternative: keep the portfolio shell static and
+add React (or WebGL, Three.js, Unity WebGL) only inside isolated
+`interactives/<demo-id>/` folders linked from individual project
+pages. A whole-site rewrite would couple the framework to every
+piece of content and put recruiter-facing pages behind a build
+pipeline — the opposite of what JSON-first was meant to enable.
+
 ## 4e. Tag policy (locked)
 
 The portfolio has two parallel tag systems and they are intentionally
