@@ -254,14 +254,29 @@ def validate(repo_root: Path, report: Report):
                         f"(alphanumeric + hyphens): {tag!r}"
                     )
 
-        # card.<id>.sub key in i18n.js
+        # card.<id>.sub key in i18n.js — must exist once per language
+        # (en, zh, fi, de, ja). Missing-in-some-languages was previously
+        # invisible to the validator because the old check only verified
+        # presence somewhere in the file.
         if i18n_content and isinstance(p.get("id"), str):
             sub_key = f"card.{p['id']}.sub"
             pattern = re.compile(
                 r"['\"]" + re.escape(sub_key) + r"['\"]\s*:"
             )
-            if not pattern.search(i18n_content):
+            count = len(pattern.findall(i18n_content))
+            expected = 5  # en, zh, fi, de, ja
+            if count == 0:
                 report.fail(f"[{pid}] i18n key missing in i18n.js: {sub_key}")
+            elif count < expected:
+                report.fail(
+                    f"[{pid}] i18n key {sub_key} found {count}/{expected} times "
+                    f"(must appear once per language: en, zh, fi, de, ja)"
+                )
+            elif count > expected:
+                report.warn(
+                    f"[{pid}] i18n key {sub_key} found {count} times "
+                    f"(expected {expected}); possible duplicate definition"
+                )
 
         # slug vs page filename
         slug = p.get("slug")
