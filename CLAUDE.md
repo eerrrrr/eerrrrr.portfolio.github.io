@@ -260,7 +260,31 @@ can be reconciled later.
   intentional for this no-framework site.
 - Change `<html lang="en">` to a non-English value.
 
-## 14. Related external docs (READ THESE before i18n work)
+## 14. JSON-first migration (in progress as of 2026-05-18)
+
+A reference data layer was introduced under `data/`:
+
+- `data/projects.json` — all 13 projects extracted from `index.html`,
+  the detail pages, and `i18n.js` (EN section).
+- `data/site-structure.json` — snapshot of the site shape and
+  fragile parts.
+
+**Critical rule for Claude in current and future sessions:**
+
+- The **live website does NOT consume `data/projects.json`.** It is
+  pure documentation today. Editing the JSON will not change anything
+  visitors see. To update what visitors see, the existing HTML /
+  `i18n.js` files must still be edited (and the JSON updated to match,
+  to keep them in sync).
+- Any task that says "update the JSON" must clarify whether the user
+  also wants the corresponding HTML / `i18n.js` updates. The two are
+  not yet linked by code.
+- Do NOT write a generator, build step, or runtime fetch of the JSON
+  without an explicit user request. The migration plan in
+  [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
+  spells out why and what comes next.
+
+## 15. Related external docs (READ THESE before i18n work)
 
 A parallel documentation folder exists at
 `E:\my-portfolio-website\portfolio support document\`. It predates
@@ -291,6 +315,8 @@ match, not the other way around.
 ---
 
 **For deeper context:** see [README_OTHER_AI.md](README_OTHER_AI.md)
-(quick orientation for any AI assistant) and
+(quick orientation for any AI assistant),
 [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md) (current issues and
-improvement ideas).
+improvement ideas), and
+[docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
+(the JSON-first migration approach and what comes next).

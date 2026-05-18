@@ -1,0 +1,179 @@
+{
+  "$schema_version": "1.0",
+  "generated_at": "2026-05-18",
+  "source": "Manual summary of the current website structure as it exists in the primary repo. This file is a reference data layer only; the live website does NOT consume it.",
+  "site": {
+    "name": "Erin Wong Portfolio",
+    "description": "Single-page-plus-detail-pages static portfolio website for Erin Wong (architectural designer). Doubles as an online CV.",
+    "deployment": {
+      "live_url": "https://eerrrrr.github.io/",
+      "live_repo": "E:\\my-portfolio-website\\eerrrrr.github.io (backup mirror — GitHub Pages user-pages repo)",
+      "primary_repo": "E:\\my-portfolio-website\\eerrrrr.portfolio.github.io (source of truth working copy)",
+      "deployment_model": "Pushes to backup repo main branch publish via GitHub Pages within ~30s. Pushes to primary repo do NOT publish.",
+      "build_step": null,
+      "package_manager": null,
+      "framework": null
+    },
+    "languages": ["en", "zh", "fi", "de", "ja"],
+    "fallback_language": "en"
+  },
+  "main_pages": [
+    {
+      "page": "index.html",
+      "purpose": "Homepage. Hero (mp4 video), about block, masonry project grid, sticky CV sidebar.",
+      "depends_on": ["style.css", "script.js", "i18n.js", "favicon.svg", "main page/hero.mp4", "main page/poster.jpg"],
+      "active": true
+    },
+    {
+      "page": "404.html",
+      "purpose": "GitHub Pages 404 fallback.",
+      "depends_on": [],
+      "active": true
+    }
+  ],
+  "project_pages": [
+    "bamboo.html",
+    "commune.html",
+    "cultural-center.html",
+    "furniture-park.html",
+    "nyamata.html",
+    "Single-family-home.html",
+    "spirulina.html",
+    "stool.html",
+    "studio-renovation.html",
+    "Study-group-Works.html",
+    "tearoom.html",
+    "tri-stool.html",
+    "vault-house.html"
+  ],
+  "shared_assets": {
+    "css": [
+      {
+        "file": "style.css",
+        "size_bytes": 24872,
+        "purpose": "All site-wide styling. CSS variables defined in :root at the top of the file. RWD breakpoints at 1400px and 768px."
+      }
+    ],
+    "js": [
+      {
+        "file": "script.js",
+        "size_bytes": 11291,
+        "purpose": "Masonry init, filterByType / filterProjects / filterByTag, sticky-nav scroll behaviour, dead WebGL hero (initLiquidChrome — currently inactive)."
+      }
+    ],
+    "i18n": [
+      {
+        "file": "i18n.js",
+        "size_bytes": 282012,
+        "purpose": "5-language dictionary (en, zh, fi, de, ja) and runtime translation engine. Resolves [data-i18n] elements. Sets document.documentElement.lang on language switch.",
+        "cache_busting_query": "?v=4",
+        "cache_query_must_match_in": "all HTML files",
+        "fallback_chain": "I18N[currentLang][key] → I18N.en[key] → null (element keeps its existing HTML content)"
+      }
+    ],
+    "favicon": "favicon.svg"
+  },
+  "asset_folders": {
+    "main page": {
+      "purpose": "Homepage hero assets (hero.mp4, poster.jpg, 0416 (1).mp4)",
+      "literal_space_in_name": true,
+      "url_encoding_required": "main%20page/...",
+      "rename_safety": "DO NOT rename — referenced by relative URL in index.html"
+    },
+    "project_image_folders": [
+      "bamboo/",
+      "commune/",
+      "cultural-center/",
+      "furniture-park/",
+      "nyamata/",
+      "ruach/",
+      "Single-family-home/",
+      "spirulina/",
+      "stool/",
+      "studio-renovation/",
+      "study-group/",
+      "tearoom/",
+      "tri-stool/ (empty — RUACH uses ruach/ instead)",
+      "vault-house/"
+    ]
+  },
+  "routing": {
+    "type": "static file routing via GitHub Pages",
+    "url_rewrites": [
+      {
+        "code_location": "script.js (filterByType / updateActiveButton)",
+        "behaviour": "After applying a type filter on the homepage, the URL is rewritten via history.replaceState to /<short-code> (e.g. /arch, /furn, /3d, /vr, /aigc). On page load, the URL path is read back and the filter is re-applied. Fallback: ?f=<short-code> query parameter is also supported."
+      }
+    ],
+    "404_handling": "404.html serves as the GitHub Pages 404 page."
+  },
+  "filename_risks": [
+    {
+      "risk": "Case-sensitive filename references",
+      "details": "GitHub Pages is case-sensitive (Linux backend). The repo contains mixed-case filenames: 'Single-family-home.html', 'Study-group-Works.html', 'Studio-Renovation_icon.png', etc. Any href, src, or fetch must match the case of the actual file exactly.",
+      "affected_files": ["Single-family-home.html", "Study-group-Works.html", "studio-renovation/Studio-Renovation_icon.png"]
+    },
+    {
+      "risk": "Filename / i18n prefix mismatch",
+      "details": "Several pages use an i18n prefix that doesn't match the filename. Per PORTFOLIO_I18N_SYSTEM.md: Single-family-home.html → 'sfh', tri-stool.html → 'ruach', Study-group-Works.html → 'study', cultural-center.html → 'cultural', furniture-park.html → 'park', studio-renovation.html → 'studio', vault-house.html → 'vault'. Future code that maps page → i18n keys must use this mapping, not derive it from the filename.",
+      "mapping_authority": "E:\\my-portfolio-website\\portfolio support document\\PORTFOLIO_I18N_SYSTEM.md"
+    },
+    {
+      "risk": "Folder / page mismatch",
+      "details": "tri-stool.html uses assets from ruach/ folder, not tri-stool/ (which is empty). Study-group-Works.html uses study-group/ folder.",
+      "affected_pages": ["tri-stool.html → ruach/", "Study-group-Works.html → study-group/"]
+    },
+    {
+      "risk": "Literal space in folder name",
+      "details": "'main page/' contains a space. References in HTML use 'main%20page/'. Common source of broken URLs if the folder is renamed.",
+      "affected_folder": "main page/"
+    },
+    {
+      "risk": "Mixed image filename styles",
+      "details": "Inconsistent image naming inside project folders: spaces, semicolons, mixed case, dates, auto-generated names. Examples: 'Canvas at 14;45;40 1.png' (bamboo/), 'Generated Image December 26, 2025 - 10_28PM.png' (bamboo/), 'stool-main 拷貝2.jpg' (stool/), '1241.003 Eave detail 0003.jpg' (Single-family-home/). Each must be URL-encoded if referenced from HTML.",
+      "affected_folders": ["bamboo/", "stool/", "Single-family-home/", "tearoom/"]
+    }
+  ],
+  "fragile_runtime_behaviour": [
+    {
+      "issue": "Filter swap of Single-family-home ↔ tearoom",
+      "location": "script.js lines ~115-125",
+      "details": "When the 'architecture' type filter is active, script.js moves the Single-family-home card before the tearoom card in the DOM, then restores the original order for other filters. Any code that re-orders the cards must respect this swap."
+    },
+    {
+      "issue": "Masonry / AOS interaction",
+      "location": "script.js DOMContentLoaded handler",
+      "details": "After Masonry layout settles, AOS attributes are stripped from all project cards so subsequent filter actions don't re-trigger fly-in animations. Adding new project cards that should animate-on-first-view requires data-aos attributes to be present BEFORE Masonry init."
+    },
+    {
+      "issue": "Cache busting via ?v=N",
+      "details": "Every HTML file includes <script src=\"i18n.js?v=4\">. If i18n.js changes, ALL HTML files must have their ?v= value incremented in lockstep. There is no automated bumping.",
+      "current_v_in_html": 4,
+      "v_recorded_in_PORTFOLIO_I18N_STATE_md": 3,
+      "note": "STATE.md is out of date for the cache version. Reconcile in a future docs pass."
+    },
+    {
+      "issue": "Dead WebGL hero code path",
+      "location": "script.js initLiquidChrome() ~line 198",
+      "details": "Looks for <canvas id=\"hero-canvas\">. The current index.html has no such canvas — it uses <video id=\"hero-video\"> instead. The function returns early. Not user-visible. Documented in CLAUDE.md as intentional dead code pending a possible WebGL hero revival."
+    }
+  ],
+  "external_dependencies_cdn": [
+    {"name": "aos", "version": "2.3.1", "source": "https://unpkg.com/aos@2.3.1/dist/aos.css", "purpose": "scroll-triggered animations"},
+    {"name": "aos", "version": "2.3.1", "source": "https://unpkg.com/aos@2.3.1/dist/aos.js", "purpose": "scroll-triggered animations runtime"},
+    {"name": "imagesloaded", "version": "5", "source": "https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js", "purpose": "wait for images before Masonry layout"},
+    {"name": "masonry-layout", "version": "4", "source": "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", "purpose": "homepage gallery layout"}
+  ],
+  "external_doc_references": {
+    "support_documents_folder": "E:\\my-portfolio-website\\portfolio support document\\",
+    "contents": [
+      "PORTFOLIO_I18N_SYSTEM.md (i18n key naming rules, translation policy)",
+      "PORTFOLIO_I18N_STATE.md (i18n completion snapshot per page)",
+      "PORTFOLIO_I18N_CHANGELOG.md (dated i18n change history)",
+      "NEW_PROJECT_CHECKLIST.md (step-by-step for adding a new project)",
+      "PORTFOLIO_I18N_TASK_TEMPLATE.md (reusable task brief)",
+      "verify_i18n.py (validator script that checks key parity across 5 languages)"
+    ],
+    "authority": "For i18n key naming, translation policy, and cache-version procedure, the support documents folder is authoritative over the per-repo CLAUDE.md."
+  }
+}
