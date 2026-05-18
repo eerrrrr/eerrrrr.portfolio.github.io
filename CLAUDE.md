@@ -426,4 +426,9 @@ cover-image facts, and which images are candidates for
 replacement / compression once the user picks finals), and
 [docs/PROJECTS_JSON_SCHEMA.md](docs/PROJECTS_JSON_SCHEMA.md)
 (field-by-field reference for `data/projects.json` — read this
-before editing the data file).
+before editing the data file), and
+[docs/MAINTENANCE_LOG.md](docs/MAINTENANCE_LOG.md) (human-readable
+maintenance narrative — what each phase changed, why it mattered,
+what is safe to revert, what's on the backlog; read this if you're
+about to make a change and want context on why the site is the way
+it is).

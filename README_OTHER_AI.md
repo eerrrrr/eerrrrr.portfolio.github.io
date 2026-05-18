@@ -208,4 +208,8 @@ and which cover images are candidates for replacement, see
 [docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md](docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md).
 For a field-by-field reference of `data/projects.json` (read this
 before editing the data file), see
-[docs/PROJECTS_JSON_SCHEMA.md](docs/PROJECTS_JSON_SCHEMA.md).
+[docs/PROJECTS_JSON_SCHEMA.md](docs/PROJECTS_JSON_SCHEMA.md). For
+the human-readable maintenance narrative — what each phase
+changed, why it mattered, what's safe to revert, what's on the
+backlog — see
+[docs/MAINTENANCE_LOG.md](docs/MAINTENANCE_LOG.md).
