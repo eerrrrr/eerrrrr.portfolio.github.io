@@ -294,29 +294,50 @@ can be reconciled later.
   intentional for this no-framework site.
 - Change `<html lang="en">` to a non-English value.
 
-## 14. JSON-first migration (in progress as of 2026-05-18)
+## 14. JSON-first homepage rendering (live as of 2026-05-18)
 
-A reference data layer was introduced under `data/`:
+The homepage now renders project cards from `data/projects.json` by
+default. The hardcoded `<a class="project-card">` blocks in
+`index.html` are still present and act as a fallback / escape hatch.
 
-- `data/projects.json` — all 13 projects extracted from `index.html`,
-  the detail pages, and `i18n.js` (EN section).
-- `data/site-structure.json` — snapshot of the site shape and
-  fragile parts.
+URL query parameters:
 
-**Critical rule for Claude in current and future sessions:**
+| URL | Behavior |
+|---|---|
+| `/` (default) | Cards from `data/projects.json`. Silent. |
+| `/?json=1` | Same as default, plus a green debug badge top-right. |
+| `/?static=1` | Force the original hardcoded cards in `index.html`. |
 
-- The **live website does NOT consume `data/projects.json`.** It is
-  pure documentation today. Editing the JSON will not change anything
-  visitors see. To update what visitors see, the existing HTML /
-  `i18n.js` files must still be edited (and the JSON updated to match,
-  to keep them in sync).
-- Any task that says "update the JSON" must clarify whether the user
-  also wants the corresponding HTML / `i18n.js` updates. The two are
-  not yet linked by code.
-- Do NOT write a generator, build step, or runtime fetch of the JSON
-  without an explicit user request. The migration plan in
-  [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
-  spells out why and what comes next.
+Fallback: if the JSON fetch fails, parsing fails, the projects array
+is empty, the card count doesn't match `project_count`, or any card
+builds without an `href`, the hardcoded cards remain visible. The
+swap is atomic — cards are built in memory and validated first, then
+replaced in one step.
+
+**Rules for Claude in current and future sessions:**
+
+- Editing `data/projects.json` **now changes what visitors see** in
+  default mode. Treat it as live data, not reference-only.
+- When changing a card on the homepage:
+  - For cosmetic changes (`displayedTagsRaw`, title, subtitle
+    fallback), `data/projects.json` is enough.
+  - For filter behavior (`dataTags`), update **both** the JSON and
+    the matching `data-tags` attribute in `index.html` (the
+    hardcoded fallback) per the tag policy.
+- For new projects, append to `data/projects.json` AND keep adding
+  the corresponding hardcoded `<a class="project-card">` to
+  `index.html` until the hardcoded fallback is retired (planned for a
+  later phase). The hardcoded block is what `?static=1` shows and is
+  also what visitors see if the JSON ever breaks.
+- The card subtitle uses `data-i18n="card.<id>.sub"` — make sure
+  `i18n.js` has that key for every project, in every language.
+- Do not delete the hardcoded `<a class="project-card">` blocks from
+  `index.html` without explicit instruction. They are load-bearing
+  safety.
+- Do not introduce a build step, bundler, framework, or runtime
+  package manager. The site is still a hand-deployed static site.
+- See [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
+  for the full architecture, fallback policy, and future variants.
 
 ## 15. Related external docs (READ THESE before i18n work)
 

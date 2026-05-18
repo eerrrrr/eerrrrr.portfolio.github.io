@@ -1,7 +1,7 @@
 {
   "$schema_version": "1.0",
   "generated_at": "2026-05-18",
-  "source": "Extracted from index.html, the project detail pages, and i18n.js (English locale). Reference data layer; the live website does not consume it in default mode. See docs/JSON_FIRST_MIGRATION_PLAN.md.",
+  "source": "Extracted from index.html, the project detail pages, and i18n.js (English locale). Consumed by the homepage in default mode to render project cards; the hardcoded cards in index.html remain as fallback and as the ?static=1 escape hatch. See docs/JSON_FIRST_MIGRATION_PLAN.md.",
   "field_legend": {
     "id": "Stable identifier matching the i18n key namespace used in i18n.js. Not always equal to the page filename — see notes per project.",
     "title": "Display title as shown on the homepage card.",

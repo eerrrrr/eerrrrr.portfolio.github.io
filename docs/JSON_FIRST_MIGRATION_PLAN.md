@@ -87,27 +87,40 @@ Migrating those would multiply the size of `projects.json` and require
 defining a richer schema. They are left as future work to keep this
 first JSON small and trustworthy.
 
-## 4. How `projects.json` could later drive the website (sketches)
+## 4. How `projects.json` drives the website now (Phase 4 — done)
 
-These are forward-looking notes only. Do NOT implement without an
-explicit task.
+The homepage now renders project cards from `data/projects.json` at
+runtime, in the browser. **No build step was added.** `script.js`
+fetches the JSON on `DOMContentLoaded`, builds 13 card elements in
+memory, validates them, and atomically swaps them in before Masonry
+initializes.
 
-### 4a. Lightweight: generate the homepage card grid
+URL query parameters control the behavior:
 
-A tiny build step (Node, ~30 lines) can read `projects.json` and emit
-the `<a class="project-card">` block currently hardcoded in
-`index.html`. Benefits:
+| URL | Behavior |
+|---|---|
+| `https://eerrrrr.github.io/` | Default. JSON cards. Silent (no badge). |
+| `https://eerrrrr.github.io/?json=1` | Same as default, plus a green debug badge in the top-right. |
+| `https://eerrrrr.github.io/?static=1` | Escape hatch — uses the original hardcoded cards in `index.html`. |
 
-- Order, categories, tags become editable in one JSON file instead of
-  HTML.
-- Adding a new project becomes: append to `projects.json` + drop image
-  folder + run the generator.
+The hardcoded cards in `index.html` are still present and serve as
+both fallback and escape-hatch source. They are NOT removed.
 
-Risks:
+**Fallback policy.** Any of these failures leaves the hardcoded
+cards in place:
 
-- A generator adds a build step where there is currently none.
-- Output must be deterministic and diff-clean, or the convenience is
-  lost.
+- Fetch returns non-2xx
+- JSON parse fails
+- `projects` array missing or empty
+- Card count mismatches `project_count`
+- Any built card is missing an `href`
+
+The swap is atomic: cards are built and validated in memory first,
+then `querySelectorAll('.project-card').remove()` runs, then the new
+cards are inserted. A mid-loop failure cannot leave a half-populated
+grid.
+
+### Future variants (still sketches)
 
 ### 4b. Medium: generate per-page sidebar meta blocks
 
@@ -168,10 +181,13 @@ Policy:
 
 ## 5. What should NOT be migrated yet
 
-- **Don't connect `projects.json` to the live site.** The current site
-  must keep functioning identically with zero dependency on the JSON.
-- **Don't write a generator yet.** The JSON needs to be reviewed by
-  the user first to confirm field coverage is accurate.
+- **Don't remove the hardcoded cards from `index.html`** until the
+  JSON default has been live and stable for at least one editing
+  cycle. They are the fallback path and the `?static=1` escape hatch.
+- **Don't move the detail pages into JSON.** Each `<project>.html` is
+  hand-tuned with its own content, captions, intro bullets, and
+  meta. Flattening these into JSON would multiply the schema and lose
+  fidelity. Keep them as-is.
 - **Don't refactor `i18n.js`.** It is in active use and tested across
   5 languages. The runtime engine (`applyI18n`, `setLanguage`,
   `t(key)`) already works well and is documented in

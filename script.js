@@ -1,13 +1,27 @@
 /* =========================================
-   0. [EXPERIMENTAL] Opt-in JSON preview mode
+   0. JSON-first homepage card rendering
    =========================================
-   When the URL contains ?json=1, the homepage's hardcoded project
-   cards are replaced at runtime with cards generated from
-   data/projects.json. Default mode (no ?json=1) is untouched and
-   makes no network request. If the fetch or parsing fails for any
-   reason, the original hardcoded cards remain. This is a PREVIEW
-   path; the live website continues to use the hardcoded HTML as the
-   default source of truth. See docs/JSON_FIRST_MIGRATION_PLAN.md.
+   The homepage project cards are rendered from data/projects.json by
+   default. The hardcoded cards in index.html remain in place as a
+   safety net and are only swapped out after JSON cards have been
+   built and validated successfully.
+
+   URL query parameters:
+     (none)      Default — render from data/projects.json.
+     ?static=1   Escape hatch — force the original hardcoded cards.
+                 Useful if JSON breaks or for direct comparison.
+     ?json=1    Debug mode — same as default, but shows a visible
+                 badge confirming the JSON path is active.
+
+   Fallback policy:
+     If fetch fails, JSON parsing fails, the projects array is
+     missing/empty, or any card fails to build, the hardcoded cards
+     remain visible. The atomic swap only runs once every card has
+     been built in memory.
+
+   This is JSON-first migration, NOT a React/framework rewrite. The
+   live website is still a static site served from GitHub Pages.
+   See docs/JSON_FIRST_MIGRATION_PLAN.md.
    ========================================= */
 function buildCardFromProject(p) {
     // Use createElement + textContent everywhere to avoid any XSS path
@@ -60,7 +74,14 @@ function buildCardFromProject(p) {
 async function tryRenderFromJson(grid) {
     if (!grid) return false;
     const params = new URLSearchParams(window.location.search);
-    if (params.get('json') !== '1') return false;
+
+    // Escape hatch — leave the hardcoded cards in place.
+    if (params.get('static') === '1') {
+        console.log('[json-default] ?static=1 — using hardcoded cards');
+        return false;
+    }
+
+    const showBadge = params.get('json') === '1';
 
     try {
         const response = await fetch('data/projects.json');
@@ -73,6 +94,24 @@ async function tryRenderFromJson(grid) {
         // Build all new cards before mutating the grid, so a mid-loop
         // failure cannot leave the page half-populated.
         const newCards = data.projects.map(buildCardFromProject);
+
+        // Validate the card set before swapping. Any of these failing
+        // means we leave the hardcoded cards in place.
+        if (newCards.length !== data.projects.length) {
+            throw new Error('card build incomplete (' +
+                newCards.length + ' / ' + data.projects.length + ')');
+        }
+        if (typeof data.project_count === 'number' &&
+            newCards.length !== data.project_count) {
+            throw new Error('card count ' + newCards.length +
+                ' does not match declared project_count ' +
+                data.project_count);
+        }
+        if (newCards.some(function (c) {
+            return !c || c.tagName !== 'A' || !c.href;
+        })) {
+            throw new Error('one or more cards built without href');
+        }
 
         // Atomic swap — remove hardcoded cards, insert JSON cards
         // before the .gallery-gutter spacer (or at the end if absent).
@@ -90,25 +129,26 @@ async function tryRenderFromJson(grid) {
             try { applyI18n(); } catch (e) { /* non-fatal */ }
         }
 
-        // Visible badge so preview mode is obvious during testing.
-        // textContent only; no innerHTML.
-        const banner = document.createElement('div');
-        banner.id = 'json-preview-banner';
-        banner.textContent = 'JSON preview mode — cards from data/projects.json';
-        banner.style.cssText =
-            'position:fixed;top:10px;right:10px;background:#557055;' +
-            'color:#fff;padding:6px 12px;font-size:0.72rem;' +
-            'font-family:Menlo,monospace;letter-spacing:.5px;' +
-            'z-index:9999;border-radius:3px;opacity:0.9;';
-        document.body.appendChild(banner);
+        // Debug badge only when ?json=1 is set; default mode is silent.
+        if (showBadge) {
+            const banner = document.createElement('div');
+            banner.id = 'json-preview-banner';
+            banner.textContent = 'JSON preview mode — cards from data/projects.json';
+            banner.style.cssText =
+                'position:fixed;top:10px;right:10px;background:#557055;' +
+                'color:#fff;padding:6px 12px;font-size:0.72rem;' +
+                'font-family:Menlo,monospace;letter-spacing:.5px;' +
+                'z-index:9999;border-radius:3px;opacity:0.9;';
+            document.body.appendChild(banner);
+        }
 
-        console.log('[json-preview] Rendered ' + data.projects.length +
+        console.log('[json-default] Rendered ' + newCards.length +
             ' cards from data/projects.json');
         return true;
     } catch (e) {
         // Any failure leaves the hardcoded cards intact.
         console.warn(
-            '[json-preview] Failed, falling back to hardcoded cards:', e
+            '[json-default] Failed, falling back to hardcoded cards:', e
         );
         return false;
     }
@@ -129,8 +169,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         initLiquidChrome();
     }
 
-    // [EXPERIMENTAL] Opt-in JSON preview. Returns immediately if
-    // ?json=1 is not present, so default mode is unaffected.
+    // JSON-first rendering: cards come from data/projects.json by
+    // default. Returns false (leaving hardcoded cards in place) if
+    // ?static=1 is set or if any fetch / validation step fails.
     await tryRenderFromJson(grid);
 
     if (grid) {
