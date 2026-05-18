@@ -272,7 +272,7 @@
         "bamboo/ViewCapture20251228_041614.png",
         "bamboo/workflow-diagram.png"
       ],
-      "displayedTagsRaw": "#3Dprinting",
+      "displayedTagsRaw": "#3DPrinting",
       "dataTags": ["3dprinting"],
       "shortDescription": "A 3D-printed node system derived from the structural logic of traditional bamboo scaffolding.",
       "longDescription": "The project translates friction-based bamboo connections into a digitally manufactured joint for large-scale temporary structures. A single parametric node type adapts across different configurations — pavilions, markets, exhibition structures — driven by the same geometric principle.",
@@ -448,7 +448,7 @@
     },
     {
       "id": "sfh",
-      "title": "Single-family home",
+      "title": "Single-family Home",
       "slug": "Single-family-home",
       "page": "Single-family-home.html",
       "category": "master",
