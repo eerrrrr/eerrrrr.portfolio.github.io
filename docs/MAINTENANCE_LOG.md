@@ -393,6 +393,95 @@ duplication introduced by an earlier copy step. Primary's
 CLAUDE.md never had the duplication, so this commit exists only in
 live and is the one explained drift between repo commit counts.
 
+### Phase 20 — Maintenance log (this file)
+**Primary:** `c019649` · **Visitor impact:** none
+
+Created `docs/MAINTENANCE_LOG.md` — the human-readable narrative
+companion to git log that this section sits in. Captures current
+stable state, phase-by-phase intent, safety rules, backlog, and
+useful commands. CLAUDE.md and README_OTHER_AI.md footer reference
+lists updated.
+
+- **Why it mattered:** Future Claude sessions can read this and
+  understand why decisions were made without scanning every commit.
+- **Files:** `docs/MAINTENANCE_LOG.md` (new), `CLAUDE.md`,
+  `README_OTHER_AI.md`.
+- **Runtime change:** none.
+
+### Phase 21A — Per-language i18n validator check
+**Primary:** `a25edd7` · **Visitor impact:** none
+
+Tightened `tools/validate_projects_json.py`: every
+`card.<id>.sub` i18n key must appear exactly 5 times (once per
+language object: en / zh / fi / de / ja). Previously the check only
+required presence "somewhere in the file" — which meant a key
+defined only in EN would silently fall back to English in the four
+non-EN languages without the validator ever complaining.
+
+- **Why it mattered:** Closes a real silent-regression path that
+  i18n.js's single-file 5-language design makes easy to introduce.
+- **Files:** `tools/validate_projects_json.py`.
+- **Runtime change:** none.
+- **Safe to revert?** No — preventive check.
+
+### Phase 21B — Cache-buster bump tool
+**Primary:** `cee2835` · **Visitor impact:** none
+
+Added `tools/bump_cache_version.py`. After editing `i18n.js`, this
+script bumps the `?v=N` query string across every HTML file at the
+repo root by one, in a single dry-run-by-default operation.
+
+Behaviour:
+- Dry-run lists each file's old/new version.
+- `--apply` rewrites the version in all HTML files.
+- FAILs (exit 2) if HTML files have drifted to different versions.
+
+Replaces a 14-file manual-edit step that was easy to forget.
+
+- **Files:** `tools/bump_cache_version.py` (new).
+- **Runtime change:** none. The script is for future i18n edits.
+- **Safe to revert?** Yes; would just bring back the manual step.
+
+### Phase 21C — Primary↔live sync tool
+**Primary:** `7185294` · **Visitor impact:** none
+
+Added `tools/sync_repos.py`. Compares the two portfolio repos and,
+with `--apply`, mirrors runtime-relevant files from primary to live
+(or live to primary with `--reverse`).
+
+Behaviour:
+- Dry-run lists files to ADD, OVERWRITE, and present ONLY IN
+  TARGET.
+- `--apply` performs ADD and OVERWRITE operations.
+- `--allow-delete` (off by default) also removes orphans in the
+  target.
+- Intentionally excludes `CLAUDE.md`, `README_OTHER_AI.md` (they
+  differ by design) and `.git/`.
+
+First dry-run after this commit surfaced real drift: 10 files
+in primary's working tree absent from live (the same 10 files
+pruned from JSON in Phase 19 — kept as primary-only archive), plus
+`commune/commune-Section.jpg` which exists in both repos at
+different sizes (3.5 MB in primary, 1.6 MB in live). The live
+version is what visitors actually see.
+
+- **Files:** `tools/sync_repos.py` (new).
+- **Runtime change:** none. The script is for future editorial work.
+- **Safe to revert?** Yes; would re-impose the manual mirror step.
+
+### Phase 21D — Document the new maintenance tools
+**Primary:** TBD (in progress) · **Visitor impact:** none
+
+Updated `MAINTENANCE_LOG.md` (this file), `CLAUDE.md`, and
+`docs/ADDING_A_PROJECT.md` to document the three Phase 21 tools
+and their usage. Without this step, future Claude sessions wouldn't
+discover the helpers and would re-introduce the manual workflow.
+
+- **Files:** `docs/MAINTENANCE_LOG.md` (this file),
+  `CLAUDE.md`, `docs/ADDING_A_PROJECT.md`,
+  `docs/JSON_FIRST_MIGRATION_PLAN.md`.
+- **Runtime change:** none.
+
 ---
 
 ## 3. Current safety rules
@@ -492,6 +581,40 @@ be removed. Don't do this until:
 
 Until then, leave the fallback in place.
 
+### 4.5 Drift surfaced by `tools/sync_repos.py` (Phase 21C dry-run)
+
+The first dry-run of the new sync script (after Phase 21C shipped)
+revealed two distinct kinds of drift between primary and live:
+
+1. **10 files exist only in primary** (~35 MB total): the same set
+   pruned from `data/projects.json` in Phase 19 (bamboo
+   auto-generated images, `joint 1.png` / `joint 2.png`,
+   `commune/1-commune-Section.jpg`,
+   `commune/balcony-section-single.jpg`, two `vault-house/` PDFs).
+   These are primary-only archive. Not blocking; the policy
+   tolerates this.
+2. **One file differs in content**:
+   `commune/commune-Section.jpg` is **3.5 MB in primary, 1.6 MB in
+   live**. Both are referenced by the JSON; the live (1.6 MB)
+   version is what visitors actually see. Decision pending: which
+   is canonical? Either ship primary's heavier version, or accept
+   live's compressed version as canonical and replace primary's
+   copy.
+
+Until decided, the sync script will keep reporting this drift.
+Resolving it is one of:
+
+```powershell
+# Option A: make primary canonical (live gets the 3.5 MB version)
+python tools/sync_repos.py --apply
+
+# Option B: make live canonical (primary gets the 1.6 MB version)
+python tools/sync_repos.py --reverse --apply
+
+# Option C: leave the drift, document it
+# (no action; sync script keeps reporting it)
+```
+
 ---
 
 ## 5. Useful commands
@@ -546,6 +669,41 @@ foreach ($f in @("index.html", "script.js", "i18n.js", "style.css", "data\projec
     if ($d) { Write-Output ("DIFFERS: " + $f) } else { Write-Output ("MATCH:   " + $f) }
 }
 ```
+
+Or, for a comprehensive cross-repo check including images and
+docs, use the sync tool (dry-run by default):
+
+```powershell
+cd "E:\my-portfolio-website\eerrrrr.portfolio.github.io"
+python tools/sync_repos.py
+```
+
+### After editing `i18n.js` — bump the cache-buster
+
+```powershell
+cd "E:\my-portfolio-website\eerrrrr.portfolio.github.io"
+python tools/bump_cache_version.py            # dry-run
+python tools/bump_cache_version.py --apply    # rewrite all HTML files
+```
+
+The `?v=N` query in every HTML file must increment when `i18n.js`
+changes; otherwise returning visitors load the cached old
+dictionary. This script does the 14-file bump in one command.
+
+### Mirror primary → live (or live → primary)
+
+```powershell
+cd "E:\my-portfolio-website\eerrrrr.portfolio.github.io"
+python tools/sync_repos.py                            # dry-run primary -> live
+python tools/sync_repos.py --apply                    # actually mirror
+python tools/sync_repos.py --reverse                  # dry-run live -> primary
+python tools/sync_repos.py --reverse --apply          # mirror live -> primary
+python tools/sync_repos.py --apply --allow-delete     # also remove orphans (use with care)
+```
+
+The script intentionally excludes `CLAUDE.md` and
+`README_OTHER_AI.md` (those differ by design — PRIMARY vs BACKUP
+framing) and `.git/`. Everything else is kept in lockstep.
 
 ---
 

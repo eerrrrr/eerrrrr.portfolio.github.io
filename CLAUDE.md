@@ -353,26 +353,47 @@ replaced in one step.
 - See [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
   for the full architecture, fallback policy, and future variants.
 
-### Validating `data/projects.json` before editing
+### Maintenance helper tools (under `tools/`)
 
-Run the validator any time you change `data/projects.json`,
-`i18n.js`, `index.html`'s hardcoded cards, or rename a project page or
-folder:
+Three scripts at the repo root reduce manual workflow friction.
+All are dry-run by default; none modify files unless `--apply` is
+passed.
+
+| Tool | When to use |
+|---|---|
+| `tools/validate_projects_json.py` | After every edit to `data/projects.json`, `index.html`'s hardcoded cards, or `i18n.js`'s `card.<id>.sub` keys. Read-only. Exits `0` (PASS / WARN only) or `1` (any FAILs). |
+| `tools/bump_cache_version.py` | After editing `i18n.js`. Increments the `?v=N` cache-buster across every HTML file in one command. Without `--apply` it's a dry-run. |
+| `tools/sync_repos.py` | Before committing — surface any drift between primary and live. With `--apply`, mirrors primary → live (or `--reverse` for the other direction). Excludes `CLAUDE.md` and `README_OTHER_AI.md` by design. |
+
+Typical workflow after editing files:
 
 ```powershell
+cd "E:\my-portfolio-website\eerrrrr.portfolio.github.io"
+# 1. if you touched i18n.js, bump the cache version:
+python tools/bump_cache_version.py --apply
+# 2. mirror everything to live:
+python tools/sync_repos.py --apply
+# 3. validate both repos:
 python tools/validate_projects_json.py
+cd "E:\my-portfolio-website\eerrrrr.github.io"
+python tools/validate_projects_json.py
+# 4. commit each repo, push each
 ```
 
-It exits `0` (PASS / WARN only) or `1` (one or more FAILs). FAILs
-include: invalid JSON, missing required fields, duplicate ids, broken
-page or coverImage paths, invalid category, non-lowercase dataTags,
-missing `card.<id>.sub` in `i18n.js`, or `index.html` being stripped
-of all hardcoded fallback cards. WARNs are intentional cases
-(`role: null`, `isFeatured: null`, tag-display divergence per the
-locked tag policy).
+### What the validator checks (FAIL list)
 
-The validator is read-only — it does not modify any file. Run it in
-both repos before committing.
+Validator FAILs include: invalid JSON, missing required fields,
+duplicate ids, broken page or coverImage paths, invalid category,
+non-lowercase or `#`-containing dataTags, `id` not URL-safe lowercase,
+`page` not ending in `.html`, `coverImage` extension not in
+`{jpg, jpeg, png, webp}`, any `images[]` path missing on disk,
+missing `card.<id>.sub` in `i18n.js` (or present in fewer than 5
+language objects), and `index.html` being stripped of all hardcoded
+fallback cards. WARNs cover intentional cases (`role: null`,
+`isFeatured: null`, tag-display divergence per the locked tag
+policy, `notes` containing internal-dev language).
+
+The validator is read-only.
 
 ## 15. Related external docs (READ THESE before i18n work)
 

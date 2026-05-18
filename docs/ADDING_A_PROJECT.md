@@ -123,13 +123,24 @@ Follow `PORTFOLIO_I18N_SYSTEM.md` exactly:
 5. Add captions (`cap.{i18nPrefix}.N`) in all 5 languages.
 6. Add any new meta values (`v.type.*`, `v.role.*`, `v.loc.*`,
    `v.mat.*`) only if the value is genuinely new.
-7. **Bump the cache version** — change `?v=N` to `?v=N+1` in
-   **every** HTML file (`index.html` + all 13 + the new project's
-   page). Otherwise visitors will load the stale `i18n.js` from cache.
+7. **Bump the cache version** — `?v=N` must increment to `?v=N+1`
+   in **every** HTML file (`index.html` + all 13 + the new
+   project's page). The easiest way is the dedicated tool:
+
+   ```powershell
+   python tools/bump_cache_version.py             # dry-run
+   python tools/bump_cache_version.py --apply     # rewrite all HTML
+   ```
+
+   Without this, returning visitors load the stale `i18n.js` from
+   cache. The tool FAILs (exit 2) if the HTML files have already
+   drifted to different versions, which is a useful sanity check.
 
 A missing key in a non-EN language silently falls back to English at
-runtime — easy to miss until a non-EN visitor opens the page. Adding
-to all 5 in lockstep is the simplest defence.
+runtime — easy to miss until a non-EN visitor opens the page.
+Adding to all 5 in lockstep is the simplest defence. The validator
+in Step 7 also enforces "card.<id>.sub must appear exactly 5 times
+in i18n.js" so an EN-only addition will FAIL the validator.
 
 ### Step 5 — Add to `data/projects.json`
 
@@ -263,13 +274,19 @@ Sync rule applies. Working order:
 2. Run the validator in primary. Confirm exit 0.
 3. Test locally in primary or live (either works for the test
    itself).
-4. Mirror the exact same changes to the **live** repo. For shared
-   files (`script.js`, `data/projects.json`,
-   `<project>.html`, `<folder>/`, `i18n.js`, the new `index.html`
-   block), copying is fine — they should be byte-identical between
-   repos. For `CLAUDE.md` and `README_OTHER_AI.md`, only mirror the
-   substantive additions; keep each repo's existing
-   PRIMARY-vs-BACKUP framing.
+4. Mirror the changes to **live**. The fastest way is the sync
+   tool:
+
+   ```powershell
+   python tools/sync_repos.py            # dry-run: shows drift
+   python tools/sync_repos.py --apply    # mirror primary -> live
+   ```
+
+   The script intentionally excludes `CLAUDE.md` and
+   `README_OTHER_AI.md` (which differ by design — keep their
+   PRIMARY-vs-BACKUP framing in each repo). For those two files
+   only, mirror the substantive additions by hand.
+
 5. Re-run the validator in live. Confirm exit 0.
 6. Commit in each repo independently. Use a clear message like
    `Add <project name>` or `Update <project name>`.
