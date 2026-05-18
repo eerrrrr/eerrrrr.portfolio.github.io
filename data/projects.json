@@ -321,6 +321,7 @@
         "ruach.body.h3.1",
         "ruach.desc.p1", "ruach.desc.p2",
         "ruach.h1", "ruach.h2", "ruach.h3",
+        "ruach.interaction.heading", "ruach.interaction.flow",
         "ruach.intro.b1", "ruach.intro.b2", "ruach.intro.b3", "ruach.intro.b4",
         "ui.all-works", "ui.next", "ui.prev",
         "v.loc.munich", "v.type.group"
