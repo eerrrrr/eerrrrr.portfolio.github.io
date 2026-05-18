@@ -409,6 +409,10 @@ improvement ideas),
 [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md)
 (how future interactive demos — React, WebGL, Three.js, Unity WebGL —
 should be added as isolated islands rather than a whole-site
-rewrite), and
+rewrite),
 [docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md) (operational
-step-by-step for adding or substantially modifying a project).
+step-by-step for adding or substantially modifying a project), and
+[docs/PERFORMANCE_OPTIMIZATION_PLAN.md](docs/PERFORMANCE_OPTIMIZATION_PLAN.md)
+(audit of large media files, unused assets, and suggested
+compression / lazy-loading order; read this before doing any
+performance work).

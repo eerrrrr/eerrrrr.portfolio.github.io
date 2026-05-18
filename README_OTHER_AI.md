@@ -197,4 +197,7 @@ WebGL) without rewriting the whole site, see
 [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md).
 For the operational step-by-step of adding or substantially
 modifying a project, see
-[docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md).
+[docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md). For the audit
+of large media files, unused assets, and suggested compression
+order, see
+[docs/PERFORMANCE_OPTIMIZATION_PLAN.md](docs/PERFORMANCE_OPTIMIZATION_PLAN.md).
