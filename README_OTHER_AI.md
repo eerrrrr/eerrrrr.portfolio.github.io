@@ -94,6 +94,17 @@ divergence unless the user explicitly asks.
 - ⚠️ `main page/hero.mp4` — large file (~180 MB). Don't recommit
   unless replacing.
 
+## 4a. Adding a new project
+
+Use the step-by-step in
+[docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md). It covers the
+full sequence: identifiers (`id` / `slug` / `page`), asset folder,
+detail HTML, i18n keys in all 5 languages with cache-version bump,
+`data/projects.json` entry, the hardcoded `<a class="project-card">`
+fallback in `index.html`, validator run, the
+`/` + `/?static=1` + `/?json=1` test pass, and the primary → live
+mirror.
+
 ## 5. How to make a small content change
 
 Example: fix a typo in the bamboo project page.
@@ -184,3 +195,6 @@ ideas, see [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md). For how
 to add future interactive demos (React / WebGL / Three.js / Unity
 WebGL) without rewriting the whole site, see
 [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md).
+For the operational step-by-step of adding or substantially
+modifying a project, see
+[docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md).

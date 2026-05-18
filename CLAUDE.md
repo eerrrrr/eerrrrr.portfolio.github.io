@@ -124,10 +124,13 @@ is pushed, the live site updates within ~30s.
   `data-i18n="some.key"` attribute, also update `i18n.js` for *every*
   language (en / zh / fi / de / ja). If only the English source is
   updated, the other languages keep the old text.
-- **New project** — duplicate an existing `<project>.html` + folder,
-  rewrite content, add a new `<a class="project-card">` block in
-  `index.html` under `#masonry-container`, add matching `card.*.sub`
-  keys to `i18n.js`.
+- **New project** — follow the full step-by-step in
+  [docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md). The doc
+  covers identifiers, asset folder, detail HTML, i18n keys in all 5
+  languages + cache-version bump, `data/projects.json` entry, the
+  hardcoded `<a class="project-card">` fallback in `index.html`,
+  validator run, the `/` + `/?static=1` + `/?json=1` test pass,
+  and the strict primary → live mirror order.
 - **Project image icons** — use `<folder>/<icon>.jpg`, ~600 × 800 px.
 - **Don't** add per-project HTML inside subfolders — folders hold
   images only.
@@ -402,8 +405,10 @@ match, not the other way around.
 [docs/WEBSITE_AUDIT.md](docs/WEBSITE_AUDIT.md) (current issues and
 improvement ideas),
 [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
-(the JSON-first migration approach), and
+(the JSON-first migration approach),
 [docs/INTERACTIVE_CONTENT_ARCHITECTURE.md](docs/INTERACTIVE_CONTENT_ARCHITECTURE.md)
 (how future interactive demos — React, WebGL, Three.js, Unity WebGL —
 should be added as isolated islands rather than a whole-site
-rewrite).
+rewrite), and
+[docs/ADDING_A_PROJECT.md](docs/ADDING_A_PROJECT.md) (operational
+step-by-step for adding or substantially modifying a project).
