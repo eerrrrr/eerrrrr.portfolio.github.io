@@ -206,3 +206,6 @@ order, see
 For an editorial review of homepage order, card titles, tag style,
 and which cover images are candidates for replacement, see
 [docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md](docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md).
+For a field-by-field reference of `data/projects.json` (read this
+before editing the data file), see
+[docs/PROJECTS_JSON_SCHEMA.md](docs/PROJECTS_JSON_SCHEMA.md).

@@ -423,4 +423,7 @@ performance work), and
 [docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md](docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md)
 (editorial review of homepage order, card titles, tag style,
 cover-image facts, and which images are candidates for
-replacement / compression once the user picks finals).
+replacement / compression once the user picks finals), and
+[docs/PROJECTS_JSON_SCHEMA.md](docs/PROJECTS_JSON_SCHEMA.md)
+(field-by-field reference for `data/projects.json` — read this
+before editing the data file).

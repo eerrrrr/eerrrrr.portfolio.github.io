@@ -45,6 +45,17 @@ REQUIRED_FIELDS = (
 # Tags style: lowercase, no whitespace, non-empty
 _TAG_RE = re.compile(r"^[a-z0-9][a-z0-9\-]*$")
 
+# Allowed cover-image extensions
+_ALLOWED_COVER_EXTS = (".jpg", ".jpeg", ".png", ".webp")
+
+# id must be URL-safe lowercase
+_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_\-]*$")
+
+# Patterns flagged as "internal dev language" inside the notes field
+_NOTES_HEX_RE = re.compile(r"\b[0-9a-f]{7,40}\b")
+_NOTES_DEV_MARKER_RE = re.compile(r"\b(TODO|FIXME|XXX|HACK)\b")
+_NOTES_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+
 
 class Report:
     def __init__(self):
@@ -172,26 +183,50 @@ def validate(repo_root: Path, report: Report):
                 elif val in (None, "", []):
                     report.fail(f"[{pid}] required field {field} is empty / null")
 
-        # Unique id
+        # Unique + URL-safe id
         if "id" in p:
             if p["id"] in seen_ids:
                 report.fail(f"duplicate id: {p['id']}")
             else:
                 seen_ids.add(p["id"])
+            if isinstance(p["id"], str) and not _ID_RE.match(p["id"]):
+                report.fail(
+                    f"[{pid}] id is not URL-safe lowercase "
+                    f"(allowed: [a-z0-9] then [a-z0-9_-]*): {p['id']!r}"
+                )
 
-        # Page file exists
+        # Page file exists + must end in .html
         page = p.get("page")
         if isinstance(page, str) and page:
+            if not page.endswith(".html"):
+                report.fail(f"[{pid}] page does not end with .html: {page}")
             page_path = repo_root / page
             if not page_path.exists():
                 report.fail(f"[{pid}] page file not found: {page}")
 
-        # coverImage exists
+        # coverImage exists + allowed extension
         cover = p.get("coverImage")
         if isinstance(cover, str) and cover:
             cover_path = repo_root / cover
             if not cover_path.exists():
                 report.fail(f"[{pid}] coverImage not found: {cover}")
+            ext = Path(cover).suffix.lower()
+            if ext not in _ALLOWED_COVER_EXTS:
+                report.fail(
+                    f"[{pid}] coverImage extension '{ext}' is not in "
+                    f"{list(_ALLOWED_COVER_EXTS)}: {cover}"
+                )
+
+        # Every path in images[] must exist on disk
+        images = p.get("images")
+        if isinstance(images, list):
+            for img_rel in images:
+                if not isinstance(img_rel, str) or not img_rel:
+                    report.fail(f"[{pid}] images[] entry is not a non-empty string: {img_rel!r}")
+                    continue
+                img_path = repo_root / img_rel
+                if not img_path.exists():
+                    report.fail(f"[{pid}] images[] entry not found on disk: {img_rel}")
 
         # category valid
         cat = p.get("category")
@@ -201,12 +236,18 @@ def validate(repo_root: Path, report: Report):
                 f"{sorted(valid_categories)}"
             )
 
-        # dataTags tokens lowercase / non-empty / no whitespace
+        # dataTags tokens lowercase / non-empty / no whitespace / no #
         data_tags = p.get("dataTags")
         if isinstance(data_tags, list):
             for tag in data_tags:
                 if not isinstance(tag, str):
                     report.fail(f"[{pid}] dataTag is not a string: {tag!r}")
+                    continue
+                if "#" in tag:
+                    report.fail(
+                        f"[{pid}] dataTag contains '#' "
+                        f"(dataTags are tokens, not hashtags): {tag!r}"
+                    )
                 elif not _TAG_RE.match(tag):
                     report.fail(
                         f"[{pid}] dataTag is not a lowercase token "
@@ -231,13 +272,37 @@ def validate(repo_root: Path, report: Report):
                     f"[{pid}] slug '{slug}' differs from page stem '{page_stem}'"
                 )
 
-        # displayedTagsRaw vs dataTags divergence (intentional per tag policy)
+        # displayedTagsRaw should start with #
         displayed = p.get("displayedTagsRaw")
+        if isinstance(displayed, str) and displayed.strip() and \
+                not displayed.lstrip().startswith("#"):
+            report.warn(
+                f"[{pid}] displayedTagsRaw does not start with '#': "
+                f"{displayed!r}"
+            )
+
+        # displayedTagsRaw vs dataTags divergence (intentional per tag policy)
         if isinstance(displayed, str) and isinstance(data_tags, list):
             disp_set = _parse_display_tokens(displayed)
             data_set = {t.lower() for t in data_tags if isinstance(t, str)}
             if disp_set != data_set:
                 tag_divergence.append(pid)
+
+        # notes hygiene — flag internal dev language (publicly served)
+        notes_val = p.get("notes")
+        if isinstance(notes_val, str) and notes_val:
+            issues = []
+            if _NOTES_HEX_RE.search(notes_val):
+                issues.append("commit-hash-like string")
+            if _NOTES_DEV_MARKER_RE.search(notes_val):
+                issues.append("dev marker (TODO/FIXME/XXX/HACK)")
+            if _NOTES_DATE_RE.search(notes_val):
+                issues.append("dated entry")
+            if issues:
+                report.warn(
+                    f"[{pid}] notes contains internal-looking content "
+                    f"({', '.join(issues)}); see PROJECTS_JSON_SCHEMA.md § 2.20"
+                )
 
         # role / isFeatured (informational only)
         if p.get("role") is None:

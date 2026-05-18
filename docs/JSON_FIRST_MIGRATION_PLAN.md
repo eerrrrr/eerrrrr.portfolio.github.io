@@ -144,10 +144,17 @@ FAIL conditions (blocking):
   (`id`, `title`, `page`, `coverImage`, `category`, `dataTags`,
   `displayedTagsRaw`, `i18nPrefix`).
 - Two projects share an `id`.
+- A project's `id` is not URL-safe lowercase
+  (`^[a-z0-9][a-z0-9_-]*$`).
+- A project's `page` does not end with `.html`.
 - A project's `page` file does not exist on disk.
 - A project's `coverImage` path does not exist on disk.
+- A project's `coverImage` extension is not in
+  `{.jpg, .jpeg, .png, .webp}`.
+- Any path in a project's `images[]` array does not exist on disk.
 - A `category` is not in the declared `categories` whitelist.
 - A `dataTag` is not a lowercase token (alphanumeric + hyphen only).
+- A `dataTag` contains `#` (dataTags are tokens, not hashtags).
 - `i18n.js` is missing the `card.<id>.sub` key for any project.
 - `index.html` has been stripped of all hardcoded fallback cards
   (the runtime safety net).
@@ -156,9 +163,15 @@ WARN conditions (informational, intentional):
 
 - `role` is null on a project (no `v.role.*` declared on the page).
 - `isFeatured` is null (reserved for future use).
+- `displayedTagsRaw` does not start with `#`.
 - `displayedTagsRaw` and `dataTags` token sets diverge (intentional
   per the locked tag policy in § 4e).
 - `slug` differs from the page filename stem.
+- `notes` contains internal-looking content (commit-hash-like
+  string, `TODO`/`FIXME`/`XXX`/`HACK`, or a `YYYY-MM-DD` date).
+  `data/projects.json` is fetchable by visitors; `notes` should
+  stay outward-facing — see
+  [PROJECTS_JSON_SCHEMA.md](PROJECTS_JSON_SCHEMA.md) § 2.20.
 - Hardcoded fallback card count in `index.html` differs from
   `len(projects)`.
 
@@ -172,6 +185,12 @@ When to run it:
 
 The validator is read-only — no file is modified. Run it in both
 the primary and the live repo to confirm both pass before committing.
+
+The full field-by-field schema reference is in
+[PROJECTS_JSON_SCHEMA.md](PROJECTS_JSON_SCHEMA.md): which fields
+are live-rendered, which are informational, which are safe to edit
+freely vs. which need coordinated changes elsewhere
+(`i18n.js`, `index.html`, the asset folder, the detail page).
 
 ### Future variants (still sketches)
 
