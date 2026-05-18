@@ -120,6 +120,59 @@ then `querySelectorAll('.project-card').remove()` runs, then the new
 cards are inserted. A mid-loop failure cannot leave a half-populated
 grid.
 
+### Validating `data/projects.json` before commit
+
+Because `data/projects.json` now drives the live homepage, edits to
+it carry production risk. A small validator catches the common
+mistakes before they reach the live site:
+
+```powershell
+python tools/validate_projects_json.py
+```
+
+Run from anywhere in the repo — the script resolves its own root.
+Exit codes:
+
+- `0` — only PASS / WARN messages (safe to commit)
+- `1` — one or more FAILs (do not commit)
+
+FAIL conditions (blocking):
+
+- `data/projects.json` is not valid JSON.
+- `project_count` does not match `len(projects)`.
+- A required field is missing or empty on any project
+  (`id`, `title`, `page`, `coverImage`, `category`, `dataTags`,
+  `displayedTagsRaw`, `i18nPrefix`).
+- Two projects share an `id`.
+- A project's `page` file does not exist on disk.
+- A project's `coverImage` path does not exist on disk.
+- A `category` is not in the declared `categories` whitelist.
+- A `dataTag` is not a lowercase token (alphanumeric + hyphen only).
+- `i18n.js` is missing the `card.<id>.sub` key for any project.
+- `index.html` has been stripped of all hardcoded fallback cards
+  (the runtime safety net).
+
+WARN conditions (informational, intentional):
+
+- `role` is null on a project (no `v.role.*` declared on the page).
+- `isFeatured` is null (reserved for future use).
+- `displayedTagsRaw` and `dataTags` token sets diverge (intentional
+  per the locked tag policy in § 4e).
+- `slug` differs from the page filename stem.
+- Hardcoded fallback card count in `index.html` differs from
+  `len(projects)`.
+
+When to run it:
+
+- After any change to `data/projects.json`.
+- After renaming or moving a project page or its image folder.
+- After changing the hardcoded fallback cards in `index.html`.
+- After adding or renaming `card.<id>.sub` keys in `i18n.js`.
+- Before every commit that touches any of the above.
+
+The validator is read-only — no file is modified. Run it in both
+the primary and the live repo to confirm both pass before committing.
+
 ### Future variants (still sketches)
 
 ### 4b. Medium: generate per-page sidebar meta blocks

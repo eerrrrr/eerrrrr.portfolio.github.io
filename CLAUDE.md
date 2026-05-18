@@ -339,6 +339,27 @@ replaced in one step.
 - See [docs/JSON_FIRST_MIGRATION_PLAN.md](docs/JSON_FIRST_MIGRATION_PLAN.md)
   for the full architecture, fallback policy, and future variants.
 
+### Validating `data/projects.json` before editing
+
+Run the validator any time you change `data/projects.json`,
+`i18n.js`, `index.html`'s hardcoded cards, or rename a project page or
+folder:
+
+```powershell
+python tools/validate_projects_json.py
+```
+
+It exits `0` (PASS / WARN only) or `1` (one or more FAILs). FAILs
+include: invalid JSON, missing required fields, duplicate ids, broken
+page or coverImage paths, invalid category, non-lowercase dataTags,
+missing `card.<id>.sub` in `i18n.js`, or `index.html` being stripped
+of all hardcoded fallback cards. WARNs are intentional cases
+(`role: null`, `isFeatured: null`, tag-display divergence per the
+locked tag policy).
+
+The validator is read-only — it does not modify any file. Run it in
+both repos before committing.
+
 ## 15. Related external docs (READ THESE before i18n work)
 
 A parallel documentation folder exists at
