@@ -43,6 +43,28 @@ to **both** repos:
 - `main page/` — homepage hero assets (`hero.mp4`, `poster.jpg`).
   Note the space in the folder name.
 - `docs/` — documentation (this is where audits and notes live).
+- `data/` — reference data layer (`projects.json`, `site-structure.json`).
+  Not consumed by the live website by default. See section 2a.
+
+## 2a. Tag policy
+
+The homepage uses two parallel tag systems:
+
+- `data-tags` attribute = **filter tags**, lowercase, used by
+  `script.js`'s tag filter. Mirrored to `dataTags` in
+  `data/projects.json`.
+- `<div class="tags">` text = **display tags**, decorative wording
+  shown to visitors. Mirrored to `displayedTagsRaw` in
+  `data/projects.json`.
+
+They don't have to match. A card may display `#Helsinki` (location)
+without putting `helsinki` in `data-tags`. A card may have
+`landscape` in `data-tags` without displaying it. But `data-tags`
+should cover every concept a future filter might match on.
+
+When you change either side, update the matching field in
+`data/projects.json` in the same commit. Don't "fix" intentional
+divergence unless the user explicitly asks.
 
 ## 3. Which files are safe to edit
 

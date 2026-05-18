@@ -135,6 +135,40 @@ is pushed, the live site updates within ~30s.
   (e.g. `bamboo.h1`, `bamboo.body.h1.1`, `meta.year`,
   `card.bamboo.sub`). Stay consistent.
 
+### Tag policy
+
+The homepage has **two parallel tag systems** that are intentionally
+not always identical. Treat them as separate fields, not duplicates:
+
+- `data-tags` attribute on each `<a class="project-card">` =
+  **functional filter tags**. Lowercase, simple tokens, consumed by
+  `script.js` `filterByTag()` via substring match. These also
+  populate the `dataTags` array in `data/projects.json`.
+- Visible `<div class="tags">` text inside each card =
+  **decorative / display tags**. Mirrored to `displayedTagsRaw` in
+  `data/projects.json`. May include location names, material wording,
+  visual keywords, or human-friendly phrasing.
+
+Rules:
+
+- The two **do not need to be identical.** A card may display
+  `#Helsinki` (location) without putting `helsinki` in `data-tags`. A
+  project may have `landscape` in `data-tags` (for filter coverage)
+  without surfacing it in the visible display.
+- However, `data-tags` should cover **every concept a future filter
+  might match on.** If a card displays `#Hospital`, then `data-tags`
+  should contain `hospital` so the filter actually finds the project.
+- Use lowercase, simple tokens in `data-tags`. Use whatever wording
+  reads well in the visible display.
+- When you change `data-tags` in `index.html`, **also update
+  `dataTags` in `data/projects.json` in the same commit.**
+- When you change the visible `<div class="tags">` text, **also
+  update `displayedTagsRaw` in `data/projects.json` in the same
+  commit.**
+- Future Claude sessions: **do not "fix" display/data tag divergence
+  on your own.** Mismatch is an intentional editorial choice.
+  Reconcile only when the user explicitly asks.
+
 ## 8. Layout & design rules
 
 - Design principle: **"What I did" — spacing-first, delicate

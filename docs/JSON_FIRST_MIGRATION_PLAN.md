@@ -129,6 +129,43 @@ grows beyond ~500 KB.
 At that point the static HTML is replaced wholesale. This is the
 endpoint of the migration — not the next step.
 
+## 4e. Tag policy (locked)
+
+The portfolio has two parallel tag systems and they are intentionally
+not always equal:
+
+- **`data-tags` attribute** on each `<a class="project-card">` in
+  `index.html` is the **functional filter system**. Lowercase, simple
+  tokens, used by `script.js`'s `filterByTag()` substring matcher.
+  Mirrored as `dataTags` in `data/projects.json`.
+- **`<div class="tags">` text** inside each card is the
+  **decorative display layer** shown to visitors. Mirrored as
+  `displayedTagsRaw` in `data/projects.json`.
+
+Policy:
+
+1. The two systems do not have to be identical. Examples:
+   - `sfh` shows `#Helsinki` (location wording) but `helsinki` is
+     intentionally not in `data-tags` — location filtering is not
+     currently planned.
+   - `tearoom` has `landscape` in `data-tags` (for filter coverage)
+     but its visible card shows `#Concrete #Public` — `landscape`
+     does not need to appear on the card.
+   - `cultural` displays the multi-word `#Wood Frame` as a single
+     visible token; it is not split into separate filter tokens.
+2. `data-tags` **should** cover every concept a future filter might
+   match on. If the card visibly shows `#Hospital`, `data-tags` must
+   contain `hospital`.
+3. Lowercase tokens in `data-tags`. Display string can use any
+   wording / capitalisation.
+4. When `data-tags` changes in `index.html`, update `dataTags` in
+   `data/projects.json` in the same commit. When the visible
+   `<div class="tags">` text changes, update `displayedTagsRaw` in
+   `data/projects.json` in the same commit.
+5. Future Claude sessions: **do not reconcile divergences unprompted.**
+   Treat each mismatch as intentional unless the user explicitly asks
+   for a reconciliation pass (like the one on 2026-05-18).
+
 ## 5. What should NOT be migrated yet
 
 - **Don't connect `projects.json` to the live site.** The current site
