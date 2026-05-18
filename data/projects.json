@@ -66,7 +66,7 @@
         "commune/WWI_3 gra 11.jpg"
       ],
       "displayedTagsRaw": "#Helsinki #CLT #Extension",
-      "dataTags": ["wood"],
+      "dataTags": ["wood", "clt", "extension"],
       "shortDescription": "A timber extension to an existing residential building at Katajaharjuntie 22, Helsinki.",
       "longDescription": "The project asks how a new wooden volume can densify an existing block without losing its social character. The extension adds housing below and a shared communal floor above — combining private and collective living within a single prefabricated structure.",
       "i18nPrefix": "commune",
@@ -317,7 +317,7 @@
         "ruach/RUACH_icon.jpg"
       ],
       "displayedTagsRaw": "#Unity #VR #Interaction",
-      "dataTags": ["unity", "vr"],
+      "dataTags": ["unity", "vr", "interaction"],
       "shortDescription": "An interactive VR prototype developed at the Technical University of Munich.",
       "longDescription": "RUACH functions as a subconscious spatial guide — users make a series of intuitive choices about environment, material, sound, and light, and the system assembles a personal virtual space in response. The architecture is not fixed; it is built through use.",
       "i18nPrefix": "ruach",
@@ -424,7 +424,7 @@
         "tearoom/tearoom_icon.jpg"
       ],
       "displayedTagsRaw": "#Concrete #Public",
-      "dataTags": ["concrete", "landscape"],
+      "dataTags": ["concrete", "public", "landscape"],
       "shortDescription": "A small hillside building along the path between Longtan village and the mountain, Nanjing.",
       "longDescription": "Set into a forested slope, the building offers a quiet stop along the ascent — space for rest and informal gathering. The section compresses and opens in response to the site, framing the landscape while remaining embedded in it.",
       "i18nPrefix": "tearoom",
@@ -444,7 +444,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "tearoom.html", "folder": "tearoom/"},
-      "notes": "Display tags ('#Concrete #Public') and dataTags ('concrete landscape') disagree — both preserved for honesty. script.js swaps display order between tearoom and Single-family-home under the architecture filter."
+      "notes": "dataTags reconciled with display on 2026-05-18: 'public' was added to dataTags so a future #Public filter will match this project. 'landscape' is kept in dataTags as an additional filter-only category (not surfaced on the card). script.js swaps display order between tearoom and Single-family-home under the architecture filter."
     },
     {
       "id": "sfh",
@@ -523,7 +523,7 @@
         "furniture-park/render-3.jpg"
       ],
       "displayedTagsRaw": "#Landscape #Wood",
-      "dataTags": ["wood", "furniture"],
+      "dataTags": ["wood", "furniture", "landscape"],
       "shortDescription": "A set of outdoor seating elements for the lawn area of WestK Art Park, Hong Kong.",
       "longDescription": "Designed for durable, low-maintenance outdoor use. The pieces respond to the material constraints and specific conditions of the park's landscape without competing with it.",
       "i18nPrefix": "park",
@@ -564,7 +564,7 @@
         "studio-renovation/Studio-Renovation_icon.png"
       ],
       "displayedTagsRaw": "#Landscape #Steel",
-      "dataTags": ["steel"],
+      "dataTags": ["steel", "landscape"],
       "shortDescription": "A lightweight steel bridge connecting two parts of an existing studio complex in Dali, Yunnan.",
       "longDescription": "The bridge spans a water feature between two existing buildings, forming a clear spatial link while keeping the view to the landscape open. The structure is minimal — the corridor itself becomes the architectural event.",
       "i18nPrefix": "studio",
@@ -582,7 +582,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "studio-renovation.html", "folder": "studio-renovation/"},
-      "notes": "data-tags='steel ' has a trailing space in index.html (preserved as 'steel' single token after split). Role inferred from PORTFOLIO_I18N_STATE.md showing v.role.internship for this page. Uses meta.office (rare across pages)."
+      "notes": "dataTags reconciled with display on 2026-05-18: 'landscape' added so a future #Landscape filter will match this project. The earlier trailing space in data-tags='steel ' was also cleaned up in the same pass. Role inferred from PORTFOLIO_I18N_STATE.md showing v.role.internship for this page. Uses meta.office (rare across pages)."
     },
     {
       "id": "nyamata",
@@ -604,7 +604,7 @@
         "nyamata/section.jpg"
       ],
       "displayedTagsRaw": "#Hospital #Design",
-      "dataTags": ["landscape"],
+      "dataTags": ["hospital", "design"],
       "shortDescription": "An on-site design intervention at Nyamata District Hospital, Rwanda.",
       "longDescription": "Rather than a full rebuild, the project works within the existing hospital to improve patient flow, waiting conditions, and accessibility. The interventions are precise and buildable — developed directly from observation of how the building is used each day.",
       "i18nPrefix": "nyamata",
@@ -623,7 +623,7 @@
       ],
       "isFeatured": null,
       "sourceFiles": {"html": "nyamata.html", "folder": "nyamata/"},
-      "notes": "v.type.design-camp used (humanitarian design camp context). v.loc.nyamata = 'Nyamata District Hospital, Rwanda'. Display tags '#Hospital #Design' don't appear in the dataTags ('landscape') — they are presentational only."
+      "notes": "dataTags reconciled with display on 2026-05-18: was ['landscape'] — fully replaced by ['hospital', 'design'] to match the displayed #Hospital #Design tags. A future #Hospital filter will now match this project (it would not have before). v.type.design-camp used (humanitarian design camp context). v.loc.nyamata = 'Nyamata District Hospital, Rwanda'."
     },
     {
       "id": "study",
