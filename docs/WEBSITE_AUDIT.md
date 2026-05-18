@@ -30,7 +30,7 @@ in the same pass per the sync rule (CLAUDE.md § 11).
 - **Repo size on disk**: ~680 MB, dominated by:
   - 153 `.jpg` (~324 MB)
   - 49 `.png` (~167 MB)
-  - 4 `.mp4` (~190 MB, mostly `main page/hero.mp4`)
+  - 4 `.mp4` (~190 MB, mostly the two large MP4s under `ruach/`)
 - **Hosting**: The backup repo (`eerrrrr.github.io`) is the GitHub
   Pages-deployed copy at `https://eerrrrr.github.io/`. This primary
   repo is the source-of-truth working copy; pushes here do not
@@ -101,9 +101,11 @@ a retraction so future audits don't re-flag it.
 
 ### 3.1 [HIGH] Heavy unoptimised media
 
-- `main page/hero.mp4` is ~180 MB — likely a few-second autoplay loop.
-  Re-encode at lower bitrate or use a shorter loop; 2-5 MB is enough
-  for a hero video.
+- `main page/hero.mp4` is actually ~828 KB (already small). The
+  initial audit incorrectly listed it at ~180 MB; corrected on
+  2026-05-18 after a direct measurement. The genuinely heavy MP4s
+  are `ruach/hero.mp4` and `ruach/Media2.mp4` at ~90 MB each — see
+  [PERFORMANCE_OPTIMIZATION_PLAN.md](PERFORMANCE_OPTIMIZATION_PLAN.md).
 - Several project PNGs are likely 5-10 MB each. PNG is the wrong
   format for photography or rendered images — convert to JPEG (quality
   82-88) or WebP.

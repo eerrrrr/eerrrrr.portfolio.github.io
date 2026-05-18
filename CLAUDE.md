@@ -215,8 +215,12 @@ Rules:
    even if the value is the same English fallback.
 6. **`main page/` has a literal space** — encoded as `%20` in URLs.
    Don't rename.
-7. **Large media assets** — `main page/hero.mp4` is ~180 MB, total
-   repo media is ~680 MB. Be mindful when committing new assets.
+7. **Large media assets** — total repo media is ~680 MB. The
+   homepage hero (`main page/hero.mp4`) is small (~828 KB); the
+   heavy files are project images and a few large MP4s under
+   `ruach/`. See
+   [docs/PERFORMANCE_OPTIMIZATION_PLAN.md](docs/PERFORMANCE_OPTIMIZATION_PLAN.md)
+   for the full breakdown. Be mindful when committing new assets —
    GitHub Pages serves them but cold loads are slow.
 
 ## 10. SEO / accessibility notes

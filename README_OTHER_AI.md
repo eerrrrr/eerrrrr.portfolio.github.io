@@ -91,8 +91,10 @@ divergence unless the user explicitly asks.
   languages will show the key string verbatim to users.
 - ⚠️ Renaming any folder under root — image references everywhere
   will break silently.
-- ⚠️ `main page/hero.mp4` — large file (~180 MB). Don't recommit
-  unless replacing.
+- ⚠️ Large MP4 assets — `ruach/hero.mp4` and `ruach/Media2.mp4`
+  are ~90 MB each. The homepage hero (`main page/hero.mp4`) is small
+  (~828 KB). Don't recommit large MP4s unless you're replacing them
+  with a smaller version.
 
 ## 4a. Adding a new project
 
