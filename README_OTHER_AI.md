@@ -203,3 +203,6 @@ modifying a project, see
 of large media files, unused assets, and suggested compression
 order, see
 [docs/PERFORMANCE_OPTIMIZATION_PLAN.md](docs/PERFORMANCE_OPTIMIZATION_PLAN.md).
+For an editorial review of homepage order, card titles, tag style,
+and which cover images are candidates for replacement, see
+[docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md](docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md).

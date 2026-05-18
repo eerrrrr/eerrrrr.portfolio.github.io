@@ -419,4 +419,8 @@ step-by-step for adding or substantially modifying a project), and
 [docs/PERFORMANCE_OPTIMIZATION_PLAN.md](docs/PERFORMANCE_OPTIMIZATION_PLAN.md)
 (audit of large media files, unused assets, and suggested
 compression / lazy-loading order; read this before doing any
-performance work).
+performance work), and
+[docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md](docs/PORTFOLIO_VISUAL_CONTENT_AUDIT.md)
+(editorial review of homepage order, card titles, tag style,
+cover-image facts, and which images are candidates for
+replacement / compression once the user picks finals).
