@@ -253,6 +253,47 @@ function handleHomeScroll() {
    3. 篩選專案並更新 Masonry 排版
    ========================================= */
 
+// refreshMasonry — defensive helper for re-running Masonry layout after
+// DOM visibility / content changes. Solves two timing bugs:
+//   (a) display:none → block toggle. Calling reloadItems() synchronously
+//       right after the toggle measures stale / intermediate item heights
+//       because the browser hasn't finished reflow yet. requestAnimationFrame
+//       defers until the browser has applied the layout change.
+//   (b) Image dimensions may still be in flight (lazy-load, first paint).
+//       A second layout() pass inside imagesLoaded() catches that.
+// Safe to call before Masonry instance exists (no-op until grid + lib are
+// available). Reason string is for debug logging only.
+function refreshMasonry(reason) {
+    const grid = document.getElementById('masonry-container');
+    if (!grid) return;
+    if (typeof Masonry === 'undefined') return;
+
+    // Initialize on first call if the page hasn't yet — e.g. if called
+    // from a language switch before the initial imagesLoaded callback fired.
+    if (!msnry) {
+        msnry = new Masonry(grid, {
+            itemSelector: '.project-card',
+            columnWidth: '.project-card',
+            percentPosition: true,
+            gutter: '.gallery-gutter',
+            horizontalOrder: true
+        });
+    }
+
+    // Defer one frame so any display: block toggles or text swaps have
+    // been reflowed by the browser before Masonry measures.
+    requestAnimationFrame(function () {
+        msnry.reloadItems();
+        msnry.layout();
+
+        // Second layout pass once images finish loading, in case any
+        // newly-visible card had a not-yet-loaded image at first layout.
+        if (typeof imagesLoaded !== 'undefined') {
+            imagesLoaded(grid, function () { msnry.layout(); });
+        }
+    });
+}
+
 function applyFilter(testFn, activeType, activeValue) {
     const projects = document.querySelectorAll('.project-card');
 
@@ -285,7 +326,7 @@ function applyFilter(testFn, activeType, activeValue) {
             }
         }
 
-        if (msnry) { msnry.reloadItems(); msnry.layout(); }
+        refreshMasonry('filter:' + activeType + ':' + activeValue);
 
         // Phase 3: fade visible items back in
         setTimeout(() => {

@@ -1871,6 +1871,11 @@ function setLanguage(lang) {
   const newSearch = params.toString() ? '?' + params.toString() : '';
   history.replaceState(null, '', window.location.pathname + newSearch + window.location.hash);
   applyI18n();
+  // Card text heights can change after language switch (FI / DE often
+  // longer than EN). Re-run Masonry so cards don't overlap.
+  if (typeof refreshMasonry === 'function') {
+    refreshMasonry('language-switch:' + lang);
+  }
 }
 
 // Carry ?lang=XX across internal page links automatically
