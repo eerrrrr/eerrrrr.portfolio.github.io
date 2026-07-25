@@ -83,8 +83,11 @@ Folder name `main page` has a literal space — referenced in HTML as
 | `i18n.js`     | Dictionary for `en / zh / fi / de / ja`. `data-i18n="key"` attributes in HTML resolve to entries here. |
 | `<project>.html` | Per-project detail page — shares `style.css`, `script.js`, `i18n.js`. Two-column layout: gallery main + sticky sidebar with project meta. |
 
-Cache-buster: `i18n.js?v=4` — bump the `v=` number when you ship a
+Cache-buster: `i18n.js?v=7` — bump the `v=` number when you ship a
 change to the dictionary, so visitors don't get the stale cached copy.
+(Authoritative current value lives in
+`portfolio support document\PORTFOLIO_I18N_STATE.md`; this line is a
+doc note only — do not edit `i18n.js` based on it.)
 
 ## 5. Run locally
 
