@@ -215,7 +215,7 @@ a:hover { color: var(--green-accent); }
     width: 100%;
     min-width: 0;
     margin: 0;
-    padding: 0 10px 0 0;
+    padding: 0 16px 0 clamp(18px, 1.5vw, 28px);
     align-self: center;
     transform: none;
 }
