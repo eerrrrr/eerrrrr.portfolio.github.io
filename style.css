@@ -185,7 +185,7 @@ a:hover { color: var(--green-accent); }
 
 /* Bio Section */
 .bio-section {
-    padding-top: clamp(104px, 7vw, 136px); padding-bottom: clamp(104px, 7vw, 136px);
+    padding-top: clamp(104px, 7vw, 136px); padding-bottom: clamp(150px, 10vw, 200px);
     padding-left: 4%; padding-right: 0;
     background-color: var(--white); color: #333; position: relative; z-index: 15;
 }
@@ -235,10 +235,28 @@ a:hover { color: var(--green-accent); }
 .skill-pill { font-size: 0.78rem; color: #999; font-weight: 600; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-base); transition: 0.2s; white-space: nowrap; }
 .skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
 
+.section-scroll-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    color: #777;
+    font-family: var(--font-base);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: color 220ms ease, transform 220ms ease;
+}
+.section-scroll-link:hover { color: #111; transform: translateY(2px); }
+.section-scroll-link:focus-visible { outline: 2px solid #111; outline-offset: 6px; }
+
 /* =========================================
    4. 首頁作品列表 (Gallery Layout)
    ========================================= */
 .split-container { display: flex; width: 100%; min-height: 100vh; position: relative; background-color: var(--white); z-index: 10; }
+#works { scroll-margin-top: 80px; }
 .gallery-content {
     flex-grow: 1; display: flex; flex-direction: column;
     padding-top: 80px; padding-bottom: 0;
@@ -269,6 +287,8 @@ a:hover { color: var(--green-accent); }
 .text-box p { font-size: 0.85rem; color: #666; margin: 0; }
 .tags { margin-top: 8px; color: #999; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.4; }
 .gallery-footer { width: 100%; margin-top: 100px; color: #999; font-size: 0.8rem; text-align: center; clear: both; padding-bottom: 40px; flex-shrink: 0; }
+.gallery-scroll-up { margin: 0 auto 32px; }
+.gallery-scroll-up:hover { transform: translateY(-2px); }
 
 /* =========================================
    5. 側邊欄 (Sidebar)
@@ -322,9 +342,9 @@ a:hover { color: var(--green-accent); }
 .contact-box { margin-top: 40px; }
 .phone-numbers { font-size: var(--text-size-meta); color: #555; line-height: 1.6; margin-bottom: 20px; }
 .social-links { display: flex; flex-direction: column; gap: 8px; font-family: var(--font-base); }
-.arrow-link { font-size: var(--text-size-meta); color: var(--green-accent); border-bottom: 1px solid var(--green-accent); width: fit-content; padding-bottom: 2px; }
+.arrow-link { font-size: var(--text-size-meta); font-weight: 700; color: var(--green-accent); border-bottom: 1px solid var(--green-accent); width: fit-content; padding-bottom: 2px; }
 .arrow-link:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
-.ai-workflow-link { color: var(--red-link); border-bottom-color: var(--red-link); }
+.ai-workflow-link { color: var(--red-link); border-bottom-color: var(--red-link); font-weight: 900; }
 .ai-workflow-link:hover { color: #000; border-bottom-color: #000; }
 .category-filter-list { margin-bottom: 30px; display: flex; flex-direction: column; gap: 5px; }
 .cat-btn { font-size: 1rem; color: #888; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; width: fit-content; }
