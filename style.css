@@ -40,6 +40,7 @@
     --hero-content-gap: 60px; 
     
     --sidebar-width: clamp(340px, 25vw, 430px);
+    --sidebar-content-inset: 40px;
 }
 
 /* RWD 變數調整 */
@@ -215,12 +216,13 @@ a:hover { color: var(--green-accent); }
     width: 100%;
     min-width: 0;
     margin: 0;
-    padding: 0 16px 0 clamp(18px, 1.5vw, 28px);
+    padding: 0 16px 0 var(--sidebar-content-inset);
     align-self: center;
     transform: none;
 }
 .skills-header { font-size: 0.85rem; font-weight: 700; color: #999; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.bio-grid > .skills-content .skill-tags { width: 100%; max-width: 310px; }
 .skill-pill { font-size: 0.78rem; color: #999; font-weight: 600; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-base); transition: 0.2s; white-space: nowrap; }
 .skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
 
@@ -271,7 +273,7 @@ a:hover { color: var(--green-accent); }
     padding-top: 80px; padding-bottom: 40px; 
     padding-left: 15px; padding-right: 35px; 
 }
-.sticky-sidebar { padding-left: 40px; padding-right: 10px; padding-bottom: 12px; }
+.sticky-sidebar { padding-left: var(--sidebar-content-inset); padding-right: 10px; padding-bottom: 12px; }
 .project-info-sidebar {
     height: calc(100vh - 80px);
     top: 80px;
