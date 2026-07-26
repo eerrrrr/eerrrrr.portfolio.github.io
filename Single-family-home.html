@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,10 +37,12 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">Single-Family Home</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="Single-family-home/002.001-Site-Plan.jpg" alt="Single-Family Home Overview">
+                <img fetchpriority="high" decoding="async" width="3572" height="1684" src="Single-family-home/002.001-Site-Plan.jpg" alt="Single-Family Home Overview">
             </div>
 
             <div class="content-wrapper">
@@ -70,21 +73,21 @@
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/103.001-Ground-Floor-Plan.jpg" alt="Ground Floor Plan">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/103.001-Ground-Floor-Plan.jpg" alt="Ground Floor Plan">
                     <p data-i18n="cap.sfh.1" class="caption">Ground floor plan showing circulation and living spaces.</p>
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/Elevation0001.jpg" alt="South Elevation">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/Elevation0001.jpg" alt="South Elevation">
                     <p data-i18n="cap.sfh.2" class="caption">South elevation with carefully placed openings.</p>
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/103.002-First-Floor-Plan.jpg" alt="First Floor Plan">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/103.002-First-Floor-Plan.jpg" alt="First Floor Plan">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/Elevation0002.jpg" alt="North Elevation">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/Elevation0002.jpg" alt="North Elevation">
                 </div>
 
 
@@ -116,34 +119,34 @@
 
                 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/Elevation0003.jpg" alt="East Elevation">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/Elevation0003.jpg" alt="East Elevation">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/Elevation0004.jpg" alt="West Elevation">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/Elevation0004.jpg" alt="West Elevation">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/1241.001-Detail-Section.jpg" alt="Detail Section">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/1241.001-Detail-Section.jpg" alt="Detail Section">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/1241.003-Eave-detail-0001.jpg" alt="Eave Detail">
+                    <img decoding="async" width="3572" height="1684" loading="lazy" src="Single-family-home/1241.003-Eave-detail-0001.jpg" alt="Eave Detail">
                 </div>
 
 
 
                 <!-- <div class="gallery-block three-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="Single-family-home/detail-section.jpg" alt="Wall Section Detail">
+                        <img decoding="async" loading="lazy" src="Single-family-home/detail-section.jpg" alt="Wall Section Detail">
                         <p data-i18n="cap.sfh.9" class="caption">Detailed wall section showing insulation and structure.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="Single-family-home/eave-detail.jpg" alt="Eave Detail">
+                        <img decoding="async" loading="lazy" src="Single-family-home/eave-detail.jpg" alt="Eave Detail">
                         <p data-i18n="cap.sfh.10" class="caption">Roof eave junction detail.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <img loading="lazy" src="Single-family-home/window-detail.jpg" alt="Window Mounting Detail">
+                        <img decoding="async" loading="lazy" src="Single-family-home/window-detail.jpg" alt="Window Mounting Detail">
                         <p data-i18n="cap.sfh.11" class="caption">Window installation and waterproofing detail.</p>
                     </div>
                 </div> -->
@@ -161,7 +164,7 @@
                 </div>
 
                 <!-- <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="Single-family-home/section.jpg" alt="Building Section">
+                    <img decoding="async" loading="lazy" src="Single-family-home/section.jpg" alt="Building Section">
                     <p data-i18n="cap.sfh.12" class="caption">Full building section A-A.</p>
                 </div> -->
 
@@ -182,7 +185,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">Single-Family Home</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">Single-Family Home</div>
                     <div class="sidebar-description">
                         <p data-i18n="sfh.desc.p1">A two-storey single-family house in Katajaharju, Helsinki.</p>
                         <p data-i18n="sfh.desc.p2">A compact concrete structure for a low-density residential plot. The project uses section, material honesty, and structural discipline to produce a house that responds to climate and neighbourhood scale within a constrained footprint.</p>

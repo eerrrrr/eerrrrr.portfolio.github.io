@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,10 +37,12 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">Nyamata Hospital</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="nyamata/hero.png" alt="Nyamata Hospital Overview">
+                <img fetchpriority="high" decoding="async" width="2752" height="1536" src="nyamata/hero.png" alt="Nyamata Hospital Overview">
             </div>
 
             <div class="content-wrapper">
@@ -71,11 +74,11 @@
 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="nyamata/context-1.jpg" alt="Existing Site Condition">
+                        <img decoding="async" width="4000" height="3000" loading="lazy" src="nyamata/context-1.jpg" alt="Existing Site Condition">
                         <p data-i18n="cap.nyamata.1" class="caption">Existing circulation challenges and overcrowding.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="nyamata/context-2.jpg" alt="Site Analysis">
+                        <img decoding="async" width="4000" height="3000" loading="lazy" src="nyamata/context-2.jpg" alt="Site Analysis">
                         <p data-i18n="cap.nyamata.2" class="caption">Analysis of patient flow and blockage points.</p>
                     </div>
                 </div>
@@ -94,15 +97,15 @@
 <!-- 
                 <div class="gallery-block three-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="nyamata/strategy-1.jpg" alt="Circulation Strategy">
+                        <img decoding="async" loading="lazy" src="nyamata/strategy-1.jpg" alt="Circulation Strategy">
                         <p data-i18n="cap.nyamata.3" class="caption">Separating patient and visitor flows.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="nyamata/strategy-2.jpg" alt="Accessibility Strategy">
+                        <img decoding="async" loading="lazy" src="nyamata/strategy-2.jpg" alt="Accessibility Strategy">
                         <p data-i18n="cap.nyamata.4" class="caption">Improving ramps and corridor widths.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <img loading="lazy" src="nyamata/strategy-3.jpg" alt="Waiting Area Strategy">
+                        <img decoding="async" loading="lazy" src="nyamata/strategy-3.jpg" alt="Waiting Area Strategy">
                         <p data-i18n="cap.nyamata.5" class="caption">Introducing shaded waiting zones.</p>
                     </div>
                 </div> -->
@@ -120,13 +123,13 @@
                 </div>
 
                  <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="nyamata/section.jpg" alt="Proposed Master Plan">
+                    <img decoding="async" width="6939" height="2989" loading="lazy" src="nyamata/section.jpg" alt="Proposed Master Plan">
                     <p data-i18n="cap.nyamata.6" class="caption">New shaded waiting area connecting departments.</p>
                 </div>
 
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="nyamata/plan.jpg" alt="Proposed Master Plan">
+                    <img decoding="async" width="941" height="584" loading="lazy" src="nyamata/plan.jpg" alt="Proposed Master Plan">
                     <p data-i18n="cap.nyamata.7" class="caption">Plan showing the new circulation routes and waiting extensions.</p>
                 </div>
 
@@ -144,11 +147,11 @@
 <!-- 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="nyamata/proposal-1.jpg" alt="Waiting Area Perspective">
+                        <img decoding="async" loading="lazy" src="nyamata/proposal-1.jpg" alt="Waiting Area Perspective">
                         <p data-i18n="cap.nyamata.8" class="caption">New shaded waiting area connecting departments.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="nyamata/proposal-2.jpg" alt="Construction Detail">
+                        <img decoding="async" loading="lazy" src="nyamata/proposal-2.jpg" alt="Construction Detail">
                         <p data-i18n="cap.nyamata.9" class="caption">Detail of the timber and bamboo structure.</p>
                     </div>
                 </div> -->
@@ -173,7 +176,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">Nyamata Hospital</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">Nyamata Hospital</div>
                     <div class="sidebar-description">
                         <p data-i18n="nyamata.desc.p1">An on-site design intervention at Nyamata District Hospital, Rwanda.</p>
                         <p data-i18n="nyamata.desc.p2">Rather than a full rebuild, the project works within the existing hospital to improve patient flow, waiting conditions, and accessibility. The interventions are precise and buildable — developed directly from observation of how the building is used each day.</p>

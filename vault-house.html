@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,10 +37,12 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">Vault House</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="vault-house/hero.jpg" alt="Vault House Main Perspective Exterior">
+                <img fetchpriority="high" decoding="async" width="1500" height="844" src="vault-house/hero.jpg" alt="Vault House Main Perspective Exterior">
             </div>
 
             <div class="content-wrapper">
@@ -67,7 +70,7 @@
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="vault-house/exterior-render.jpg" alt="Exterior Render">
+                    <img decoding="async" width="1500" height="999" loading="lazy" src="vault-house/exterior-render.jpg" alt="Exterior Render">
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
@@ -87,11 +90,11 @@
 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="vault-house/interior-1.jpg" alt="Interior Corridor View">
+                        <img decoding="async" width="1500" height="1000" loading="lazy" src="vault-house/interior-1.jpg" alt="Interior Corridor View">
                         <p data-i18n="cap.vault.1" class="caption">Interior view of the circulation space highlighting the ribbed ceiling.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="vault-house/interior-2.jpg" alt="Interior Library Space">
+                        <img decoding="async" width="1500" height="1000" loading="lazy" src="vault-house/interior-2.jpg" alt="Interior Library Space">
                         <p data-i18n="cap.vault.2" class="caption">The main library space connecting different levels via the spiral stair.</p>
                     </div>
                 </div>
@@ -110,11 +113,11 @@
 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="vault-house/final-model-3.jpg" alt="Model Underside View">
+                        <img decoding="async" width="400" height="387" loading="lazy" src="vault-house/final-model-3.jpg" alt="Model Underside View">
                         <p data-i18n="cap.vault.3" class="caption">View from below showing the ribbed structural pattern.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="vault-house/final-model-4.jpg" alt="Model Top Texture">
+                        <img decoding="async" width="3571" height="3456" loading="lazy" src="vault-house/final-model-4.jpg" alt="Model Top Texture">
                         <p data-i18n="cap.vault.4" class="caption">Top view of the printed slab modules.</p>
                     </div>
                 </div>
@@ -148,11 +151,11 @@
                
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="vault-house/plan-1.jpg" alt="Ground Floor Plan">
+                        <img decoding="async" width="400" height="236" loading="lazy" src="vault-house/plan-1.jpg" alt="Ground Floor Plan">
                         <p data-i18n="cap.vault.5" class="caption">Ground floor plan showing the internal organization and context.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="vault-house/elevation-1.jpg" alt="Street Elevation">
+                        <img decoding="async" width="1500" height="933" loading="lazy" src="vault-house/elevation-1.jpg" alt="Street Elevation">
                         <p data-i18n="cap.vault.6" class="caption">Elevation showing the building's relationship with the historic surroundings.</p>
                     </div>
                 </div>
@@ -172,17 +175,17 @@
 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="vault-house/final-model-1.jpg" alt="Model Detail Column Connection">
+                        <img decoding="async" width="900" height="1350" loading="lazy" src="vault-house/final-model-1.jpg" alt="Model Detail Column Connection">
                         <p data-i18n="cap.vault.7" class="caption">Close-up of the 3D printed node connection.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="vault-house/final-model-2.jpg" alt="Model Structure View">
+                        <img decoding="async" width="400" height="267" loading="lazy" src="vault-house/final-model-2.jpg" alt="Model Structure View">
                         <p data-i18n="cap.vault.8" class="caption">The structural bay system demonstrated in the physical model.</p>
                     </div>
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="vault-house/section-1.jpg" alt="Building Section">
+                    <img decoding="async" width="400" height="235" loading="lazy" src="vault-house/section-1.jpg" alt="Building Section">
                     <p data-i18n="cap.vault.9" class="caption">Cross section illustrating the vertical atrium and slab integration.</p>
                 </div>
 
@@ -204,7 +207,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">Vault House</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">Vault House</div>
                     <div class="sidebar-description">
                         <p data-i18n="vault.desc.p1">A 3D-printed library extension at the Altes Hallenbad site in Heidelberg.</p>
                         <p data-i18n="vault.desc.p2">The project uses structural optimisation to generate a vaulted concrete slab, fabricated through robotic 3D printing. The form is shaped by load distribution — reducing material while improving the building's thermal and structural performance.</p>

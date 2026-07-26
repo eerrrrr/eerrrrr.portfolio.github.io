@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,7 +37,9 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">RUACH</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
              <video autoplay muted loop playsinline style="width: 80%; height: 80%; object-fit: cover;">
@@ -72,18 +75,18 @@
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img src="ruach/process-1.jpg" alt="Immersive Environment">
+                    <img decoding="async" width="1920" height="1080" src="ruach/process-1.jpg" alt="Immersive Environment">
                     <p data-i18n="cap.ruach.1" class="caption">A generated environment reflecting user choices.</p>
                 </div>
 
 
                 <!-- <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="ruach/process-1.jpg" alt="Selection Process">
+                        <img decoding="async" width="1920" height="1080" loading="lazy" src="ruach/process-1.jpg" alt="Selection Process">
                         <p data-i18n="cap.ruach.2" class="caption">Users make intuitive choices to shape the environment.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="ruach/process-2.jpg" alt="VR Environment">
+                        <img decoding="async" loading="lazy" src="ruach/process-2.jpg" alt="VR Environment">
                         <p data-i18n="cap.ruach.3" class="caption">Transition spaces like elevators guide the journey.</p>
                     </div>
                 </div> -->
@@ -108,7 +111,7 @@
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="ruach/environment.jpg" alt="Immersive Environment">
+                    <img decoding="async" width="1920" height="1080" loading="lazy" src="ruach/environment.jpg" alt="Immersive Environment">
                     <p data-i18n="cap.ruach.4" class="caption">A generated environment reflecting user choices.</p>
                 </div>
 
@@ -123,15 +126,15 @@
 
                 <div class="gallery-block three-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="ruach/detail-1.jpg" alt="City Element">
+                        <img decoding="async" width="1920" height="1080" loading="lazy" src="ruach/detail-1.jpg" alt="City Element">
                         <p data-i18n="cap.ruach.5" class="caption">Urban textures.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="ruach/detail-2.jpg" alt="Nature Element">
+                        <img decoding="async" width="1920" height="1080" loading="lazy" src="ruach/detail-2.jpg" alt="Nature Element">
                         <p data-i18n="cap.ruach.6" class="caption">Natural landscapes.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <img loading="lazy" src="ruach/detail-3.jpg" alt="Collage Result">
+                        <img decoding="async" width="1920" height="1080" loading="lazy" src="ruach/detail-3.jpg" alt="Collage Result">
                         <p data-i18n="cap.ruach.7" class="caption">Final spatial collage.</p>
                     </div>
                 </div>
@@ -144,7 +147,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">RUACH</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">RUACH</div>
                     <div class="sidebar-description">
                         <p data-i18n="ruach.desc.p1">An interactive VR prototype developed at the Technical University of Munich.</p>
                         <p data-i18n="ruach.desc.p2">RUACH functions as a subconscious spatial guide — users make a series of intuitive choices about environment, material, sound, and light, and the system assembles a personal virtual space in response. The architecture is not fixed; it is built through use.</p>

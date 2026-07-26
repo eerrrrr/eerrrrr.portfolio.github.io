@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,10 +37,12 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">Furniture in Park</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="furniture-park/hero.jpg" alt="Furniture in Park Overview">
+                <img fetchpriority="high" decoding="async" width="1920" height="1080" src="furniture-park/hero.jpg" alt="Furniture in Park Overview">
             </div>
 
             <div class="content-wrapper">
@@ -69,7 +72,7 @@
                 </div>
                 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="furniture-park/render-1.jpg" alt="Modular System Diagram">
+                    <img decoding="async" width="2752" height="1536" loading="lazy" src="furniture-park/render-1.jpg" alt="Modular System Diagram">
                 </div>
 
                 <div class="text-block-row" data-aos="fade-up">
@@ -84,19 +87,19 @@
                     </div>
                 </div>
                  <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="furniture-park/render-2.jpg" alt="Modular System Diagram">
+                    <img decoding="async" width="2752" height="1536" loading="lazy" src="furniture-park/render-2.jpg" alt="Modular System Diagram">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="furniture-park/diagram-1.jpg" alt="Modular System Diagram">
+                    <img decoding="async" width="1748" height="863" loading="lazy" src="furniture-park/diagram-1.jpg" alt="Modular System Diagram">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="furniture-park/diagram-2.jpg" alt="Modular System Diagram">
+                    <img decoding="async" width="1123" height="863" loading="lazy" src="furniture-park/diagram-2.jpg" alt="Modular System Diagram">
                 </div>
 
                 <div class="gallery-block full-width" data-aos="fade-up">
-                    <img loading="lazy" src="furniture-park/diagram-3.jpg" alt="Modular System Diagram">
+                    <img decoding="async" width="1383" height="383" loading="lazy" src="furniture-park/diagram-3.jpg" alt="Modular System Diagram">
                     <p data-i18n="cap.park.1" class="caption">Modular system allowing for linear and angled configurations.</p>
                 </div>
 
@@ -116,11 +119,11 @@
                 </div>
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="furniture-park/diagram-4.png" alt="Existing Site Condition">
+                        <img decoding="async" width="1169" height="407" loading="lazy" src="furniture-park/diagram-4.png" alt="Existing Site Condition">
                         <!-- <p data-i18n="cap.park.2" class="caption">Existing circulation challenges and overcrowding.</p> -->
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="furniture-park/render-3.jpg" alt="Site Analysis">
+                        <img decoding="async" width="2752" height="1536" loading="lazy" src="furniture-park/render-3.jpg" alt="Site Analysis">
                         <!-- <p data-i18n="cap.park.3" class="caption">Analysis of patient flow and blockage points.</p> -->
                     </div>
                 </div>
@@ -152,7 +155,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">Furniture in Park</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">Furniture in Park</div>
                     <div class="sidebar-description">
                         <p data-i18n="park.desc.p1">A set of outdoor seating elements for the lawn area of WestK Art Park, Hong Kong.</p>
                         <p data-i18n="park.desc.p2">Designed for durable, low-maintenance outdoor use. The pieces respond to the material constraints and specific conditions of the park's landscape without competing with it.</p>

@@ -49,6 +49,12 @@ function buildCardFromProject(p) {
     const img = document.createElement('img');
     img.src = p.coverImage || '';
     img.alt = p.title || '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    if (p.coverWidth && p.coverHeight) {
+        img.width = p.coverWidth;
+        img.height = p.coverHeight;
+    }
     imageBox.appendChild(img);
 
     const textBox = document.createElement('div');
@@ -164,6 +170,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     const heroSection = document.querySelector('.hero-poster');
     // [重要] 對應 HTML 中的 ID
     const grid = document.getElementById('masonry-container');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo && reduceMotion.matches) {
+        heroVideo.pause();
+        heroVideo.removeAttribute('autoplay');
+    }
 
     if (heroSection) {
         initLiquidChrome();

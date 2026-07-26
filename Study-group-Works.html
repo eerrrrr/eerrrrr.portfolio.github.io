@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="detail-page-body">
+    <a class="skip-link" href="#project-content">Skip to project content</a>
 
     <nav class="detail-nav">
         <div class="detail-nav-left">
@@ -36,10 +37,12 @@
 
     <div class="vertical-layout-container">
 
-        <main class="vertical-gallery-content">
+        <main class="vertical-gallery-content" id="project-content">
+            <h1 class="visually-hidden">Study Group Works</h1>
+            <h2 class="visually-hidden">Project details</h2>
             
             <div class="project-hero-split" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="study-group/hero.jpg" alt="PAC Model Reconstruction Overview">
+                <img fetchpriority="high" decoding="async" width="7104" height="4158" src="study-group/hero.jpg" alt="PAC Model Reconstruction Overview">
             </div>
 
             <div class="content-wrapper">
@@ -70,11 +73,11 @@
 
                 <div class="gallery-block two-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="study-group/detail-1.jpg" alt="Interior Light Study">
+                        <img decoding="async" width="3869" height="2762" loading="lazy" src="study-group/detail-1.jpg" alt="Interior Light Study">
                         <p data-i18n="cap.study.1" class="caption">Study of light entering the interior space.</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="study-group/detail-2.jpg" alt="Structural Detail">
+                        <img decoding="async" width="3869" height="2762" loading="lazy" src="study-group/detail-2.jpg" alt="Structural Detail">
                         <p data-i18n="cap.study.2" class="caption">Detail of the column and slab connection.</p>
                     </div>
                 </div>
@@ -93,15 +96,15 @@
 
                 <div class="gallery-block three-col">
                     <div data-aos="fade-up">
-                        <img loading="lazy" src="study-group/process-1.jpg" alt="Base Construction">
+                        <img decoding="async" width="7026" height="4481" loading="lazy" src="study-group/process-1.jpg" alt="Base Construction">
                         <p data-i18n="cap.study.3" class="caption">1:50 physical model reconstruction 1</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="100">
-                        <img loading="lazy" src="study-group/process-2.jpg" alt="Vertical Supports">
+                        <img decoding="async" width="6000" height="3902" loading="lazy" src="study-group/process-2.jpg" alt="Vertical Supports">
                         <p data-i18n="cap.study.4" class="caption">1:50 physical model reconstruction 2</p>
                     </div>
                     <div data-aos="fade-up" data-aos-delay="200">
-                        <img loading="lazy" src="study-group/process-3.jpg" alt="Roof Assembly">
+                        <img decoding="async" width="6958" height="4523" loading="lazy" src="study-group/process-3.jpg" alt="Roof Assembly">
                         <p data-i18n="cap.study.5" class="caption">1:50 physical model reconstruction 3</p>
                     </div>
                 </div>
@@ -135,7 +138,7 @@
         <aside class="project-info-sidebar">
             <div class="sidebar-scroll-content">
                 <div class="info-content">
-                    <h1 class="sidebar-title">Study Group Works</h1>
+                    <div class="sidebar-title" role="heading" aria-level="2">Study Group Works</div>
                     <div class="sidebar-description">
                         <p data-i18n="study.desc.p1">A 1:50 physical model reconstruction of Ignazio Gardella’s PAC — Padiglione d’Arte Contemporanea.</p>
                         <p data-i18n="study.desc.p2">The model is built as a tool for understanding, not for presentation. Working at 1:50 forces a close reading of proportion, structure, and spatial sequence — making visible what drawings alone cannot show.</p>
