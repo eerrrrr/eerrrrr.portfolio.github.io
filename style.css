@@ -185,17 +185,17 @@ a:hover { color: var(--green-accent); }
 /* Bio Section */
 .bio-section {
     padding-top: clamp(104px, 7vw, 136px); padding-bottom: clamp(104px, 7vw, 136px);
-    padding-left: 4%; padding-right: 2%;
+    padding-left: 4%; padding-right: 0;
     background-color: var(--white); color: #333; position: relative; z-index: 15;
 }
 .bio-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    column-gap: clamp(72px, 7vw, 140px);
+    grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+    column-gap: 0;
     width: 100%;
     align-items: center;
 }
-.bio-content { min-width: 0; padding-left: clamp(90px, 6.3vw, 122px); padding-right: 0; }
+.bio-content { min-width: 0; padding-left: clamp(90px, 6.3vw, 122px); padding-right: clamp(72px, 7vw, 140px); }
 .bio-content h2 { color: var(--green-accent); font-size: 1rem; margin-bottom: 20px; margin-top: 0; }
 .bio-text { 
     font-size: 1.3rem; line-height: 1.5; font-weight: 400; color: #555; margin: 0;
@@ -212,12 +212,12 @@ a:hover { color: var(--green-accent); }
 }
 .manifesto-line { display: block; white-space: nowrap; }
 .skills-content {
-    width: 320px;
+    width: 100%;
     min-width: 0;
     margin: 0;
-    padding: 0 10px;
+    padding: 0 10px 0 40px;
     align-self: center;
-    transform: translateX(clamp(-22px, calc(2vw - 49.5px), -10px));
+    transform: none;
 }
 .skills-header { font-size: 0.85rem; font-weight: 700; color: #999; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
