@@ -203,14 +203,14 @@ a:hover { color: var(--green-accent); }
     color: #111;
     font-size: clamp(2.3rem, 3.5vw, 4.6rem);
     font-weight: 500;
-    line-height: 1.14;
+    line-height: 1.25;
     letter-spacing: -0.04em;
 }
 .manifesto-line { display: block; white-space: nowrap; }
 .skills-content { width: 360px; min-width: 360px; margin-left: 40px; margin-right: 0; padding-top: 10px; padding-left: 30px; padding-right: 30px; }
 .skills-header { font-size: 0.85rem; font-weight: 700; color: #999; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-pill { font-size: 0.70rem; color: #999; font-weight: 600; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-base); transition: 0.2s; white-space: nowrap; }
+.skill-pill { font-size: 0.78rem; color: #999; font-weight: 600; background-color: var(--skill-bg); padding: 4px 12px; border-radius: 20px; font-family: var(--font-base); transition: 0.2s; white-space: nowrap; }
 .skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
 
 /* =========================================
