@@ -509,6 +509,37 @@ a:hover { color: var(--green-accent); }
 .img-focus-left { object-position: center left !important; }
 .img-focus-right { object-position: center right !important; }
 
+/* Editorial motion system */
+[data-aos] {
+    transition-duration: 650ms !important;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+[data-aos="fade-up"],
+[data-aos="zoom-in"] {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(1) !important;
+}
+
+[data-aos="fade-up"].aos-animate,
+[data-aos="zoom-in"].aos-animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+}
+
+.content-wrapper > .gallery-block:nth-child(3n + 2)[data-aos],
+.gallery-block > div:nth-child(2)[data-aos] {
+    transition-delay: 80ms !important;
+}
+
+@media (min-width: 1025px) {
+    .text-block-row h3 {
+        position: sticky;
+        top: 112px;
+        align-self: start;
+    }
+}
+
 
 /* =========================================
    7. RWD 手機/平板 調整區域
@@ -689,6 +720,11 @@ a:hover { color: var(--green-accent); }
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition-delay: 0ms !important;
     }
 }
 
