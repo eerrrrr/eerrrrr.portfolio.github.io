@@ -189,6 +189,15 @@ a:hover { color: var(--green-accent); }
     padding-left: 4%; padding-right: 0;
     background-color: var(--white); color: #333; position: relative; z-index: 15;
 }
+.bio-section::after {
+    content: "";
+    position: absolute;
+    top: clamp(104px, 7vw, 136px);
+    right: var(--sidebar-width);
+    bottom: 0;
+    border-left: 1px solid #e0e0e0;
+    pointer-events: none;
+}
 .bio-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
@@ -526,6 +535,7 @@ a:hover { color: var(--green-accent); }
     .text-block-row > div { width: 100%; } 
     .detail-nav { padding: 20px; }
     .bio-section { padding: 60px 30px; }
+    .bio-section::after { display: none; }
     .sidebar-next-project-container { text-align: center; }
     
     /* 平板/手機上，重置圖片比例，讓它們自然顯示，避免手機上看太小 */
