@@ -32,23 +32,21 @@
     /* 版面控制變數 */
     --hero-pad-left: 100px;
     --hero-pad-right: 100px;
-    --content-pad-left: 300px;
-    --content-pad-right: 300px;
+    --content-pad-left: clamp(48px, 8vw, 150px);
+    --content-pad-right: clamp(48px, 8vw, 150px);
     
     --hero-height: 500px;     
     --hero-pad-vertical: 20px; 
     --hero-content-gap: 60px; 
     
-    --sidebar-width: 400px;
+    --sidebar-width: clamp(340px, 25vw, 430px);
 }
 
 /* RWD 變數調整 */
 @media (max-width: 1400px) {
     :root {
-        --hero-pad-left: 100px;
-        --hero-pad-right: 100px;
-        --content-pad-left: 100px;
-        --content-pad-right: 100px;
+        --hero-pad-left: clamp(40px, 6vw, 80px);
+        --hero-pad-right: clamp(40px, 6vw, 80px);
     }
 }
 
@@ -197,7 +195,7 @@ a:hover { color: var(--green-accent); }
     width: 100%;
     align-items: center;
 }
-.bio-content { min-width: 0; padding-left: 70px; padding-right: 0; }
+.bio-content { min-width: 0; padding-left: clamp(90px, 6.3vw, 122px); padding-right: 0; }
 .bio-content h2 { color: var(--green-accent); font-size: 1rem; margin-bottom: 20px; margin-top: 0; }
 .bio-text { 
     font-size: 1.3rem; line-height: 1.5; font-weight: 400; color: #555; margin: 0;
@@ -274,7 +272,13 @@ a:hover { color: var(--green-accent); }
     padding-left: 15px; padding-right: 35px; 
 }
 .sticky-sidebar { padding-left: 40px; padding-right: 10px; padding-bottom: 12px; }
-.project-info-sidebar { height: calc(100vh - 80px); top: 80px; padding-top: 60px; }
+.project-info-sidebar {
+    height: calc(100vh - 80px);
+    top: 80px;
+    padding-top: clamp(40px, 4vw, 64px);
+    padding-left: clamp(28px, 2.4vw, 44px);
+    padding-right: clamp(28px, 2.4vw, 44px);
+}
 .sidebar-top-content { flex-grow: 1; display: flex; flex-direction: column; }
 .sidebar-lower-content { margin-top: auto; }
 .sidebar-contact-box { margin-top: 0; margin-bottom: 28px; }
@@ -290,10 +294,10 @@ a:hover { color: var(--green-accent); }
 .sidebar-scroll-content::-webkit-scrollbar-thumb:hover { background-color: #999; }
 
 .info-content { flex-grow: 1; display: flex; flex-direction: column; }
-.sidebar-title { font-size: 3rem; line-height: 1.1; margin: 0 0 30px 0; color: #222; }
+.sidebar-title { font-size: clamp(2.35rem, 3vw, 3rem); line-height: 1.08; margin: 0 0 30px 0; color: #222; text-wrap: balance; }
 .sidebar-description p { 
     font-size: var(--text-size-body); line-height: 1.5; color: var(--text-color-body);       
-    margin-bottom: 20px; text-align: justify; text-justify: inter-word; 
+    margin-bottom: 20px; text-align: left; text-wrap: pretty;
 }
 .meta-block { border-top: 1px solid #eee; padding-top: 20px; }
 .meta-data p { margin: 10px 0; font-size: var(--text-size-meta); color: #333; font-family: var(--font-mono); }
@@ -333,12 +337,12 @@ a:hover { color: var(--green-accent); }
 .detail-page-body { background: #fff; }
 
 .vertical-layout-container { display: flex; width: 100%; min-height: 100vh; padding-top: 80px; box-sizing: border-box; position: relative; }
-.vertical-gallery-content { flex-grow: 1; padding: 0; box-sizing: border-box; display: flex; flex-direction: column; }
+.vertical-gallery-content { flex: 1 1 auto; min-width: 0; padding: 0; box-sizing: border-box; display: flex; flex-direction: column; }
 
 /* 專案主圖 (Hero) */
 .project-hero-split {
     width: 100%; 
-    min-height: var(--hero-height); 
+    min-height: clamp(360px, 42vw, 620px);
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -354,9 +358,16 @@ a:hover { color: var(--green-accent); }
     display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
     border-radius: 4px; object-fit: cover; object-position: center; 
 }
+.project-hero-split video {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 4px;
+    object-fit: cover;
+}
 
 /* 內容區塊 */
-.content-wrapper { box-sizing: border-box; padding-top: 0; padding-bottom: 100px; padding-left: var(--content-pad-left); padding-right: var(--content-pad-right); }
+.content-wrapper { box-sizing: border-box; width: 100%; padding-top: 0; padding-bottom: clamp(72px, 8vw, 120px); padding-left: var(--content-pad-left); padding-right: var(--content-pad-right); }
 .gallery-block { margin-bottom: 56px; width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; }
 
 /* 專案 Contribution Block (What I Did — aligned with text-block-row) */
@@ -458,21 +469,27 @@ a:hover { color: var(--green-accent); }
 
 /* 文字區塊 */
 .text-block-row {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    width: 100%; max-width: 100%; margin: 52px 0 52px 0;
+    display: grid;
+    grid-template-columns: minmax(150px, 0.34fr) minmax(0, 0.66fr);
+    column-gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+    width: 100%;
+    max-width: 960px;
+    margin: clamp(56px, 6vw, 88px) auto;
 }
 .text-block-row h3 { 
-    width: 30%; 
+    width: auto;
     font-size: var(--text-size-h3); margin-top: 0; color: #000; line-height: 1.2;
 }
 .text-block-row > div {
-    width: 65%; 
+    width: auto;
     display: flex; flex-direction: column; gap: 1.5rem; 
 }
 .text-block-row p { 
     width: 100%; 
     font-size: var(--text-size-body); line-height: var(--line-height-body); color: var(--text-color-body); margin: 0;
-    text-align: justify; text-justify: inter-word;  
+    text-align: left;
+    text-wrap: pretty;
 }
 
 .img-focus-top { object-position: top center !important; }
@@ -496,10 +513,13 @@ a:hover { color: var(--green-accent); }
     .vertical-layout-container { flex-direction: column-reverse; padding-top: 60px; }
     .sticky-sidebar { width: 100%; min-width: auto; height: auto; position: relative; padding: 40px 40px; border-left: none; }
     .sidebar-scroll-content { padding-left: 0; padding-right: 0; }
-    .project-info-sidebar { width: 100%; min-width: auto; height: auto; position: relative; top: 0; padding: 40px 20px; }
+    .project-info-sidebar { width: 100%; min-width: auto; height: auto; position: relative; top: 0; padding: 48px clamp(24px, 5vw, 52px); }
+    .project-info-sidebar .sidebar-scroll-content { overflow: visible; }
+    .project-info-sidebar .sidebar-description { max-width: 900px; }
+    .project-info-sidebar .sidebar-bottom-group { margin-top: 36px; }
     .project-hero-split { min-height: 50vh; padding: 40px 20px; }
     .content-wrapper { padding: 40px 20px; }
-    .text-block-row { flex-direction: column; }
+    .text-block-row { grid-template-columns: 1fr; row-gap: 18px; }
     .text-block-row h3 { width: 100%; margin-bottom: 15px; }
     .text-block-row > div { width: 100%; } 
     .detail-nav { padding: 20px; }
@@ -585,6 +605,14 @@ a:hover { color: var(--green-accent); }
         padding-bottom: 60px;
         border-top: 1px solid #eee; 
     }
+    .project-info-sidebar .sidebar-title { font-size: clamp(2.25rem, 11vw, 2.75rem); margin-bottom: 28px; }
+    .detail-nav { gap: 12px; }
+    .detail-nav-left { gap: 10px; min-width: 0; }
+    .detail-nav-center { display: none; }
+    .detail-nav-right { flex: 0 0 auto; }
+    .detail-nav .lang-btn:not(.lang-active) { display: none; }
+    .detail-nav .nav-text-link { white-space: nowrap; font-size: 0.72rem; }
+    .detail-logo { font-size: 1.1rem; }
 
     /* 專案卡片修正 */
     .project-card { width: 100%; margin-bottom: 40px; }
@@ -641,6 +669,15 @@ a:hover { color: var(--green-accent); }
     .gallery-content { padding-top: 20px; padding-left: 20px; padding-right: 20px; }
 
     /* Contribution block: inherits text-block-row mobile stacking */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Desktop: hide the sidebar lang switcher */
