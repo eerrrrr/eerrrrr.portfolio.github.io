@@ -404,7 +404,7 @@ button:focus-visible {
 .contact-box { margin-top: 40px; }
 .phone-numbers { font-size: var(--text-size-meta); color: #555; line-height: 1.6; margin-bottom: 20px; }
 .social-links { display: flex; flex-direction: column; gap: 2px; font-family: var(--font-base); }
-.arrow-link { font-size: var(--text-size-meta); font-weight: 600; color: #477a47; border-bottom: 1px solid currentColor; width: fit-content; min-height: 32px; display: inline-flex; align-items: center; padding: 4px 0 3px; }
+.arrow-link { font-size: var(--text-size-meta); font-weight: 400; color: #999; border-bottom: 1px solid currentColor; width: fit-content; min-height: 32px; display: inline-flex; align-items: center; padding: 4px 0 3px; }
 .arrow-link:hover { color: var(--green-dark); border-bottom-color: var(--green-dark); }
 .ai-workflow-link { color: var(--red-link); border-bottom-color: var(--red-link); font-weight: 900; }
 .ai-workflow-link:hover { color: #000; border-bottom-color: #000; }
