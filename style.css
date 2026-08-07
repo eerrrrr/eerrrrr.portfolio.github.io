@@ -409,14 +409,18 @@ button:focus-visible {
 .ai-workflow-link { color: var(--red-link); border-bottom-color: var(--red-link); font-weight: 900; }
 .ai-workflow-link:hover { color: #000; border-bottom-color: #000; }
 
-/* Sidebar slow-reveal: fade only, no movement ("just showing up").
-   Same growing-gap delay as the manifesto/skills reveal above, keyed off
-   .sticky-sidebar.in-view so it plays once the sidebar scrolls into view. */
+/* Sidebar slow-reveal: fades in while sliding in from the left (mirrors
+   the old data-aos="fade-left"), with the same growing-gap delay as the
+   manifesto/skills reveal above, keyed off .sticky-sidebar.in-view so it
+   plays once the sidebar scrolls into view. Slower duration (0.7s) reads
+   as an unhurried fly-in rather than a snap. */
 .sidebar-reveal {
     opacity: 0;
-    transition: opacity 0.5s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0));
+    transform: translateX(-24px);
+    transition: opacity 0.7s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0)),
+                transform 0.7s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0));
 }
-.sticky-sidebar.in-view .sidebar-reveal { opacity: 1; }
+.sticky-sidebar.in-view .sidebar-reveal { opacity: 1; transform: translateX(0); }
 
 @media (pointer: coarse) {
     .lang-btn { min-width: 44px; min-height: 44px; padding: 11px 8px; }
@@ -430,9 +434,11 @@ button:focus-visible {
 .tag-cloud ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; row-gap: 2px; list-style: none; padding: 0; margin: 0; }
 .tag-btn {
     font-size: 0.9rem; color: #555; cursor: pointer; font-family: var(--font-base); white-space: nowrap; display: inline-flex; align-items: center; min-height: 30px;
-    /* Combined with .sidebar-reveal above: opacity carries the growing
-       reveal delay, color stays instant-transition on hover as before. */
-    transition: opacity 0.5s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0)), color 0.2s ease;
+    /* Combined with .sidebar-reveal above: opacity/transform carry the
+       growing reveal delay, color stays instant-transition on hover. */
+    transition: opacity 0.7s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0)),
+                transform 0.7s ease-out calc(55ms * var(--i, 0) + 5ms * var(--i, 0) * var(--i, 0)),
+                color 0.2s ease;
 }
 .tag-btn:hover, .tag-btn.active { color: var(--green-accent); font-weight: bold; }
 .reset-tag { margin-top: 2px; font-size: 0.8rem; font-family: var(--font-base); }
