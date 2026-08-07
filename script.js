@@ -209,6 +209,34 @@ function initBioReveal() {
 }
 
 /* =========================================
+   0c. Sidebar (name/education/contact/filter) slow reveal
+   =========================================
+   Same growing-delay fade as initBioReveal(), but fade-only (no
+   translateY) since the sidebar items already carry --i and the
+   .sidebar-reveal class directly in index.html. Triggers once when the
+   sticky sidebar scrolls into view.
+   ========================================= */
+function initSidebarReveal() {
+    const sidebar = document.querySelector('.sticky-sidebar');
+    if (!sidebar) return;
+
+    if (!('IntersectionObserver' in window)) {
+        sidebar.classList.add('in-view');
+        return;
+    }
+
+    const sidebarObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                sidebar.classList.add('in-view');
+                sidebarObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sidebarObserver.observe(sidebar);
+}
+
+/* =========================================
    1. 初始化 AOS & 頁面判斷邏輯
    ========================================= */
 var msnry;
@@ -231,6 +259,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     initBioReveal();
+    initSidebarReveal();
 
     // JSON-first rendering: cards come from data/projects.json by
     // default. Returns false (leaving hardcoded cards in place) if
