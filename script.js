@@ -161,6 +161,54 @@ async function tryRenderFromJson(grid) {
 }
 
 /* =========================================
+   0b. Manifesto + IT Skills word-by-word reveal
+   =========================================
+   Splits the manifesto sentence into per-word spans and indexes the
+   skill pills, then reveals them one at a time (via CSS transition-delay,
+   see .reveal-word / .skill-pill in style.css) once the section scrolls
+   into view. Delay grows with each item so the sequence reads like a
+   typewriter slowing down as it finishes.
+   ========================================= */
+function initBioReveal() {
+    const bioSection = document.querySelector('.bio-section');
+    if (!bioSection) return;
+
+    const lines = bioSection.querySelectorAll('.manifesto-line');
+    let wordIndex = 0;
+    lines.forEach(line => {
+        const words = line.textContent.trim().split(/\s+/);
+        line.textContent = '';
+        words.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.className = 'reveal-word';
+            span.style.setProperty('--i', wordIndex++);
+            span.textContent = word;
+            line.appendChild(span);
+            if (i < words.length - 1) line.appendChild(document.createTextNode(' '));
+        });
+    });
+
+    bioSection.querySelectorAll('.skill-pill').forEach((pill, i) => {
+        pill.style.setProperty('--i', i);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        bioSection.classList.add('in-view');
+        return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                bioSection.classList.add('in-view');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.25 });
+    revealObserver.observe(bioSection);
+}
+
+/* =========================================
    1. 初始化 AOS & 頁面判斷邏輯
    ========================================= */
 var msnry;
@@ -181,6 +229,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (heroSection) {
         initLiquidChrome();
     }
+
+    initBioReveal();
 
     // JSON-first rendering: cards come from data/projects.json by
     // default. Returns false (leaving hardcoded cards in place) if
