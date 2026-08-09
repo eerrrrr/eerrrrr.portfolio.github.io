@@ -269,6 +269,16 @@ button:focus-visible {
 }
 .bio-section.in-view .reveal-word { opacity: 1; transform: translateY(0); }
 
+/* Once every word has landed (last word finishes around 2.47s in, see the
+   --i formula above), the whole manifesto settles with a slight zoom-in —
+   a quiet finishing touch rather than another moving part. */
+.manifesto-text {
+    transform: scale(0.97);
+    transform-origin: left center;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 2.5s;
+}
+.bio-section.in-view .manifesto-text { transform: scale(1); }
+
 .skills-content {
     width: 100%;
     min-width: 0;
@@ -871,7 +881,7 @@ button:focus-visible {
         transform: none !important;
         transition-delay: 0ms !important;
     }
-    .reveal-word, .skill-pill, .sidebar-reveal, .tag-btn {
+    .reveal-word, .skill-pill, .sidebar-reveal, .tag-btn, .manifesto-text {
         opacity: 1 !important;
         transform: none !important;
         transition-delay: 0ms !important;
