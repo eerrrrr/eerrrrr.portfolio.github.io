@@ -197,7 +197,12 @@ button:focus-visible {
     font-size: var(--text-size-h1); line-height: 1; margin: 0; font-weight: 800; color: #fff;
     text-align: center; letter-spacing: -3px; text-transform: uppercase; position: relative;
     text-shadow: 0 0 3px rgba(0,0,0,0.55), 0 0 8px rgba(0,0,0,0.25);
+    /* Standalone `scale` (not `transform`) so it never fights the AOS
+       zoom-in entrance, which animates `transform` on page load. */
+    scale: 1;
+    transition: scale 0.18s ease-out;
 }
+.poster-content h1:hover { scale: 1.04; }
 .hero-top-nav {
     position: absolute; top: 40px; left: 0; width: 100%; z-index: 30;
     display: flex; align-items: flex-start;
@@ -213,9 +218,15 @@ button:focus-visible {
 .nav-side.right { justify-content: flex-end; }
 .nav-center { display: flex; flex-direction: column; align-items: center; justify-content: center; width: auto; }
 .hero-top-nav span.big-text,
-.hero-bottom-nav span.big-text { color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-.scroll-indicator { color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; opacity: 1; margin-top: 2px; font-weight: 600; background: none; border: none; padding: 14px 10px; min-height: 44px; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
-.scroll-indicator:hover { opacity: 0.6; }
+.hero-bottom-nav span.big-text {
+    color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    scale: 1;
+    transition: scale 0.18s ease-out;
+}
+.hero-top-nav span.big-text:hover,
+.hero-bottom-nav span.big-text:hover { scale: 1.08; }
+.scroll-indicator { color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; opacity: 1; margin-top: 2px; font-weight: 600; background: none; border: none; padding: 14px 10px; min-height: 44px; cursor: pointer; font-family: inherit; scale: 1; transition: opacity 0.2s, scale 0.18s ease-out; }
+.scroll-indicator:hover { opacity: 0.6; scale: 1.08; }
 
 /* Bio Section */
 .bio-section {
@@ -402,16 +413,16 @@ button:focus-visible {
 .sidebar-lower-content { margin-top: auto; }
 .sidebar-contact-box { margin-top: 0; margin-bottom: 28px; }
 .sidebar-bottom-push { margin-top: 0; padding-top: 30px; border-top: 1px solid #eee; }
-.sidebar-scroll-content { 
-    overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; 
-    direction: ltr; padding-left: 0; padding-right: 0; 
-    scrollbar-width: thin; scrollbar-color: #d0d0d0 transparent;
-    overscroll-behavior: contain;
+/* No internal scrollbar, at any width: the project sidebar's height is a
+   soft target (calc(100vh - 80px) on .project-info-sidebar below), not a
+   hard clip. If title+description+meta+skills need more room than one
+   screen, the box simply grows past it and the outer page scroll reveals
+   the rest -- same behavior the <1024px layout already had, now the
+   default everywhere instead of only on narrow screens. */
+.sidebar-scroll-content {
+    overflow: visible; flex-grow: 1; display: flex; flex-direction: column;
+    direction: ltr; padding-left: 0; padding-right: 0;
 }
-.sidebar-scroll-content::-webkit-scrollbar { width: 4px; }
-.sidebar-scroll-content::-webkit-scrollbar-track { background: transparent; }
-.sidebar-scroll-content::-webkit-scrollbar-thumb { background-color: #d0d0d0; border-radius: 4px; }
-.sidebar-scroll-content::-webkit-scrollbar-thumb:hover { background-color: #999; }
 
 .info-content { flex-grow: 1; display: flex; flex-direction: column; }
 /* Same weight/family as the sidebar name (WONG WAI IN), size stays its
@@ -486,8 +497,16 @@ button:focus-visible {
                 color 0.2s ease, scale 0.18s ease-out;
 }
 .tag-btn:hover, .tag-btn.active { color: var(--green-accent); font-weight: bold; }
-.tag-btn:hover { scale: 1.05; }
 .reset-tag { margin-top: 2px; font-size: 0.8rem; font-family: var(--font-base); }
+/* Per follow-up: "Hong Kong" and the whole FILTER BY TAG block (header,
+   tags, show-all link) keep their fly-in reveal but don't zoom on hover,
+   unlike the rest of the sidebar. */
+.location:hover,
+.tag-header:hover,
+.tag-btn:hover,
+.reset-tag:hover {
+    scale: 1;
+}
 @media (pointer: coarse) {
     .tag-cloud ul { row-gap: 0; }
     .tag-btn { min-height: 44px; }
@@ -730,7 +749,6 @@ button:focus-visible {
     .sticky-sidebar { width: 100%; min-width: auto; height: auto; position: relative; padding: 40px 40px; border-left: none; }
     .sidebar-scroll-content { padding-left: 0; padding-right: 0; }
     .project-info-sidebar { width: 100%; min-width: auto; height: auto; position: relative; top: 0; padding: 48px clamp(24px, 5vw, 52px); }
-    .project-info-sidebar .sidebar-scroll-content { overflow: visible; }
     .project-info-sidebar .sidebar-description { max-width: 900px; }
     .project-info-sidebar .sidebar-bottom-group { margin-top: 36px; }
     .project-hero-split { min-height: 50vh; padding: 40px 20px; }
@@ -918,7 +936,8 @@ button:focus-visible {
         transition-delay: 0ms !important;
     }
     .reveal-word, .skill-pill, .sidebar-reveal, .tag-btn, .manifesto-text,
-    .sidebar-title, .next-work-link {
+    .sidebar-title, .next-work-link,
+    .poster-content h1, .big-text, .scroll-indicator {
         opacity: 1 !important;
         transform: none !important;
         scale: 1 !important;

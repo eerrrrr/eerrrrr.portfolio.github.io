@@ -197,14 +197,18 @@ function initBioReveal() {
         return;
     }
 
+    // threshold 0.5: wait until half the section is visible before playing,
+    // so it starts closer to when it's actually being looked at (0.2 fired
+    // too early — the sequence had already finished by the time it was in
+    // full view). Toggles in-view on/off (no unobserve) so leaving the
+    // viewport in either direction resets it, and scrolling back in —
+    // whichever way — replays it from the start instead of a one-time-only
+    // animation.
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                bioSection.classList.add('in-view');
-                revealObserver.unobserve(entry.target);
-            }
+            bioSection.classList.toggle('in-view', entry.isIntersecting);
         });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.5 });
     revealObserver.observe(bioSection);
 }
 
