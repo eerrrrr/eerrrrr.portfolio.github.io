@@ -219,6 +219,10 @@ function initBioReveal() {
    translateY) since the sidebar items already carry --i and the
    .sidebar-reveal class directly in index.html. Triggers once when the
    sticky sidebar scrolls into view.
+   threshold 0.1 -> 0.5: the sidebar's own box is ~100vh tall, so 10%
+   visible was only ~1/10th of a screen scrolled -- the reveal had
+   already played out before it was actually in view. Matches the same
+   fix applied to the manifesto reveal (initBioReveal).
    ========================================= */
 function initSidebarReveal() {
     const sidebar = document.querySelector('.sticky-sidebar');
@@ -236,7 +240,7 @@ function initSidebarReveal() {
                 sidebarObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.5 });
     sidebarObserver.observe(sidebar);
 }
 
