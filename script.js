@@ -278,10 +278,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         imagesLoaded(grid, function() {
             msnry = new Masonry(grid, {
                 itemSelector: '.project-card',
-                columnWidth: '.project-card', 
+                columnWidth: '.project-card',
                 percentPosition: true,
                 gutter: '.gallery-gutter',
-                horizontalOrder: true 
+                horizontalOrder: true,
+                // Masonry's own CSS-transform-based move animation can get
+                // stuck (leftover translate3d never cleared) when two
+                // layout() calls fire close together -- see refreshMasonry's
+                // rAF + imagesLoaded double pass. Cards already fade via
+                // opacity during filtering, so this animation is redundant
+                // anyway; disabling it removes the whole bug class.
+                transitionDuration: 0
             });
             
             if (typeof AOS !== 'undefined') {
@@ -376,7 +383,8 @@ function refreshMasonry(reason) {
             columnWidth: '.project-card',
             percentPosition: true,
             gutter: '.gallery-gutter',
-            horizontalOrder: true
+            horizontalOrder: true,
+            transitionDuration: 0 // see note in the main init above
         });
     }
 
