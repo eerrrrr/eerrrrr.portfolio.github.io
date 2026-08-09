@@ -293,16 +293,22 @@ button:focus-visible {
 .bio-grid > .skills-content .skill-tags { width: 100%; max-width: 292px; }
 .skill-pill {
     font-size: 0.78rem; color: #707070; font-weight: 600; background-color: #f7f7f7; padding: 4px 11px; border-radius: 20px; font-family: var(--font-base); white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
+/* The word-by-word reveal only ever fires inside .bio-section (homepage
+   IT Skills grid). Project-page "PROJECT SKILLS" pills share the same
+   .skill-pill class but live in .project-info-sidebar, which never gets
+   an .in-view trigger — so the hide/reveal must be scoped to .bio-section
+   specifically, or those pills stay permanently invisible (opacity:0)
+   while still reserving their layout space, reading as a blank gap. */
+.bio-section .skill-pill {
     opacity: 0;
     transform: translateY(6px);
-    /* Reveal delay lives only on opacity/transform (via per-property delay
-       slots below) so the background-color/color hover transition never
-       inherits the reveal's growing delay. */
     transition: opacity 0.4s ease-out calc(40ms * var(--i, 0) + 4ms * var(--i, 0) * var(--i, 0)),
                 transform 0.4s ease-out calc(40ms * var(--i, 0) + 4ms * var(--i, 0) * var(--i, 0)),
                 background-color 0.2s ease, color 0.2s ease;
 }
-.skill-pill:hover { background-color: var(--green-light); color: var(--green-dark); }
 .bio-section.in-view .skill-pill { opacity: 1; transform: translateY(0); }
 
 .section-scroll-link {
