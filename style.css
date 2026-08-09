@@ -447,6 +447,9 @@ button:focus-visible {
 
 .sidebar-bottom-group { margin-top: auto; padding-top: 40px; }
 .project-info-sidebar .skills-content { width: 100%; min-width: auto; padding: 0 !important; margin-top: 0; margin-bottom: 25px; transform: none; }
+/* Set by initSidebarSkillsFit() in script.js when PROJECT SKILLS would
+   otherwise push Previous/Next Work out of the sticky sidebar's view. */
+.project-info-sidebar .skills-content.js-hidden { display: none; }
 .sidebar-top .logo { font-size: 1.5rem; font-weight: 900; margin-bottom: 40px; display: block; color: #000; }
 .bio-info h2 { font-size: var(--text-size-h2); color: #000; margin: 0 0 10px 0; text-transform: uppercase;}
 .location { color: #333; margin-bottom: 30px; font-size: var(--text-size-meta);}
